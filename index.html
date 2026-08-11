@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>18 EITHING SARL</title>
+  
+  <!-- TOUS LES STYLES (CSS) -->
+  <style>
+    /* Reset & Styles généraux */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f8f9fa;
+      color: #333;
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    header {
+      text-align: center;
+      padding: 40px 20px;
+      background: linear-gradient(135deg, #1e293b, #0f172a);
+      color: #ffffff;
+      border-radius: 16px;
+      margin-bottom: 30px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+
+    header h1 {
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+    }
+
+    /* Grille et Cartes Interactives */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid #eef2f5;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+    }
+
+    .card h3 {
+      margin-bottom: 12px;
+      color: #0f172a;
+    }
+
+    /* Animation au défilement (Scroll) */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Bouton WhatsApp Flottant */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #25d366;
+      color: #ffffff;
+      padding: 12px 24px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+      z-index: 1000;
+      transition: transform 0.2s ease;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- En-tête du site -->
+  <header class="reveal">
+    <h1>18 EITHING SARL</h1>
+    <p>Conseil, Logistique & Commerce</p>
+  </header>
+
+  <!-- Contenu Principal / Services -->
+  <main class="container">
+    <div class="card reveal">
+      <h3>Vente de bric-à-brac</h3>
+      <p>Découvrez notre sélection variée d'articles, équipements et opportunités commerciales.</p>
+    </div>
+
+    <div class="card reveal">
+      <h3>Conseil & Stratégie</h3>
+      <p>Accompagnement professionnel et solutions adaptées à vos besoins organisationnels.</p>
+    </div>
+
+    <div class="card reveal">
+      <h3>Logistique & Services</h3>
+      <p>Gestion efficace et coordination globale pour l'acheminement et la mise à disposition de vos biens.</p>
+    </div>
+  </main>
+
+  <!-- Bouton WhatsApp (Remplacer le numéro si besoin) -->
+  <a href="https://wa.me/22944669587" class="whatsapp-float" target="_blank" rel="noopener">
+    💬 Contactez-nous
+  </a>
+
+  <!-- SCRIPT ANIMATIONS (JAVASCRIPT) -->
+  <script>
+    // Détection du défilement pour faire apparaître les blocs
+    function checkScroll() {
+      const reveals = document.querySelectorAll('.reveal');
+      reveals.forEach((el) => {
+        const windowHeight = window.innerHeight;
+        const elementTop = el.getBoundingClientRect().top;
+        if (elementTop < windowHeight - 80) {
+          el.classList.add('active');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', checkScroll);
+    window.addEventListener('load', checkScroll); // Lance une première vérification au chargement
+  </script>
+
+</body>
+</html>
