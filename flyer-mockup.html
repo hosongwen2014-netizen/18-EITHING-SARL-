@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flyer mockup</title>
+    <style>
+      :root {
+        --paper: rgba(244, 237, 229, 0.95);
+        --ink: #4d1f14;
+        --ink-deep: #2a110d;
+        --gold: #d19c4d;
+        --shadow: rgba(17, 12, 9, 0.18);
+      }
+
+      * { box-sizing: border-box; }
+
+      html, body {
+        margin: 0;
+        min-height: 100%;
+        font-family: Georgia, "Times New Roman", serif;
+        background: linear-gradient(180deg, rgba(125,150,110,0.8), rgba(92,119,82,0.8));
+      }
+
+      body {
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 26px;
+      }
+
+      .scene {
+        width: min(100%, 1200px);
+        min-height: 88vh;
+        background:
+          linear-gradient(rgba(18, 30, 19, 0.08), rgba(18, 30, 19, 0.08)),
+          url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 30px;
+      }
+
+      .gallery {
+        width: min(100%, 1000px);
+        display: flex;
+        justify-content: center;
+        gap: 36px;
+      }
+
+      .poster {
+        position: relative;
+        width: min(40vw, 390px);
+        min-height: 610px;
+        background: var(--paper);
+        box-shadow: 0 18px 36px var(--shadow);
+        border: 1px solid rgba(45, 17, 13, 0.1);
+        padding: 34px 28px 22px;
+      }
+
+      .poster.left { transform: rotate(-1.3deg); }
+      .poster.right { transform: rotate(1.3deg); }
+
+      .poster::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(0,0,0,0.02));
+        pointer-events: none;
+      }
+
+      .poster::after {
+        content: "";
+        position: absolute;
+        left: 12px;
+        right: 12px;
+        bottom: -8px;
+        height: 18px;
+        border-radius: 50%;
+        background: rgba(25, 16, 11, 0.08);
+        filter: blur(10px);
+      }
+
+      .content {
+        position: relative;
+        z-index: 1;
+        text-align: center;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .badge {
+        position: absolute;
+        top: 14px;
+        right: 18px;
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        color: #d67a2d;
+        border: 1px solid rgba(65, 37, 24, 0.18);
+        background: rgba(218, 133, 67, 0.08);
+        display: grid;
+        place-items: center;
+        font-size: 0.66rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+      }
+
+      .eyebrow {
+        margin: 0 0 18px;
+        font-size: 0.78rem;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--ink);
+      }
+
+      .title {
+        margin: 0;
+        font-size: clamp(2.6rem, 4vw, 5.3rem);
+        line-height: 0.9;
+        letter-spacing: -0.08em;
+        font-weight: 800;
+        color: var(--ink-deep);
+      }
+
+      .title .block {
+        display: block;
+      }
+
+      .star {
+        color: var(--gold);
+        font-size: 0.74em;
+        display: inline-block;
+        transform: translateY(-0.12em);
+      }
+
+      .date {
+        margin-top: 26px;
+        font-size: clamp(1.15rem, 1.7vw, 1.9rem);
+        line-height: 1.25;
+        letter-spacing: 0.08em;
+        font-weight: 800;
+        text-transform: uppercase;
+        color: var(--ink-deep);
+      }
+
+      .date .small {
+        display: block;
+      }
+
+      .invite {
+        margin-top: 22px;
+        font-size: clamp(1.1rem, 1.8vw, 2rem);
+        line-height: 1.25;
+        color: var(--ink-deep);
+        font-style: italic;
+      }
+
+      .address {
+        margin-top: 26px;
+        font-size: clamp(0.88rem, 1.2vw, 1.2rem);
+        line-height: 1.6;
+        letter-spacing: 0.12em;
+        font-weight: 700;
+        color: var(--ink-deep);
+      }
+
+      .poster.right .title {
+        font-size: clamp(2.3rem, 3.8vw, 4.7rem);
+        letter-spacing: -0.08em;
+      }
+
+      .poster.right .invite {
+        max-width: 280px;
+      }
+
+      @media (max-width: 760px) {
+        .gallery {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .poster {
+          width: min(88vw, 440px);
+          min-height: 520px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="scene">
+      <div class="gallery">
+        <article class="poster left">
+          <div class="content">
+            <div class="badge">REE</div>
+            <p class="eyebrow">Centre Reev à la Matasse</p>
+            <h1 class="title">
+              <span class="block">Portes</span>
+              <span class="block">ouvertes <span class="star">✦</span></span>
+            </h1>
+
+            <div class="date">
+              Dimanche 6 Septembre
+              <span class="small">10H00 – 17H00</span>
+            </div>
+
+            <div class="invite">Nous sommes ouverts,<br /> venez nous rendre visite !</div>
+
+            <div class="address">
+              347 CHEMIN DE LA MATASSE<br />
+              31370 BÉRAT
+            </div>
+          </div>
+        </article>
+
+        <article class="poster right">
+          <div class="content">
+            <div class="badge">REE</div>
+            <p class="eyebrow">Centre Reev à la Matasse</p>
+            <h1 class="title">
+              <span class="block">Tombola</span>
+              <span class="block">Ateliers</span>
+              <span class="block">Conférences</span>
+            </h1>
+
+            <div class="invite">et plein d'autres surprises,<br /> venez participer !</div>
+
+            <div class="address">
+              347 CHEMIN DE LA MATASSE<br />
+              31370 BÉRAT
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </body>
+</html>

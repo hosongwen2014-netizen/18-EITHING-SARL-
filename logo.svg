@@ -1,0 +1,54 @@
+<svg width="760" height="520" viewBox="0 0 760 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="panelBg" x1="80" y1="30" x2="700" y2="490" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0E2C43"/>
+      <stop offset="1" stop-color="#163E5D"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="208" y1="122" x2="488" y2="408" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F2D4A1"/>
+      <stop offset="0.35" stop-color="#D6AA5E"/>
+      <stop offset="0.7" stop-color="#B8843D"/>
+      <stop offset="1" stop-color="#F7DFA8"/>
+    </linearGradient>
+    <linearGradient id="silver" x1="180" y1="330" x2="580" y2="450" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F8F3EA"/>
+      <stop offset="1" stop-color="#C5C5C5"/>
+    </linearGradient>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="160%">
+      <feDropShadow dx="0" dy="18" stdDeviation="14" flood-color="#000000" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#softShadow)">
+    <rect x="40" y="40" width="680" height="430" rx="38" fill="url(#panelBg)"/>
+    <rect x="40" y="40" width="680" height="430" rx="38" stroke="#C79A55" stroke-width="6"/>
+  </g>
+
+  <g opacity="0.08">
+    <path d="M120 130C196 72 282 84 340 144C395 200 438 232 525 233C595 234 644 210 678 184" stroke="#D9B677" stroke-width="5" stroke-linecap="round"/>
+    <path d="M115 182C188 150 266 165 318 203C376 245 419 287 518 290C590 292 645 270 680 245" stroke="#D9B677" stroke-width="5" stroke-linecap="round"/>
+  </g>
+
+  <g>
+    <path d="M218 117C278 77 301 78 338 110C364 133 368 163 342 186C326 201 303 209 272 211C245 213 219 206 196 186C163 159 164 122 218 117Z" fill="none" stroke="url(#gold)" stroke-width="8" stroke-linecap="round"/>
+    <path d="M485 118C540 79 609 84 646 117C660 129 671 147 670 170C665 211 622 238 575 238C531 238 501 220 465 187C428 152 433 118 485 118Z" fill="none" stroke="url(#gold)" stroke-width="8" stroke-linecap="round"/>
+  </g>
+
+  <g>
+    <text x="215" y="250" fill="url(#gold)" font-size="180" font-weight="700" font-family="Georgia, 'Times New Roman', serif">18</text>
+    <text x="430" y="248" fill="url(#gold)" font-size="78" font-weight="600" font-family="Georgia, 'Times New Roman', serif">SARL</text>
+    <text x="180" y="350" fill="url(#gold)" font-size="104" font-weight="700" font-family="Georgia, 'Times New Roman', serif">EITHING</text>
+    <text x="150" y="420" fill="url(#silver)" font-size="56" font-weight="400" font-style="italic" font-family="Georgia, 'Times New Roman', serif">Everything you need.</text>
+  </g>
+
+  <g>
+    <path d="M170 472H590" stroke="#C99B5B" stroke-width="4" stroke-linecap="round"/>
+    <path d="M335 442C336 471 348 488 370 495C391 501 412 496 424 477C437 456 432 439 414 427C393 412 366 416 345 436" stroke="url(#gold)" stroke-width="5" stroke-linecap="round" fill="none"/>
+    <path d="M425 442C426 471 438 488 460 495C481 501 502 496 514 477C527 456 522 439 504 427C483 412 456 416 435 436" stroke="url(#gold)" stroke-width="5" stroke-linecap="round" fill="none"/>
+  </g>
+
+  <g>
+    <rect x="220" y="425" width="320" height="46" rx="23" fill="#E8C47A" fill-opacity="0.18"/>
+    <text x="380" y="456" text-anchor="middle" fill="url(#gold)" font-size="26" font-weight="600" font-family="Georgia, 'Times New Roman', serif">Conseils &amp; assistance</text>
+  </g>
+</svg>

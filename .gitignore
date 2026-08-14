@@ -1,0 +1,3 @@
+# Ignore local env files and artifacts
+medstock/.env
+medstock/artifacts/

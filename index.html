@@ -1,150 +1,214 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>18 EITHING SARL</title>
-  
-  <!-- TOUS LES STYLES (CSS) -->
-  <style>
-    /* Reset & Styles généraux */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f8f9fa;
-      color: #333;
-      line-height: 1.6;
-      padding: 20px;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="18 EITHING SARL — Conseil, logistique et accompagnement psychologique pour les entreprises et le commerce."
+    />
+    <title>18 EITHING SARL</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a href="#home" class="brand" aria-label="Accueil 18 EITHING SARL">
+          <img src="logo.svg" alt="Logo 18 EITHING SARL" class="brand-logo" />
+        </a>
 
-    header {
-      text-align: center;
-      padding: 40px 20px;
-      background: linear-gradient(135deg, #1e293b, #0f172a);
-      color: #ffffff;
-      border-radius: 16px;
-      margin-bottom: 30px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    }
+        <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
 
-    header h1 {
-      font-size: 2.2rem;
-      margin-bottom: 10px;
-    }
+        <nav class="main-nav" aria-label="Navigation principale">
+          <a href="#home">Accueil</a>
+          <a href="#about">À propos</a>
+          <a href="#services">Services</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
 
-    /* Grille et Cartes Interactives */
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-    }
+    <main>
+      <section id="home" class="hero">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow">Expertise · Conseil · Logistique · Accompagnement</p>
+            <h1>Des solutions qui donnent du mouvement à votre ambition.</h1>
+            <p class="lead">
+              18 EITHING SARL accompagne les entreprises, les acteurs de santé et les
+              professionnels dans une logique claire, humaine et performante.
+            </p>
+            <div class="cta-row">
+              <a class="button primary" href="#contact">Nous contacter</a>
+              <a class="button secondary" href="#services">Découvrir nos services</a>
+              <a class="button tertiary" href="tel:+22944669587">Appeler</a>
+            </div>
+            <ul class="hero-points" aria-label="Valeurs clés">
+              <li>Conseil stratégique</li>
+              <li>Logistique fiable</li>
+              <li>Accompagnement humain</li>
+            </ul>
+          </div>
 
-    .card {
-      background: #ffffff;
-      border-radius: 12px;
-      padding: 24px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      border: 1px solid #eef2f5;
-    }
+          <div class="hero-panel" aria-label="Présentation de 18 EITHING SARL">
+            <div class="panel-card accent">
+              <span class="card-label">Expertise</span>
+              <strong>Conseil · Logistique · Accompagnement</strong>
+            </div>
+            <div class="panel-card">
+              <span class="card-label">Mission</span>
+              <strong>Créer des organisations plus résilientes et plus efficaces.</strong>
+            </div>
+          </div>
+        </div>
+      </section>
 
-    .card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
-    }
+      <section id="about" class="section about">
+        <div class="container two-columns">
+          <div>
+            <p class="section-tag">À propos</p>
+            <h2>Une approche concrète, ambitieuse et centrée sur les résultats.</h2>
+          </div>
+          <div>
+            <p>
+              Chez 18 EITHING SARL, nous croyons qu’une structure se développe mieux
+              lorsqu’elle associe stratégie, organisation, expertise et accompagnement
+              humain. Notre mission est de soutenir nos clients dans leurs décisions,
+              leurs opérations et leur progression dans un environnement exigeant.
+            </p>
+            <p>
+              Nous mettons à votre disposition des solutions concrètes, pensées pour la
+              réalité du terrain, avec une attention particulière à la performance, à la
+              qualité de service et au bien-être des personnes.
+            </p>
+            <ul class="value-list">
+              <li>Approche concrète et orientée résultats</li>
+              <li>Accompagnement humain et professionnel</li>
+              <li>Solutions adaptées à chaque contexte</li>
+            </ul>
+          </div>
+        </div>
+      </section>
 
-    .card h3 {
-      margin-bottom: 12px;
-      color: #0f172a;
-    }
+      <section id="services" class="section services">
+        <div class="container">
+          <div class="section-heading">
+            <p class="section-tag">Services</p>
+            <h2>Des services pensés pour accompagner chaque étape.</h2>
+          </div>
 
-    /* Animation au défilement (Scroll) */
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-    }
+          <div class="services-grid">
+            <article class="service-card">
+              <div class="icon">01</div>
+              <h3>Conseil santé au travail</h3>
+              <p>
+                Audit, cadrage stratégique et accompagnement pour mieux piloter votre
+                développement, vos projets et vos performances.
+              </p>
+            </article>
 
-    .reveal.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
+            <article class="service-card">
+              <div class="icon">02</div>
+              <h3>Logistique de santé</h3>
+              <p>
+                Organisation des flux, optimisation des processus et mise en place de
+                solutions adaptées à vos besoins opérationnels.
+              </p>
+            </article>
 
-    /* Bouton WhatsApp Flottant */
-    .whatsapp-float {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: #25d366;
-      color: #ffffff;
-      padding: 12px 24px;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: bold;
-      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-      z-index: 1000;
-      transition: transform 0.2s ease;
-    }
+            <article class="service-card">
+              <div class="icon">03</div>
+              <h3>Accompagnement psychologique</h3>
+              <p>
+                Un soutien humain et professionnel pour favoriser la résilience, la
+                confiance et le mieux-être dans les contextes professionnels.
+              </p>
+            </article>
 
-    .whatsapp-float:hover {
-      transform: scale(1.05);
-    }
-  </style>
-</head>
-<body>
+            <article class="service-card">
+              <div class="icon">04</div>
+              <h3>Commerce général</h3>
+              <p>
+                Conseils pratiques et accompagnement pour renforcer votre visibilité,
+                votre organisation commerciale et votre relation client.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
 
-  <!-- En-tête du site -->
-  <header class="reveal">
-    <h1>18 EITHING SARL</h1>
-    <p>Conseil, Logistique & Commerce</p>
-  </header>
+      <section class="section metrics">
+        <div class="container metrics-grid">
+          <div>
+            <strong>+10 ans</strong>
+            <span>d’expérience de terrain</span>
+          </div>
+          <div>
+            <strong>100%</strong>
+            <span>approche orientée client</span>
+          </div>
+          <div>
+            <strong>4</strong>
+            <span>piliers de services</span>
+          </div>
+        </div>
+      </section>
 
-  <!-- Contenu Principal / Services -->
-  <main class="container">
-    <div class="card reveal">
-      <h3>Vente de bric-à-brac</h3>
-      <p>Découvrez notre sélection variée d'articles, équipements et opportunités commerciales.</p>
-    </div>
+      <section id="contact" class="section contact">
+        <div class="container contact-grid">
+          <div>
+            <p class="section-tag">Contact</p>
+            <h2>Parlons de votre projet.</h2>
+            <p>
+              Vous avez un besoin de conseil, de logistique, d’accompagnement ou de
+              développement commercial ? Contactez-nous pour en discuter.
+            </p>
+          </div>
 
-    <div class="card reveal">
-      <h3>Conseil & Stratégie</h3>
-      <p>Accompagnement professionnel et solutions adaptées à vos besoins organisationnels.</p>
-    </div>
+          <div class="contact-card">
+            <div class="contact-row">
+              <span class="contact-label">Email</span>
+              <a href="mailto:contact@18_eithing.bj">contact@18_eithing.bj</a>
+            </div>
+            <div class="contact-row">
+              <span class="contact-label">WhatsApp</span>
+              <a href="https://wa.me/22944669587" target="_blank" rel="noreferrer">+229 44 66 95 87</a>
+            </div>
+            <p>Disponibilité selon vos besoins.</p>
+            <div class="cta-row compact">
+              <a class="button primary" href="mailto:contact@18_eithing.bj">Écrire un email</a>
+              <a class="button secondary" href="https://wa.me/22944669587" target="_blank" rel="noreferrer">WhatsApp</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
 
-    <div class="card reveal">
-      <h3>Logistique & Services</h3>
-      <p>Gestion efficace et coordination globale pour l'acheminement et la mise à disposition de vos biens.</p>
-    </div>
-  </main>
+    <a class="whatsapp-float" href="https://wa.me/22944669587" target="_blank" rel="noreferrer" aria-label="Contactez-nous sur WhatsApp">WhatsApp</a>
 
-  <!-- Bouton WhatsApp (Remplacer le numéro si besoin) -->
-  <a href="https://wa.me/22944669587" class="whatsapp-float" target="_blank" rel="noopener">
-    💬 Contactez-nous
-  </a>
+    <footer class="site-footer">
+      <div class="container footer-wrap">
+        <p>© 2026 18 EITHING SARL</p>
+        <nav aria-label="Navigation du pied de page">
+          <a href="#home">Accueil</a>
+          <a href="#about">À propos</a>
+          <a href="#services">Services</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </footer>
 
-  <!-- SCRIPT ANIMATIONS (JAVASCRIPT) -->
-  <script>
-    // Détection du défilement pour faire apparaître les blocs
-    function checkScroll() {
-      const reveals = document.querySelectorAll('.reveal');
-      reveals.forEach((el) => {
-        const windowHeight = window.innerHeight;
-        const elementTop = el.getBoundingClientRect().top;
-        if (elementTop < windowHeight - 80) {
-          el.classList.add('active');
-        }
-      });
-    }
-
-    window.addEventListener('scroll', checkScroll);
-    window.addEventListener('load', checkScroll); // Lance une première vérification au chargement
-  </script>
-
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
+
