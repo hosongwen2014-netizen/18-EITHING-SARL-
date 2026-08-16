@@ -1,7 +1,7 @@
 import docx
 from docx.shared import Inches, Pt, RGBColor
 from docx.enum.text import WD_ALIGN_PARAGRAPH
-from docx.enum.table import WD_TABLE_ALIGNMENT, WD_ALIGN_VERTICAL
+from docx.enum.table import WD_TABLE_ALIGNMENT
 from docx.oxml import OxmlElement, parse_xml
 from docx.oxml.ns import qn, nsdecls
 
@@ -65,6 +65,7 @@ def make_callout_box(doc, title_text, body_text, bg_color="F4F6F9", border_color
     p2 = cell.add_paragraph()
     p2.paragraph_format.space_before = Pt(2)
     p2.paragraph_format.space_after = Pt(0)
+    p2.paragraph_format.line_spacing = 1.15
     run_b = p2.add_run(body_text)
     run_b.font.name = 'Calibri'
     run_b.font.size = Pt(10.5)
@@ -76,20 +77,22 @@ def make_callout_box(doc, title_text, body_text, bg_color="F4F6F9", border_color
 def main():
     doc = docx.Document()
 
-    # Margins
+    # Part 2: Page Setup & Margins (Standard Business: 2.54 cm / 1 inch on all sides)
     for section in doc.sections:
-        section.top_margin = Inches(1)
+        section.top_margin = Inches(1) # 2.54 cm
         section.bottom_margin = Inches(1)
         section.left_margin = Inches(1)
         section.right_margin = Inches(1)
+        section.page_width = Inches(8.27) # A4
+        section.page_height = Inches(11.69)
 
-    # Base Styles
+    # Part 1: Typography (Calibri 11pt, Dark Charcoal text for optimal readability)
     normal_style = doc.styles['Normal']
     normal_style.font.name = 'Calibri'
     normal_style.font.size = Pt(11)
     normal_style.font.color.rgb = RGBColor(0x2B, 0x2B, 0x2B)
 
-    # Document Header / Banner
+    # Document Header Banner
     header_table = doc.add_table(rows=1, cols=1)
     header_table.alignment = WD_TABLE_ALIGNMENT.CENTER
     h_cell = header_table.cell(0, 0)
@@ -142,7 +145,6 @@ def main():
             run.font.size = Pt(14)
             run.font.color.rgb = RGBColor(0x0E, 0x2C, 0x43) # Navy
 
-            # Add bottom accent line under H1
             pBdr = parse_xml(f'<w:pBdr {nsdecls("w")}><w:bottom w:val="single" w:sz="12" w:space="4" w:color="C99B5B"/></w:pBdr>')
             h._element.get_or_add_pPr().append(pBdr)
 
@@ -163,18 +165,24 @@ def main():
     add_sec_heading("1.1 Problématique environnementale et opportunité industrielle au Bénin", 2)
     p = doc.add_paragraph("La gestion des déchets solides ménagers et industriels constitue l'un des défis majeurs du développement urbain et économique en République du Bénin. Chaque année, plus de 100 000 tonnes de plastiques rigides et souples sont générées sur l'ensemble du territoire national, dont seule une fraction inférieure à 8 % fait l'objet d'un recyclage formel. Le reste s'accumule dans la nature, bouche les réseaux d'évacuation d'eaux pluviales ou brûle à l'air libre, générant des risques sanitaires et écologiques majeurs.")
     p.paragraph_format.space_after = Pt(6)
+    p.paragraph_format.line_spacing = 1.15
 
     p = doc.add_paragraph("Parallèlement, l'industrie manufacturière régionale (plasturgie, emballages, BTP, canalisations) fait face à un coût d'approvisionnement élevé en résines vierges importées (PP, PEHD), directement impactées par la volatilité des cours mondiaux du pétrole et le coût du fret maritime.")
     p.paragraph_format.space_after = Pt(6)
+    p.paragraph_format.line_spacing = 1.15
 
     p = doc.add_paragraph("18 EITHING SARL apporte une réponse industrielle concrète en structurant la filière de collecte et de transformation primaire des plastiques rigides (PP et PEHD) en broyats calibrés de haute qualité, répondant aux standards des plasturgistes béninois et sous-régionaux (Nigeria, Togo).")
     p.paragraph_format.space_after = Pt(6)
+    p.paragraph_format.line_spacing = 1.15
 
     add_sec_heading("1.2 Proposition de valeur unique : Positionnement Kétou vs Littoral/Cotonou", 2)
     p = doc.add_paragraph("Contrairement aux rares initiatives concentrées dans la zone saturée du Littoral (Cotonou, Akpakpa) caractérisée par un coût du foncier exorbitant, des coûts salariaux élevés et une concurrence acharnée sur le gisement local de déchets, 18 EITHING SARL positionne son unité industrielle de broyage à Kétou (Plateau).")
     p.paragraph_format.space_after = Pt(6)
+    p.paragraph_format.line_spacing = 1.15
 
-    doc.add_paragraph("Ce choix d'implantation stratégique offre des avantages comparatifs déterminants :").paragraph_format.space_after = Pt(4)
+    p_intro = doc.add_paragraph("Ce choix d'implantation stratégique offre des avantages comparatifs déterminants :")
+    p_intro.paragraph_format.space_after = Pt(4)
+    p_intro.paragraph_format.line_spacing = 1.15
 
     for bullet in [
         ("Gisement transfrontalier et territorial massif : ", "Accès direct aux flux de plastiques rigides ménagers et agricoles des départements du Plateau, de Zou, de la Colline, ainsi qu'aux flux informels de la frontière nigériane (à proximité immédiate d'Ihara et d'Igangan)."),
@@ -183,6 +191,7 @@ def main():
     ]:
         bp = doc.add_paragraph(style='List Bullet')
         bp.paragraph_format.space_after = Pt(3)
+        bp.paragraph_format.line_spacing = 1.15
         r1 = bp.add_run(bullet[0])
         r1.bold = True
         r1.font.color.rgb = RGBColor(0x0E, 0x2C, 0x43)
@@ -191,6 +200,7 @@ def main():
     add_sec_heading("1.3 Gouvernance et synergie d'expertises des fondateurs", 2)
     p = doc.add_paragraph("La direction de 18 EITHING SARL repose sur un tandem exécutif hautement complémentaire, combinant rigueur financière, excellence logistique et maîtrise de la santé au travail :")
     p.paragraph_format.space_after = Pt(6)
+    p.paragraph_format.line_spacing = 1.15
 
     for founder, role, details in [
         ("M. Hubert C. TOKPANOU", "Directeur Général (Pôle Logistique, Supply Chain & Finance)", [
@@ -205,6 +215,7 @@ def main():
         p = doc.add_paragraph()
         p.paragraph_format.space_before = Pt(4)
         p.paragraph_format.space_after = Pt(2)
+        p.paragraph_format.line_spacing = 1.15
         r_f = p.add_run(f"• {founder} ")
         r_f.bold = True
         r_f.font.color.rgb = RGBColor(0x0E, 0x2C, 0x43)
@@ -213,6 +224,7 @@ def main():
         for d in details:
             sub_p = doc.add_paragraph(style='List Bullet 2')
             sub_p.paragraph_format.space_after = Pt(2)
+            sub_p.paragraph_format.line_spacing = 1.15
             sub_p.add_run(d)
 
     # --- SECTION 2 ---
@@ -237,6 +249,7 @@ def main():
         for item in items_bmc:
             bp = doc.add_paragraph(style='List Bullet')
             bp.paragraph_format.space_after = Pt(2)
+            bp.paragraph_format.line_spacing = 1.15
             bp.add_run(item)
 
     add_sec_heading("2.2 Cartographie des flux d'approvisionnement (4 Bassins Logistiques)", 2)
@@ -248,6 +261,7 @@ def main():
     ]:
         bp = doc.add_paragraph(style='List Bullet')
         bp.paragraph_format.space_after = Pt(3)
+        bp.paragraph_format.line_spacing = 1.15
         r_z = bp.add_run(f"{zone[0]} : ")
         r_z.bold = True
         r_z.font.color.rgb = RGBColor(0x0E, 0x2C, 0x43)
@@ -270,6 +284,7 @@ def main():
         p = doc.add_paragraph()
         p.paragraph_format.space_before = Pt(3)
         p.paragraph_format.space_after = Pt(3)
+        p.paragraph_format.line_spacing = 1.15
         r1 = p.add_run(f"• {s_title} : ")
         r1.bold = True
         r1.font.color.rgb = RGBColor(0x0E, 0x2C, 0x43)
@@ -286,11 +301,13 @@ def main():
         for spec in eq_specs:
             bp = doc.add_paragraph(style='List Bullet')
             bp.paragraph_format.space_after = Pt(2)
+            bp.paragraph_format.line_spacing = 1.15
             bp.add_run(spec)
 
     add_sec_heading("3.3 Plan de gestion Santé, Sécurité au Travail (SST) et Ergonomie", 2)
     p = doc.add_paragraph("Conformément à l'expertise apportée par M. Pedro S. KPONON, l'unité de Kétou intègre les meilleurs standards ergonomiques et préventifs :")
     p.paragraph_format.space_after = Pt(4)
+    p.paragraph_format.line_spacing = 1.15
 
     for sst_cat, sst_items in [
         ("Réduction de la Pénibilité Physique", ["Tables de tri surélevées à hauteur réglable évitant les courbures lombaires.", "Utilisation de transpalettes hydrauliques et gerbeurs pour supprimer le port manuel > 25 kg."]),
@@ -302,6 +319,7 @@ def main():
         for item in sst_items:
             bp = doc.add_paragraph(style='List Bullet')
             bp.paragraph_format.space_after = Pt(2)
+            bp.paragraph_format.line_spacing = 1.15
             bp.add_run(item)
 
     # --- SECTION 4 ---
@@ -318,6 +336,7 @@ def main():
     for sem, desc in roadmap:
         bp = doc.add_paragraph(style='List Bullet')
         bp.paragraph_format.space_after = Pt(3)
+        bp.paragraph_format.line_spacing = 1.15
         r_s = bp.add_run(f"{sem} : ")
         r_s.bold = True
         r_s.font.color.rgb = RGBColor(0x0E, 0x2C, 0x43)
@@ -325,7 +344,9 @@ def main():
 
     # --- SECTION 5 ---
     add_sec_heading("5. MODÉLISATION FINANCIÈRE & RENTABILITÉ", 1)
-    doc.add_paragraph("(Tous les montants sont exprimés en Francs CFA - FCFA)").paragraph_format.space_after = Pt(6)
+    p_f = doc.add_paragraph("(Tous les montants sont exprimés en Francs CFA - FCFA)")
+    p_f.paragraph_format.space_after = Pt(6)
+    p_f.paragraph_format.line_spacing = 1.15
 
     add_sec_heading("5.1 Hypothèses de calcul et paramètres économiques", 2)
     hypotheses = [
@@ -339,6 +360,7 @@ def main():
     for h_label, h_val in hypotheses:
         bp = doc.add_paragraph(style='List Bullet')
         bp.paragraph_format.space_after = Pt(2)
+        bp.paragraph_format.line_spacing = 1.15
         r_l = bp.add_run(h_label)
         r_l.bold = True
         bp.add_run(h_val)
@@ -433,6 +455,7 @@ def main():
     ]:
         bp = doc.add_paragraph(style='List Bullet')
         bp.paragraph_format.space_after = Pt(2)
+        bp.paragraph_format.line_spacing = 1.15
         r_k = bp.add_run(kpi)
         r_k.bold = True
         bp.add_run(val)
@@ -453,6 +476,7 @@ def main():
     add_sec_heading("7. CONCLUSION & DEMANDE DE FINANCEMENT", 1)
     p = doc.add_paragraph("Le projet porté par 18 EITHING SARL à Kétou combine une opportunité économique à haute rentabilité, une utilité écologique majeure pour la gestion des déchets au Bénin, et une gouvernance expérimentée et complémentaire.")
     p.paragraph_format.space_after = Pt(6)
+    p.paragraph_format.line_spacing = 1.15
 
     make_callout_box(
         doc,
@@ -467,6 +491,7 @@ def main():
     p_sign = doc.add_paragraph()
     p_sign.paragraph_format.space_before = Pt(16)
     p_sign.alignment = WD_ALIGN_PARAGRAPH.RIGHT
+    p_sign.paragraph_format.line_spacing = 1.15
     r_s1 = p_sign.add_run("Dossier établi à Kétou, République du Bénin.\nPour la Direction Générale,\n")
     r_s1.italic = True
     r_s2 = p_sign.add_run("M. Hubert C. TOKPANOU & M. Pedro S. KPONON")
@@ -474,7 +499,7 @@ def main():
     r_s2.font.color.rgb = RGBColor(0x0E, 0x2C, 0x43)
 
     doc.save("DOSSIER_STRATEGIQUE_18_EITHING.docx")
-    print("Nouveau document Word DOSSIER_STRATEGIQUE_18_EITHING.docx régénéré avec succès!")
+    print("Document Word DOSSIER_STRATEGIQUE_18_EITHING.docx régénéré avec succès!")
 
 if __name__ == '__main__':
     main()
