@@ -5,16 +5,6 @@ from docx.enum.table import WD_TABLE_ALIGNMENT
 from docx.oxml import OxmlElement, parse_xml
 from docx.oxml.ns import qn, nsdecls
 
-def set_cell_margins(cell, top=100, bottom=100, left=150, right=150):
-    tcPr = cell._element.get_or_add_tcPr()
-    tcMar = OxmlElement('w:tcMar')
-    for m, val in [('top', top), ('bottom', bottom), ('left', left), ('right', right)]:
-        node = OxmlElement(f'w:{m}')
-        node.set(qn('w:w'), str(val))
-        node.set(qn('w:type'), 'dxa')
-        tcMar.append(node)
-    tcPr.append(tcMar)
-
 def generate_word_letterhead():
     doc = docx.Document()
 
@@ -37,7 +27,7 @@ def generate_word_letterhead():
     cell_left = table.cell(0, 0)
     cell_right = table.cell(0, 1)
 
-    # Left Cell: Brand Name & Slogan
+    # Left Cell: Brand Name, Raison sociale & Slogan
     p_left = cell_left.paragraphs[0]
     p_left.paragraph_format.space_after = Pt(2)
     r_brand = p_left.add_run("18 EITHING SARL\n")
@@ -46,19 +36,24 @@ def generate_word_letterhead():
     r_brand.font.bold = True
     r_brand.font.color.rgb = RGBColor(0x0E, 0x2C, 0x43) # Dark Navy
 
+    r_rs = p_left.add_run("Raison sociale : 18 EITHING SARL\n")
+    r_rs.font.size = Pt(9.5)
+    r_rs.font.bold = True
+    r_rs.font.color.rgb = RGBColor(0x0E, 0x2C, 0x43)
+
     r_slogan = p_left.add_run("Conseil • Logistique • Recyclage & Valorisation Industrielle")
-    r_slogan.font.size = Pt(9.5)
+    r_slogan.font.size = Pt(9)
     r_slogan.font.italic = True
     r_slogan.font.color.rgb = RGBColor(0xC9, 0x9B, 0x5B) # Gold
 
-    # Right Cell: Contact Info
+    # Right Cell: Siège social & Contacts
     p_right = cell_right.paragraphs[0]
     p_right.alignment = WD_ALIGN_PARAGRAPH.RIGHT
     p_right.paragraph_format.space_after = Pt(0)
 
     r_contact = p_right.add_run(
         "Siège social : Kétou, Département du Plateau, Bénin\n"
-        "Tél / WhatsApp : +229 44 66 95 87\n"
+        "Téléphone / WhatsApp : +229 44 66 95 87\n"
         "Email : contact@18eithing.bj\n"
         "Site Web : www.18eithing.bj"
     )
@@ -104,33 +99,20 @@ def generate_word_letterhead():
     )
     r_b.font.size = Pt(11)
 
-    # Signature Block
+    # Signature Block (Empty space for physical signature & official stamp)
     p_space = doc.add_paragraph()
-    p_space.paragraph_format.space_after = Pt(30)
+    p_space.paragraph_format.space_before = Pt(30)
+    p_space.paragraph_format.space_after = Pt(4)
+    p_space.alignment = WD_ALIGN_PARAGRAPH.RIGHT
 
-    sig_table = doc.add_table(rows=1, cols=2)
-    sig_table.alignment = WD_TABLE_ALIGNMENT.CENTER
+    r_sig_t = p_space.add_run("Signature et Cachet Officiel :\n\n\n\n")
+    r_sig_t.font.bold = True
+    r_sig_t.font.color.rgb = RGBColor(0x0E, 0x2C, 0x43)
 
-    s_left = sig_table.cell(0, 0)
-    s_right = sig_table.cell(0, 1)
-
-    p_sl = s_left.paragraphs[0]
-    p_sl.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    r_sl1 = p_sl.add_run("M. Hubert C. TOKPANOU\n")
-    r_sl1.font.bold = True
-    r_sl1.font.color.rgb = RGBColor(0x0E, 0x2C, 0x43)
-    r_sl2 = p_sl.add_run("Directeur Général\nPôle Finance, Supply Chain & Logistique")
-    r_sl2.font.italic = True
-    r_sl2.font.size = Pt(9.5)
-
-    p_sr = s_right.paragraphs[0]
-    p_sr.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    r_sr1 = p_sr.add_run("M. Pedro S. KPONON\n")
-    r_sr1.font.bold = True
-    r_sr1.font.color.rgb = RGBColor(0x0E, 0x2C, 0x43)
-    r_sr2 = p_sr.add_run("Gérant\nPôle SST, Ergonomie & Santé au Travail")
-    r_sr2.font.italic = True
-    r_sr2.font.size = Pt(9.5)
+    r_sig_b = p_space.add_run("(Emplacement réservé au cachet et à la signature)")
+    r_sig_b.font.italic = True
+    r_sig_b.font.size = Pt(9)
+    r_sig_b.font.color.rgb = RGBColor(0x66, 0x66, 0x66)
 
     # Footer Divider Line
     p_fdiv = doc.add_paragraph()
@@ -139,7 +121,7 @@ def generate_word_letterhead():
     pBdrF = parse_xml(f'<w:pBdr {nsdecls("w")}><w:bottom w:val="single" w:sz="8" w:space="1" w:color="0E2C43"/></w:pBdr>')
     p_fdiv._element.get_or_add_pPr().append(pBdrF)
 
-    # Footer Legal Info
+    # Footer Legal Info & Contacts
     p_foot = doc.add_paragraph()
     p_foot.alignment = WD_ALIGN_PARAGRAPH.CENTER
     r_foot = p_foot.add_run(
@@ -151,7 +133,7 @@ def generate_word_letterhead():
     r_foot.font.color.rgb = RGBColor(0x66, 0x66, 0x66)
 
     doc.save("PAPIER_EN_TETE_18_EITHING.docx")
-    print("Document Papier en Tête Word généré : PAPIER_EN_TETE_18_EITHING.docx")
+    print("Document Papier en Tête Word mis à jour : PAPIER_EN_TETE_18_EITHING.docx")
 
 if __name__ == '__main__':
     generate_word_letterhead()

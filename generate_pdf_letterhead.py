@@ -22,21 +22,20 @@ def generate_pdf_letterhead():
     NAVY = colors.HexColor("#0E2C43")
     GOLD = colors.HexColor("#C99B5B")
     GRAY = colors.HexColor("#555555")
-    LIGHT_BG = colors.HexColor("#F8F5F0")
 
     # Header Paragraph Styles
     title_style = ParagraphStyle(
         'HeaderTitle',
         fontName='Helvetica-Bold',
-        fontSize=20,
-        leading=24,
+        fontSize=22,
+        leading=26,
         textColor=NAVY
     )
     slogan_style = ParagraphStyle(
         'HeaderSlogan',
         fontName='Helvetica-Oblique',
-        fontSize=10,
-        leading=13,
+        fontSize=9.5,
+        leading=12,
         textColor=GOLD
     )
     contact_style = ParagraphStyle(
@@ -50,7 +49,8 @@ def generate_pdf_letterhead():
 
     header_left = [
         Paragraph("18 EITHING SARL", title_style),
-        Paragraph("Conseil • Logistique • Recyclage & Valorisation Industrielle", slogan_style)
+        Paragraph("Raison sociale : 18 EITHING SARL<br/>"
+                  "Conseil • Logistique • Recyclage & Valorisation Industrielle", slogan_style)
     ]
 
     header_right = [
@@ -114,28 +114,31 @@ def generate_pdf_letterhead():
 
     story.append(Spacer(1, 40))
 
-    # Signatures Table
-    sig_title = ParagraphStyle('SigTitle', fontName='Helvetica-Bold', fontSize=9.5, leading=12, alignment=TA_CENTER, textColor=NAVY)
-    sig_sub = ParagraphStyle('SigSub', fontName='Helvetica-Oblique', fontSize=8.5, leading=11, alignment=TA_CENTER, textColor=GRAY)
+    # Empty Signature / Stamp Area
+    sig_title = ParagraphStyle('SigTitle', fontName='Helvetica-Bold', fontSize=10, leading=13, alignment=TA_RIGHT, textColor=NAVY)
+    sig_sub = ParagraphStyle('SigSub', fontName='Helvetica-Oblique', fontSize=9, leading=12, alignment=TA_RIGHT, textColor=GRAY)
 
-    sig_cell1 = [Paragraph("<b>M. Hubert C. TOKPANOU</b>", sig_title), Paragraph("Directeur Général<br/><i>Pôle Finance, Supply Chain & Logistique</i>", sig_sub)]
-    sig_cell2 = [Paragraph("<b>M. Pedro S. KPONON</b>", sig_title), Paragraph("Gérant<br/><i>Pôle SST, Ergonomie & Santé au Travail</i>", sig_sub)]
+    sig_cell = [
+        Paragraph("<b>Signature et Cachet Officiel :</b>", sig_title),
+        Spacer(1, 50), # Empty space for signature and official stamp
+        Paragraph("<i>(Emplacement réservé au cachet et à la signature)</i>", sig_sub)
+    ]
 
-    sig_table = Table([[sig_cell1, sig_cell2]], colWidths=[250, 250])
+    sig_table = Table([[ "", sig_cell ]], colWidths=[260, 252])
     sig_table.setStyle(TableStyle([
-        ('ALIGN', (0,0), (-1,-1), 'CENTER'),
+        ('ALIGN', (1,0), (1,0), 'RIGHT'),
         ('VALIGN', (0,0), (-1,-1), 'TOP'),
     ]))
     story.append(sig_table)
 
-    story.append(Spacer(1, 60))
+    story.append(Spacer(1, 40))
 
     # Footer
     footer_style = ParagraphStyle(
         'FooterText',
         fontName='Helvetica',
-        fontSize=7.5,
-        leading=10,
+        fontSize=8,
+        leading=11,
         alignment=TA_CENTER,
         textColor=GRAY
     )
@@ -146,7 +149,7 @@ def generate_pdf_letterhead():
                            "Email : contact@18eithing.bj — Web : www.18eithing.bj — Téléphone / WhatsApp : +229 44 66 95 87", footer_style))
 
     doc.build(story)
-    print("Document Papier en Tête PDF généré : PAPIER_EN_TETE_18_EITHING.pdf")
+    print("Document Papier en Tête PDF mis à jour : PAPIER_EN_TETE_18_EITHING.pdf")
 
 if __name__ == '__main__':
     generate_pdf_letterhead()
