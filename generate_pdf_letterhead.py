@@ -1,11 +1,54 @@
 import os
+import cairosvg
 from reportlab.lib.pagesizes import A4
 from reportlab.lib import colors
-from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, HRFlowable
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, HRFlowable, Image
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.lib.enums import TA_CENTER, TA_RIGHT, TA_LEFT, TA_JUSTIFY
 
+def generate_logo_png():
+    svg_content = '''<svg width="760" height="520" viewBox="0 0 760 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="panelBg" x1="80" y1="30" x2="700" y2="490" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0E2C43"/>
+      <stop offset="1" stop-color="#163E5D"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="208" y1="122" x2="488" y2="408" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F2D4A1"/>
+      <stop offset="0.35" stop-color="#D6AA5E"/>
+      <stop offset="0.7" stop-color="#B8843D"/>
+      <stop offset="1" stop-color="#F7DFA8"/>
+    </linearGradient>
+    <linearGradient id="silver" x1="180" y1="330" x2="580" y2="450" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F8F3EA"/>
+      <stop offset="1" stop-color="#C5C5C5"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="40" y="40" width="680" height="430" rx="38" fill="url(#panelBg)"/>
+  <rect x="40" y="40" width="680" height="430" rx="38" stroke="#C79A55" stroke-width="6"/>
+
+  <g>
+    <path d="M218 117C278 77 301 78 338 110C364 133 368 163 342 186C326 201 303 209 272 211C245 213 219 206 196 186C163 159 164 122 218 117Z" fill="none" stroke="url(#gold)" stroke-width="8" stroke-linecap="round"/>
+    <path d="M485 118C540 79 609 84 646 117C660 129 671 147 670 170C665 211 622 238 575 238C531 238 501 220 465 187C428 152 433 118 485 118Z" fill="none" stroke="url(#gold)" stroke-width="8" stroke-linecap="round"/>
+  </g>
+
+  <g>
+    <text x="215" y="250" fill="url(#gold)" font-size="180" font-weight="700" font-family="DejaVu Sans, Georgia, serif">18</text>
+    <text x="430" y="248" fill="url(#gold)" font-size="78" font-weight="600" font-family="DejaVu Sans, Georgia, serif">SARL</text>
+    <text x="180" y="350" fill="url(#gold)" font-size="104" font-weight="700" font-family="DejaVu Sans, Georgia, serif">EITHING</text>
+    <text x="150" y="420" fill="url(#silver)" font-size="56" font-weight="400" font-style="italic" font-family="DejaVu Sans, Georgia, serif">Everything you need.</text>
+  </g>
+
+  <g>
+    <rect x="220" y="425" width="320" height="46" rx="23" fill="#E8C47A" fill-opacity="0.18"/>
+    <text x="380" y="456" text-anchor="middle" fill="url(#gold)" font-size="26" font-weight="600" font-family="DejaVu Sans, Georgia, serif">Conseils &amp; assistance</text>
+  </g>
+</svg>'''
+    cairosvg.svg2png(bytestring=svg_content.encode('utf-8'), write_to='logo_18_eithing.png')
+
 def generate_pdf_letterhead():
+    generate_logo_png()
     pdf_filename = "PAPIER_EN_TETE_18_EITHING.pdf"
     doc = SimpleDocTemplate(
         pdf_filename,
@@ -27,14 +70,14 @@ def generate_pdf_letterhead():
     title_style = ParagraphStyle(
         'HeaderTitle',
         fontName='Helvetica-Bold',
-        fontSize=22,
-        leading=26,
+        fontSize=18,
+        leading=22,
         textColor=NAVY
     )
     slogan_style = ParagraphStyle(
         'HeaderSlogan',
         fontName='Helvetica-Oblique',
-        fontSize=9.5,
+        fontSize=9,
         leading=12,
         textColor=GOLD
     )
@@ -47,8 +90,11 @@ def generate_pdf_letterhead():
         textColor=GRAY
     )
 
+    logo_img = Image('logo_18_eithing.png', width=130, height=89)
+
     header_left = [
-        Paragraph("18 EITHING SARL", title_style),
+        logo_img,
+        Paragraph("<b>18 EITHING SARL</b>", title_style),
         Paragraph("Raison sociale : 18 EITHING SARL<br/>"
                   "Conseil • Logistique • Recyclage & Valorisation Industrielle", slogan_style)
     ]
@@ -112,7 +158,7 @@ def generate_pdf_letterhead():
                            "Implantée au cœur de la commune de Kétou (Département du Plateau, Bénin), notre structure est spécialisée dans la valorisation, le broyage et le recyclage industriel des déchets plastiques rigides (Polypropylène - PP et Polyéthylène Haute Densité - PEHD), ainsi que dans le conseil stratégique et la logistique de santé.<br/><br/>"
                            "Restant à votre entière disposition pour tout renseignement complémentaire, nous vous prions d'agréer, Madame, Monsieur, l'expression de nos salutations distinguées.", body_style))
 
-    story.append(Spacer(1, 40))
+    story.append(Spacer(1, 35))
 
     # Empty Signature / Stamp Area
     sig_title = ParagraphStyle('SigTitle', fontName='Helvetica-Bold', fontSize=10, leading=13, alignment=TA_RIGHT, textColor=NAVY)
@@ -120,7 +166,7 @@ def generate_pdf_letterhead():
 
     sig_cell = [
         Paragraph("<b>Signature et Cachet Officiel :</b>", sig_title),
-        Spacer(1, 50), # Empty space for signature and official stamp
+        Spacer(1, 45), # Empty space for signature and official stamp
         Paragraph("<i>(Emplacement réservé au cachet et à la signature)</i>", sig_sub)
     ]
 
@@ -131,7 +177,7 @@ def generate_pdf_letterhead():
     ]))
     story.append(sig_table)
 
-    story.append(Spacer(1, 40))
+    story.append(Spacer(1, 25))
 
     # Footer
     footer_style = ParagraphStyle(
@@ -149,7 +195,7 @@ def generate_pdf_letterhead():
                            "Email : contact@18eithing.bj — Web : www.18eithing.bj — Téléphone / WhatsApp : +229 44 66 95 87", footer_style))
 
     doc.build(story)
-    print("Document Papier en Tête PDF mis à jour : PAPIER_EN_TETE_18_EITHING.pdf")
+    print("Document Papier en Tête PDF avec Logo officiel généré : PAPIER_EN_TETE_18_EITHING.pdf")
 
 if __name__ == '__main__':
     generate_pdf_letterhead()
