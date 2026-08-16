@@ -1,0 +1,252 @@
+DOSSIER STRATÉGIQUE D'INVESTISSEMENT ET PLAN D'AFFAIRES INDUSTRIEL
+
+ENTREPRISE : 18 EITHING SARL
+SIÈGE ET SITE OPÉRATIONNEL : Kétou, Département du Plateau, République du Bénin
+SECTEUR D'ACTIVITÉ : Valorisation, Broyage et Recyclage Industriel des Déchets Plastiques (Polypropylène - PP & Polyéthylène Haute Densité - PEHD)
+
+================================================================================
+SECTION 1 : RÉSUMÉ EXÉCUTIF & THÈSE D'INVESTISSEMENT
+================================================================================
+
+1.1 Problématique environnementale et opportunité industrielle au Bénin
+La gestion des déchets solides ménagers et industriels constitue l'un des défis majeurs du développement urbain et économique en République du Bénin. Chaque année, plus de 100 000 tonnes de plastiques rigides et souples sont générées sur l'ensemble du territoire national, dont seule une fraction inférieure à 8 % fait l'objet d'un recyclage formel. Le reste s'accumule dans la nature, bouche les réseaux d'évacuation d'eaux pluviales ou brûle à l'air libre, générant des risques sanitaires et écologiques majeurs.
+
+Parallèlement, l'industrie manufacturière régionale (plasturgie, emballages, BTP, canalisations) fait face à un coût d'approvisionnement élevé en résines vierges importées (PP, PEHD), directement impactées par la volatilité des cours mondiaux du pétrole et le coût du fret maritime.
+
+18 EITHING SARL apporte une réponse industrielle concrète en structurant la filière de collecte et de transformation primaire des plastiques rigides (PP et PEHD) en broyats calibrés de haute qualité, répondant aux standards des plasturgistes béninois et sous-régionaux (Nigeria, Togo).
+
+1.2 Proposition de valeur unique : Positionnement Kétou vs Littoral/Cotonou
+Contrairement aux rares initiatives concentrées dans la zone saturée du Littoral (Cotonou, Akpakpa) caractérisée par un coût du foncier exorbitant, des coûts salariaux élevés et une concurrence acharnée sur le gisement local de déchets, 18 EITHING SARL positionne son unité industrielle de broyage à Kétou (Plateau).
+
+Ce choix d'implantation stratégique offre des avantages comparatifs déterminants :
+* Gisement transfrontalier et territorial massif : Accès direct aux flux de plastiques rigides ménagers et agricoles des départements du Plateau, de Zou, de la Colline, ainsi qu'aux flux informels de la frontière nigériane (à proximité immédiate d'Ihara et d'Igangan).
+* Coût d'exploitation et foncier compétitif : Optimisation majeure du CAPEX d'implantation et des charges fixes d'exploitation (loyer industriel et main-d'œuvre locale qualifiée).
+* Nœud logistique stratégique : Proximité des grands axes routiers RNIE 4 et RN3 permettant de desservir à la fois le marché du Littoral (Cotonou) et les marchés d'exportation sous-régionaux.
+
+1.3 Gouvernance et synergie d'expertises des fondateurs
+La direction de 18 EITHING SARL repose sur un tandem exécutif hautement complémentaire, combinant rigueur financière, excellence logistique et maîtrise de la santé au travail :
+
+* M. Hubert C. TOKPANOU – Directeur Général (Pôle Logistique, Supply Chain & Finance)
+  - Expertise approfondie en ingénierie logistique, négociation commerciale, gestion financière et structuration de flux d'approvisionnement complexes.
+  - En charge du pilotage de la rentabilité, des relations bancaires et investisseurs, de l'optimisation des coûts de transport et de la sécurisation des contrats d'approvisionnement et de vente.
+
+* M. Pedro S. KPONON – Gérant (Pôle SST, Ergonomie & Santé/Psychologie du Travail)
+  - Expert en Santé et Sécurité au Travail (SST), organisation ergonomique des postes et santé mentale/psychologie industrielle.
+  - En charge de la conception ergonomique du site, de la réduction de la pénibilité physique sur la chaîne de tri/broyage, de la conformité environnementale et de la politique Zéro Accident.
+
+
+================================================================================
+SECTION 2 : INGÉNIERIE STRATÉGIQUE & MODÈLE D'AFFAIRES (BUSINESS MODEL CANVAS)
+================================================================================
+
+2.1 Analyse synthétique du Business Model Canvas (BMC)
+
+1. Partenaires Clés
+* Associations de collecteurs informels et grossistes de déchets de la région du Plateau et du Zou.
+* Municipalités de Kétou, Pobè et Sakété (concessions de tri sélectif).
+* Fournisseurs d'équipements industriels et sous-traitants de maintenance mécanique.
+* Industriels plasturgistes locaux et régionaux (acheteurs de broyat PP/PEHD).
+* Banques partenaires et institutions de financement de la transition écologique.
+
+2. Activités Clés
+* Sourcing, pesée et achat des déchets plastiques rigides (bidons, bassines, caisses, casiers, tuyaux).
+* Tri qualitatif par résine (PP vs PEHD) et par couleur.
+* Lavage, décontamination primaire et séchage solaire/mécanique.
+* Broyage industriel et calibrage (grilles de 8 à 10 mm).
+* Contrôle qualité, conditionnement en sacs Big Bag de 25-50 kg.
+* Commercialisation et livraison aux usines de transformation.
+
+3. Ressources Clés
+* Ligne industrielle de broyage 15 HP robuste et bacs de lavage à recirculation.
+* Terrain industriel sécurisé de 1 500 m² à Kétou.
+* Réseau logistique de collecte (camion benne / bâché et points d'apport volontaire).
+* Capital humain qualifié et formé aux règles SST.
+
+4. Proposition de Valeur
+* Pour les plasturgistes : Broyats de PP et PEHD purs à 98 %, exempts de contaminants métalliques et terreux, garantissant un taux de charge optimal des extrudeuses et une baisse de 35 % du coût de matière première par rapport à la résine vierge.
+* Pour la collectivité : Assainissement territorial, création d'emplois locaux pérennes et structuration financière du secteur informel de la collecte.
+
+5. Relations Clients
+* Contrats d'approvisionnement pluriannuels garantissant des volumes et prix stables.
+* Assistance technique et fourniture d'échantillons de test de granulométrie.
+* Service après-vente et garantie de régularité des flux livrés.
+
+6. Canaux de Distribution
+* Vente directe B2B (Équipe commerciale interne).
+* Livraisons directes par camionnage dédié vers les usines acheteuses à Cotonou et Porto-Novo.
+
+7. Segments de Clientèle
+* Fabricants d'emballages plastiques rigides et de conduits BTP.
+* Unités d'injection et de soufflage d'ustensiles ménagers (bassines, seaux).
+* Exportateurs de matières recyclées vers les marchés sous-régionaux.
+
+8. Structure de Coûts
+* Achats de matière brute plastique aux collecteurs (FCFA/kg).
+* Consommation d'énergie (électricité Sbee / groupe électrogène de secours et carburant).
+* Masse salariale (opérateurs de tri, conducteurs de machine, encadrement).
+* Transport et logistique d'approvisionnement et d'expédition.
+* Maintenance préventive et amortissements des équipements.
+
+9. Flux de Revenus
+* Vente au tonnage de broyat de Polypropylène (PP) calibré.
+* Vente au tonnage de broyat de Polyéthylène Haute Densité (PEHD) calibré.
+* Prestations de broyage à façon pour tiers (sous-traitance).
+
+2.2 Cartographie des flux d'approvisionnement (4 Bassins Logistiques)
+* Zone 1 : Bassin Principal de Kétou & Plateau (Collecte directe, faible coût logistique)
+* Zone 2 : Bassin Sud - Littoral / Porto-Novo (Rapatriement par retours à vide des camions de livraison)
+* Zone 3 : Bassin Centre & Ouest - Zou / Collines / Abomey / Bohicon (Points de regroupement partenaires)
+* Zone 4 : Axe Transfrontalier Nigeria (Sourcing complémentaire sur opportunités de marché)
+
+
+================================================================================
+SECTION 3 : PROCESSUS TECHNIQUE & INGÉNIERIE OPÉRATIONNELLE
+================================================================================
+
+3.1 Description séquentielle du processus de production (7 Étapes)
+
+1. Réception et Pesée à l'Entrée : Contrôle des lots entrants sur pont-bascule / pèse-essieu, enregistrement informatique de la provenance, du poids brut et du type de plastique présumé.
+2. Tri Manuel Sélectif et Dépollution : Séparation rigoureuse par famille polymère (PP vs PEHD) et retrait systématique des corps étrangers (métaux, verre, étiquettes papier, plastiques souples PVC/PET).
+3. Pré-lavage et Dégraissage : Trempage dans des bacs de décantation afin d'éliminer les boues, sables et matières organiques superficielles.
+4. Broyage Industriel Mécanique : Alimentation continue du broyeur 15 HP équipé de lames en acier au chrome à haute résistance. Passage à travers une grille de calibrage standard de 8 mm à 10 mm.
+5. Lavage Continu & Rinçage : Lavage haute efficacité des paillettes broyées avec système de clarification et de recyclage de l'eau en circuit fermé (économie de ressource en eau).
+6. Séchage & Dépoussiérage : Essorage mécanique suivi d'un passage en serre de séchage solaire renforcée pour ramener l'humidité résiduelle sous la barre des 1 %.
+7. Contrôle Qualité & Conditionnement : Inspection visuelle et granulométrique, ensachage sous Big Bags de 25 kg ou 50 kg, étiquetage (lot, date, type de résine, pureté) et stockage sur palettes.
+
+3.2 Fiche technique des équipements majeurs
+* Broyeur Industriel 15 HP (Lame Heavy Duty)
+  - Puissance moteur : 11 kW (15 HP) - Triphasé 380V.
+  - Capacité nominale : 250 kg/h à 350 kg/h selon la densité du matériau.
+  - Rotor : 3 lames mobiles + 2 lames fixes en acier spécial résistant à l'abrasion.
+  - Diamètre de grille : 8 mm / 10 mm interchangeable.
+* Système de Bacs de Lavage et Clarification
+  - Capacité : Bacs inox / PEHD haute résistance de 3 000 Litres avec pompe de recirculation et filtres à débris.
+* Serres Solaire de Séchage et Séchoir centrifuge
+  - Séchoir centrifuge rotatif 3 kW combiné à une zone de séchage sous serre thermiquement optimisée.
+* Balances & Ponts de Pesée
+  - Pèse-palette électronique de précision (capacité 2 tonnes, précision 500 g).
+
+3.3 Plan de gestion Santé, Sécurité au Travail (SST) et Ergonomie
+Conformément à l'expertise apportée par M. Pedro S. KPONON, l'unité de Kétou intègre les meilleurs standards ergonomiques et préventifs :
+
+* Réduction de la Pénibilité Physique :
+  - Tables de tri surélevées à hauteur réglable évitant les courbures lombaires répétitives.
+  - Utilisation de transpalettes hydrauliques et gerbeurs pour supprimer le port manuel de charges lourdes supérieur à 25 kg.
+* Protection Biologique, Auditive et Respiratoire :
+  - Équipements de Protection Individuelle (EPI) obligatoires : Masques FFP2 anti-poussière, casques anti-bruit / bouchons moulés (niveau sonore broyeur < 85 dB à la source), gants anti-coupure et chaussures de sécurité S3.
+* Aspiration à la source :
+  - Aspiration centralisée des poussières légères de plastique au niveau de la sortie du broyeur.
+* Programme de Santé Mentale et Suivi Ergonomique :
+  - Rotation systématique des postes toutes les 2 heures entre le tri, le lavage et l'emballage afin de prévenir la fatigue visuelle et la monotonie.
+  - Entretiens individuels réguliers de suivi psychologique du travail et gestion du stress opérationnel.
+
+
+================================================================================
+SECTION 4 : PLAN D'EXÉCUTION & CHRONOGRAMME DE DÉPLOIEMENT (12 SEMAINES)
+================================================================================
+
+Feuille de route opérationnelle détaillée :
+* Semaines 1 à 2 : Finalisation juridique, levée de fonds bancaires, signature du bail du site industriel de Kétou.
+* Semaines 3 à 4 : Aménagement du site (dalle béton, raccordement Sbee Triphasé, bassins de décantation water-recycling).
+* Semaines 5 à 6 : Commande, réception et installation de la ligne de broyage 15 HP et des équipements annexes.
+* Semaines 7 à 8 : Essais à vide, calibrage des lames, mise en place des protocoles SST et formation du personnel d'exécution.
+* Semaines 9 à 10 : Lancement des campagnes d'achat de collecte de rodage (stock de sécurité de 20 tonnes de matière brute).
+* Semaines 11 à 12 : Lancement de la production industrielle continue, livraison des premiers lots de test aux clients B2B et montée en puissance vers la capacité nominale.
+
+
+================================================================================
+SECTION 5 : MODÉLISATION FINANCIÈRE & RENTABILITÉ
+================================================================================
+
+(Tous les montants sont exprimés en Francs CFA - FCFA)
+
+5.1 Hypothèses de calcul et paramètres économiques
+* Capacité de traitement nominale : 300 kg / heure.
+* Temps de travail : 8 heures / jour, 22 jours / mois (soit 176 heures par mois).
+* Volume mensuel traité : ~52,8 Tonnes de matière brute.
+* Rendement de transformation (après tri et séchage) : 85 % (soit ~45 Tonnes de broyat marchand / mois).
+* Prix moyen d'achat matière brute (plastique souillé/rigide) : 100 FCFA / kg.
+* Prix moyen de vente broyat calibré et lavé (PP / PEHD) : 450 FCFA / kg.
+
+5.2 Plan d'Investissement Initial (CAPEX)
+
+--------------------------------------------------------------------------------
+Poste d'Investissement                     Description / Détails              Montant (FCFA)
+--------------------------------------------------------------------------------
+Aménagements du site & Génie Civil        Dalle technique, bassins, bureau     4 500 000
+Ligne de Broyage Industrielle 15 HP       Broyeur, lames, tableau électrique    7 800 000
+Équipements de Lavage & Séchage           Bacs inox, pompes, serre solaire     3 200 000
+Matériel Logistique & Manutention         Gerbeur, transpalettes, Big Bags     2 500 000
+Installation Électrique & Groupe Sécurité Câblage triphasé, groupe 20 kVA      3 500 000
+Frais d'Établissement & Licences          Immatriculation, étude d'impact, SST 1 500 000
+Fonds de Roulement Initial (BFR)          Stock matière (1 mois) + trésorerie  5 000 000
+--------------------------------------------------------------------------------
+TOTAL CAPEX REQUIS                        Investissement Total Démarrage      28 000 000
+--------------------------------------------------------------------------------
+
+5.3 Modélisation des Charges d'Exploitation Mensuelles (OPEX)
+
+--------------------------------------------------------------------------------
+Poste de Dépense OPEX                     Base de Calcul / Détails Mensuels  Montant Mensuel (FCFA)
+--------------------------------------------------------------------------------
+Achat Matière Première Brute              52,8 Tonnes x 100 FCFA/kg            5 280 000
+Consommation Énergie & Eau                Sbee triphasé + carburant secours      750 000
+Masse Salariale (10 Personnes)            DG, Gérant SST, 6 Opérateurs, 2 Chf  2 100 000
+Transport & Logistique de collecte        Carburant camions, frais d'approche  1 200 000
+Maintenance Préventive & Lames            Rechargement lames, consommables       450 000
+Frais Généraux & Assurances               Loyer terrain Kétou, télécoms          500 000
+--------------------------------------------------------------------------------
+TOTAL OPEX MENSUEL                        Coût de Fonctionnement Mensuel      10 280 000
+--------------------------------------------------------------------------------
+
+5.4 Compte de Résultat Prévisionnel Mensuel et Annuel (Année 1)
+
+--------------------------------------------------------------------------------
+Compte de Résultat                        Calcul Mensuel (FCFA)      Année 1 - 12 Mois (FCFA)
+--------------------------------------------------------------------------------
+CHIFFRE D'AFFAIRES (CA)                   45 T x 450 000 FCFA/T        243 000 000
+Achats Matières Premières                 -5 280 000                   -63 360 000
+--------------------------------------------------------------------------------
+MARGE BRUTE DE PRODUCTION                 14 970 000                   179 640 000
+Autres Charges Externe & OPEX             -5 000 000                   -60 000 000
+--------------------------------------------------------------------------------
+EXCÉDENT BRUT D'EXPLOITATION (EBITDA)     9 970 000                    119 640 000
+Amortissements des Équipements (20%)      -350 000                      -4 200 000
+--------------------------------------------------------------------------------
+RÉSULTAT NET AVANT IMPÔT                  9 620 000                    115 440 000
+--------------------------------------------------------------------------------
+
+5.5 Indicateurs Clés de Rentabilité (KPIs)
+* Marge Brute : 73.9 %
+* Marge d'EBITDA : 59.1 %
+* Retour sur Investissement (ROI) : Moins de 6 mois d'exploitation continue.
+* Point Mort (Seuil de Rentabilité) : 18,5 Tonnes de broyat vendues par mois (soit 41 % de la capacité maximale).
+
+
+================================================================================
+SECTION 6 : ANALYSE CRITIQUE DES RISQUES ET PLAN DE MITIGATION
+================================================================================
+
+--------------------------------------------------------------------------------
+Risque Identifié                          Niveau     Plan de Mitigation Concret (18 EITHING SARL)
+--------------------------------------------------------------------------------
+Saisonnalité / Pénurie approvisionnement   Moyen      Stock de sécurité 30 jours + diversification 4 départements
+Coupures d'électricité (Sbee)              Élevé      Groupe électrogène de secours 20 kVA dédié
+Contamination plastiques (Mélange PP/PEHD) Élevé      Tri à 2 niveaux + test de densité par flottaison
+Usure prématurée des lames de broyeur      Moyen      Contrat d'affûtage local + 2 jeux de lames de rechange
+Accidents du travail / Pénibilité          Moyen      Supervision SST M. Pedro KPONON, EPI, rotation postes
+--------------------------------------------------------------------------------
+
+
+================================================================================
+SECTION 7 : CONCLUSION & DEMANDE DE FINANCEMENT
+================================================================================
+
+Le projet porté par 18 EITHING SARL à Kétou combine une opportunité économique à haute rentabilité, une utilité écologique majeure pour la gestion des déchets au Bénin, et une gouvernance expérimentée et complémentaire.
+
+Pour soutenir le démarrage de l'unité industrielle et couvrir le besoin d'investissement (CAPEX) et de BFR de démarrage, 18 EITHING SARL sollicite un accompagnement financier à hauteur de 28 000 000 FCFA sous forme de concours bancaire ou d'apport en fonds propres/quasi-fonds propres.
+
+--------------------------------------------------------------------------------
+Dossier établi à Kétou, République du Bénin.
+Pour la Direction Générale,
+M. Hubert C. TOKPANOU & M. Pedro S. KPONON
