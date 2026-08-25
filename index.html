@@ -3,72 +3,829 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>18 EITHING SARL</title>
+  <title>18 EITHING SARL - Recyclage Plastique, Conseil, Logistique & Commerce</title>
+  <meta name="description" content="18 EITHING SARL - Entreprise spécialisée dans le recyclage, broyage et la valorisation des déchets plastiques (PP & PEHD), le conseil, la logistique et le commerce à Kétou, Bénin.">
   
-  <!-- TOUS LES STYLES (CSS) -->
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
   <style>
-    /* Reset & Styles généraux */
+    /* ==========================================================================
+       VARIABLES & COLOR PALETTE (CERCO INSPIRED: NAVY, ROYAL BLUE, GOLD, WHITE)
+       ========================================================================== */
+    :root {
+      --primary-dark: #0b1b3d;
+      --primary-blue: #1d4ed8;
+      --primary-light: #2563eb;
+      --accent-gold: #f59e0b;
+      --accent-gold-hover: #d97706;
+      --bg-light: #f8fafc;
+      --card-bg: #ffffff;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --border-color: #e2e8f0;
+      --shadow-sm: 0 2px 8px rgba(11, 27, 61, 0.05);
+      --shadow-md: 0 10px 25px rgba(11, 27, 61, 0.08);
+      --shadow-lg: 0 20px 35px rgba(11, 27, 61, 0.12);
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 20px;
+      --transition: all 0.3s ease;
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f8f9fa;
-      color: #333;
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-main);
       line-height: 1.6;
-      padding: 20px;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* ==========================================================================
+       TOP BAR & HEADER NAVIGATION
+       ========================================================================== */
+    .top-bar {
+      background-color: var(--primary-dark);
+      color: #94a3b8;
+      font-size: 0.875rem;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .top-bar-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .top-info {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .top-info item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .top-info i {
+      color: var(--accent-gold);
     }
 
     header {
-      text-align: center;
-      padding: 40px 20px;
-      background: linear-gradient(135deg, #1e293b, #0f172a);
+      background-color: #ffffff;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 16px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-badge {
+      background: linear-gradient(135deg, var(--primary-blue), var(--primary-dark));
       color: #ffffff;
-      border-radius: 16px;
-      margin-bottom: 30px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      font-weight: 800;
+      font-size: 1.4rem;
+      padding: 8px 14px;
+      border-radius: var(--radius-sm);
+      box-shadow: 0 4px 10px rgba(29, 78, 216, 0.3);
     }
 
-    header h1 {
-      font-size: 2.2rem;
-      margin-bottom: 10px;
+    .logo-text h2 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--primary-dark);
+      line-height: 1.2;
     }
 
-    /* Grille et Cartes Interactives */
-    .container {
-      max-width: 1100px;
+    .logo-text span {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-link {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--primary-dark);
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .nav-link:hover {
+      color: var(--primary-blue);
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--accent-gold);
+      transition: var(--transition);
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: var(--transition);
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-gold {
+      background-color: var(--accent-gold);
+      color: var(--primary-dark);
+      box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+    }
+
+    .btn-gold:hover {
+      background-color: var(--accent-gold-hover);
+      transform: translateY(-2px);
+    }
+
+    .btn-blue {
+      background-color: var(--primary-blue);
+      color: #ffffff;
+      box-shadow: 0 4px 15px rgba(29, 78, 216, 0.3);
+    }
+
+    .btn-blue:hover {
+      background-color: #1e40af;
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      border: 2px solid #ffffff;
+      color: #ffffff;
+      background: transparent;
+    }
+
+    .btn-outline:hover {
+      background: #ffffff;
+      color: var(--primary-dark);
+    }
+
+    .mobile-toggle {
+      display: none;
+      font-size: 1.5rem;
+      color: var(--primary-dark);
+      cursor: pointer;
+    }
+
+    /* ==========================================================================
+       HERO SECTION (CERCO INSPIRED STYLE WITH BADGES & CARDS)
+       ========================================================================== */
+    .hero {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, #1e3a8a 100%);
+      color: #ffffff;
+      padding: 80px 20px 100px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -10%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(245, 158, 11, 0.15) 0%, rgba(255,255,255,0) 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero-container {
+      max-width: 1200px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .hero-content {
+      z-index: 2;
+    }
+
+    .badge-cerco {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background-color: rgba(245, 158, 11, 0.15);
+      border: 1px solid var(--accent-gold);
+      color: var(--accent-gold);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 span {
+      color: var(--accent-gold);
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: #cbd5e1;
+      margin-bottom: 32px;
+      max-width: 600px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .hero-card {
+      background: rgba(255, 255, 255, 0.07);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: var(--radius-lg);
+      padding: 30px;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .hero-card h3 {
+      font-size: 1.3rem;
+      color: #ffffff;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .hero-card h3 i {
+      color: var(--accent-gold);
+    }
+
+    .hero-features-list {
+      list-style: none;
+    }
+
+    .hero-features-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 14px;
+      color: #e2e8f0;
+      font-size: 0.95rem;
+    }
+
+    .hero-features-list li i {
+      color: var(--accent-gold);
+      margin-top: 4px;
+    }
+
+    /* ==========================================================================
+       STATS & FEATURE BANNER (CERCO STYLE)
+       ========================================================================== */
+    .banner-stats {
+      max-width: 1200px;
+      margin: -50px auto 60px;
+      padding: 0 20px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .stats-grid {
+      background: #ffffff;
+      border-radius: var(--radius-md);
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      padding: 30px;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border-color);
+    }
+
+    .stat-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 10px;
+    }
+
+    .stat-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: rgba(29, 78, 216, 0.1);
+      color: var(--primary-blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+
+    .stat-info h4 {
+      font-size: 1.1rem;
+      color: var(--primary-dark);
+      font-weight: 700;
+    }
+
+    .stat-info p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* ==========================================================================
+       SECTIONS GENERAL
+       ========================================================================== */
+    section {
+      padding: 70px 20px;
+    }
+
+    .section-title {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 50px;
+    }
+
+    .section-title .sub-tag {
+      color: var(--primary-blue);
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .section-title h2 {
+      font-size: 2.2rem;
+      color: var(--primary-dark);
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .section-title p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+    }
+
+    /* ==========================================================================
+       ABOUT SECTION
+       ========================================================================== */
+    .about-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .about-content h3 {
+      font-size: 1.8rem;
+      color: var(--primary-dark);
+      margin-bottom: 16px;
+      line-height: 1.3;
+    }
+
+    .about-content p {
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      font-size: 1rem;
+    }
+
+    .about-highlights {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .about-box {
+      background: #ffffff;
+      padding: 16px;
+      border-radius: var(--radius-sm);
+      border-left: 4px solid var(--primary-blue);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .about-box h4 {
+      color: var(--primary-dark);
+      font-size: 0.95rem;
+      margin-bottom: 4px;
+    }
+
+    .about-box p {
+      margin-bottom: 0;
+      font-size: 0.85rem;
+    }
+
+    .about-card-badge {
+      background: linear-gradient(135deg, var(--primary-dark), #1e3a8a);
+      color: #ffffff;
+      padding: 40px;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      position: relative;
+    }
+
+    .about-card-badge h3 {
+      color: var(--accent-gold);
+      font-size: 1.6rem;
+      margin-bottom: 15px;
+    }
+
+    .about-card-badge p {
+      color: #e2e8f0;
+      font-size: 1rem;
+      margin-bottom: 20px;
+    }
+
+    /* ==========================================================================
+       SERVICES SECTION (CERCO STYLE GRID)
+       ========================================================================== */
+    .services-bg {
+      background-color: #f1f5f9;
+    }
+
+    .services-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 25px;
+    }
+
+    .service-card {
+      background: #ffffff;
+      border-radius: var(--radius-md);
+      padding: 30px;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      border: 1px solid var(--border-color);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--primary-light);
+    }
+
+    .service-icon-wrapper {
+      width: 60px;
+      height: 60px;
+      border-radius: var(--radius-sm);
+      background: linear-gradient(135deg, var(--primary-blue), var(--primary-dark));
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      margin-bottom: 20px;
+    }
+
+    .service-card h3 {
+      font-size: 1.25rem;
+      color: var(--primary-dark);
+      margin-bottom: 12px;
+    }
+
+    .service-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+
+    .service-tag {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--primary-blue);
+      background: rgba(29, 78, 216, 0.08);
+      padding: 4px 12px;
+      border-radius: 12px;
+    }
+
+    /* ==========================================================================
+       LEADERSHIP / GOVERNANCE SECTION
+       ========================================================================== */
+    .team-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .team-card {
+      background: #ffffff;
+      border-radius: var(--radius-md);
+      padding: 32px 24px;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border-color);
+      transition: var(--transition);
+    }
+
+    .team-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .team-avatar {
+      width: 90px;
+      height: 90px;
+      margin: 0 auto 20px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary-blue));
+      color: var(--accent-gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      box-shadow: 0 4px 15px rgba(11, 27, 61, 0.2);
+    }
+
+    .team-card h3 {
+      font-size: 1.3rem;
+      color: var(--primary-dark);
+      margin-bottom: 6px;
+    }
+
+    .team-role {
+      color: var(--primary-blue);
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 12px;
+    }
+
+    .team-card p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    /* ==========================================================================
+       CONTACT & REGISTRATION FORM SECTION (CERCO INSPIRED)
+       ========================================================================== */
+    .contact-bg {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, #0f172a 100%);
+      color: #ffffff;
+    }
+
+    .contact-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 40px;
+    }
+
+    .contact-info-side h2 {
+      font-size: 2.2rem;
+      color: #ffffff;
+      margin-bottom: 16px;
+    }
+
+    .contact-info-side p {
+      color: #94a3b8;
+      margin-bottom: 30px;
+      font-size: 1rem;
+    }
+
+    .contact-details-list {
+      display: flex;
+      flex-direction: column;
       gap: 20px;
     }
 
-    .card {
+    .contact-detail-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .contact-icon-box {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-sm);
+      background: rgba(245, 158, 11, 0.15);
+      color: var(--accent-gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .contact-detail-text h4 {
+      font-size: 1.05rem;
+      color: #ffffff;
+    }
+
+    .contact-detail-text p, .contact-detail-text a {
+      color: #cbd5e1;
+      font-size: 0.95rem;
+    }
+
+    .contact-detail-text a:hover {
+      color: var(--accent-gold);
+    }
+
+    .contact-form-box {
       background: #ffffff;
-      border-radius: 12px;
-      padding: 24px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      border: 1px solid #eef2f5;
+      color: var(--text-main);
+      padding: 40px;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
     }
 
-    .card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+    .contact-form-box h3 {
+      font-size: 1.5rem;
+      color: var(--primary-dark);
+      margin-bottom: 20px;
     }
 
-    .card h3 {
-      margin-bottom: 12px;
-      color: #0f172a;
+    .form-group {
+      margin-bottom: 20px;
     }
 
-    /* Animation au défilement (Scroll) */
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 8px;
+      color: var(--primary-dark);
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      font-family: inherit;
+      font-size: 0.95rem;
+      transition: var(--transition);
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--primary-blue);
+      box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.15);
+    }
+
+    textarea.form-control {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    /* ==========================================================================
+       FOOTER
+       ========================================================================== */
+    footer {
+      background-color: #070e20;
+      color: #64748b;
+      padding: 40px 20px 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      font-size: 0.9rem;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .footer-brand {
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 1.2rem;
+    }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 20px auto 0;
+      text-align: center;
+      color: #475569;
+      font-size: 0.85rem;
+    }
+
+    /* ==========================================================================
+       FLOATING WHATSAPP BUTTON (CERCO/18 EITHING STYLE)
+       ========================================================================== */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background-color: #25d366;
+      color: #ffffff;
+      padding: 12px 22px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+      z-index: 10000;
+      transition: var(--transition);
+    }
+
+    .whatsapp-float:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 10px 25px rgba(37, 211, 102, 0.5);
+    }
+
+    .whatsapp-float i {
+      font-size: 1.4rem;
+    }
+
+    /* ==========================================================================
+       ANIMATIONS
+       ========================================================================== */
     .reveal {
       opacity: 0;
       transform: translateY(30px);
-      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      transition: opacity 0.8s ease, transform 0.8s ease;
     }
 
     .reveal.active {
@@ -76,64 +833,396 @@
       transform: translateY(0);
     }
 
-    /* Bouton WhatsApp Flottant */
-    .whatsapp-float {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: #25d366;
-      color: #ffffff;
-      padding: 12px 24px;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: bold;
-      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-      z-index: 1000;
-      transition: transform 0.2s ease;
-    }
+    /* ==========================================================================
+       RESPONSIVE
+       ========================================================================== */
+    @media (max-width: 992px) {
+      .hero-container, .about-container, .contact-container {
+        grid-template-columns: 1fr;
+      }
 
-    .whatsapp-float:hover {
-      transform: scale(1.05);
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+
+      .mobile-toggle {
+        display: block;
+      }
+
+      .nav-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #ffffff;
+        flex-direction: column;
+        padding: 20px;
+        box-shadow: var(--shadow-md);
+        display: none;
+      }
+
+      .nav-menu.active {
+        display: flex;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- En-tête du site -->
-  <header class="reveal">
-    <h1>18 EITHING SARL</h1>
-    <p>Conseil, Logistique & Commerce</p>
+  <!-- TOP INFORMATION BAR -->
+  <div class="top-bar">
+    <div class="top-bar-container">
+      <div class="top-info">
+        <div class="item"><i class="fa-solid fa-location-dot"></i> Kétou, Bénin</div>
+        <div class="item"><i class="fa-solid fa-envelope"></i> contact@18eithing.bj</div>
+        <div class="item"><i class="fa-solid fa-phone"></i> +229 44 66 95 87</div>
+      </div>
+      <div class="top-info">
+        <div class="item"><i class="fa-solid fa-recycle"></i> Polypropylène (PP) & PEHD</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAVIGATION HEADER -->
+  <header>
+    <div class="nav-container">
+      <a href="#" class="logo">
+        <div class="logo-badge">18</div>
+        <div class="logo-text">
+          <h2>EITHING SARL</h2>
+          <span>Recyclage & Valorisation</span>
+        </div>
+      </a>
+
+      <div class="mobile-toggle" id="mobile-toggle">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="#accueil" class="nav-link">Accueil</a></li>
+        <li><a href="#a-propos" class="nav-link">À Propos</a></li>
+        <li><a href="#services" class="nav-link">Services</a></li>
+        <li><a href="#direction" class="nav-link">Direction</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+        <li><a href="#contact" class="btn btn-gold">Demander un devis</a></li>
+      </ul>
+    </div>
   </header>
 
-  <!-- Contenu Principal / Services -->
-  <main class="container">
-    <div class="card reveal">
-      <h3>Vente de bric-à-brac</h3>
-      <p>Découvrez notre sélection variée d'articles, équipements et opportunités commerciales.</p>
+  <!-- HERO SECTION (INSPIRED BY GROUPE CERCO DESIGN) -->
+  <section class="hero" id="accueil">
+    <div class="hero-container">
+      <div class="hero-content reveal">
+        <div class="badge-cerco">
+          <i class="fa-solid fa-shield-halved"></i> Entreprise Agréée & Engagée
+        </div>
+        <h1>18 EITHING SARL <br><span>Valorisation Plastique & Solutions Industrielles</span></h1>
+        <p>
+          Spécialiste du recyclage, du broyage et de la valorisation des déchets plastiques (PP & PEHD) à Kétou, Bénin. Nous proposons également des services de conseil, logistique et commerce.
+        </p>
+        <div class="hero-actions">
+          <a href="#services" class="btn btn-gold"><i class="fa-solid fa-gears"></i> Nos Services</a>
+          <a href="#contact" class="btn btn-outline"><i class="fa-solid fa-paper-plane"></i> Nous Contacter</a>
+        </div>
+      </div>
+
+      <div class="hero-card reveal">
+        <h3><i class="fa-solid fa-recycle"></i> Filières & Expertises</h3>
+        <ul class="hero-features-list">
+          <li>
+            <i class="fa-solid fa-circle-check"></i>
+            <div><strong>Recyclage Plastique PP & PEHD :</strong> Collecte, tri, lavage et broyage de haute qualité.</div>
+          </li>
+          <li>
+            <i class="fa-solid fa-circle-check"></i>
+            <div><strong>Conseil & Stratégie :</strong> Accompagnement en gestion globale des déchets.</div>
+          </li>
+          <li>
+            <i class="fa-solid fa-circle-check"></i>
+            <div><strong>Logistique & Transport :</strong> Acheminement et approvisionnement régulier.</div>
+          </li>
+          <li>
+            <i class="fa-solid fa-circle-check"></i>
+            <div><strong>Négoce & Commerce :</strong> Vente de matières broyées prêtes pour l'injection.</div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- BANNER STATS / HIGHLIGHTS -->
+  <div class="banner-stats">
+    <div class="stats-grid reveal">
+      <div class="stat-item">
+        <div class="stat-icon"><i class="fa-solid fa-dumpster-fire"></i></div>
+        <div class="stat-info">
+          <h4>PP & PEHD</h4>
+          <p>Matières plastiques valorisées</p>
+        </div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-icon"><i class="fa-solid fa-industry"></i></div>
+        <div class="stat-info">
+          <h4>Kétou, Bénin</h4>
+          <p>Unité de traitement moderne</p>
+        </div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-icon"><i class="fa-solid fa-leaf"></i></div>
+        <div class="stat-info">
+          <h4>100% Écologique</h4>
+          <p>Économie circulaire & durable</p>
+        </div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-icon"><i class="fa-solid fa-truck-fast"></i></div>
+        <div class="stat-info">
+          <h4>Logistique Réactive</h4>
+          <p>Livraison et acheminement</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT SECTION -->
+  <section id="a-propos">
+    <div class="about-container">
+      <div class="about-content reveal">
+        <span class="sub-tag">À Propos de Nous</span>
+        <h3>Acteur Majeur du Recyclage et de la Valorisation des Déchets Plastiques</h3>
+        <p>
+          Basée à Kétou au Bénain, <strong>18 EITHING SARL</strong> est une société innovante active dans la gestion environnementale, la transformation de matières plastiques et la fourniture de services d'accompagnement logistique et commercial.
+        </p>
+        <p>
+          Nous répondons aux enjeux environnementaux actuels en réduisant l'empreinte plastique grâce au broyage et à la revalorisation industrielle des polymères Polypropylène (PP) et Polyéthylène Haute Densité (PEHD).
+        </p>
+        <div class="about-highlights">
+          <div class="about-box">
+            <h4><i class="fa-solid fa-check text-primary"></i> Qualité Homogène</h4>
+            <p>Matière broyée propre et calibrée pour transformateurs.</p>
+          </div>
+          <div class="about-box">
+            <h4><i class="fa-solid fa-check text-primary"></i> Engagement RSE</h4>
+            <p>Inclusion sociale et préservation de l'environnement.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-card-badge reveal">
+        <h3><i class="fa-solid fa-bullseye"></i> Notre Mission</h3>
+        <p>
+          Transformer le défi des déchets plastiques en opportunités économiques durables pour les industries locales et régionales.
+        </p>
+        <a href="https://wa.me/22944669587" target="_blank" class="btn btn-gold"><i class="fa-brands fa-whatsapp"></i> Discuter sur WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES SECTION -->
+  <section class="services-bg" id="services">
+    <div class="section-title reveal">
+      <span class="sub-tag">Nos Domaines d'Expertise</span>
+      <h2>Nos Services & Solutions</h2>
+      <p>Découvrez l'ensemble de nos activités et compétences au service des entreprises et collectivités.</p>
     </div>
 
-    <div class="card reveal">
-      <h3>Conseil & Stratégie</h3>
-      <p>Accompagnement professionnel et solutions adaptées à vos besoins organisationnels.</p>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div>
+          <div class="service-icon-wrapper">
+            <i class="fa-solid fa-recycle"></i>
+          </div>
+          <h3>Recyclage & Broyage Plastique</h3>
+          <p>Collecte, tri rigoureux, lavage et broyage spécialisé de polymères PP (Polypropylène) et PEHD (Polyéthylène Haute Densité).</p>
+        </div>
+        <div>
+          <span class="service-tag">Pôle Recyclage</span>
+        </div>
+      </div>
+
+      <div class="service-card reveal">
+        <div>
+          <div class="service-icon-wrapper">
+            <i class="fa-solid fa-handshake-angle"></i>
+          </div>
+          <h3>Conseil & Accompagnement</h3>
+          <p>Conseils en ingénierie environnementale, gestion des déchets industriels et mise en place de stratégies de développement durable.</p>
+        </div>
+        <div>
+          <span class="service-tag">Pôle Conseil</span>
+        </div>
+      </div>
+
+      <div class="service-card reveal">
+        <div>
+          <div class="service-icon-wrapper">
+            <i class="fa-solid fa-truck-ramp-box"></i>
+          </div>
+          <h3>Logistique & Coordination</h3>
+          <p>Gestion logistique intégrée, stockage, manutention et transport efficace des matières valorisées vers vos usines.</p>
+        </div>
+        <div>
+          <span class="service-tag">Pôle Logistique</span>
+        </div>
+      </div>
+
+      <div class="service-card reveal">
+        <div>
+          <div class="service-icon-wrapper">
+            <i class="fa-solid fa-store"></i>
+          </div>
+          <h3>Commerce & Négoce</h3>
+          <p>Commercialisation de broyats plastiques de qualité supèrieure, équipements et opportunités d'affaires industrielles.</p>
+        </div>
+        <div>
+          <span class="service-tag">Pôle Commerce</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEADERSHIP / DIRECTION SECTION -->
+  <section id="direction">
+    <div class="section-title reveal">
+      <span class="sub-tag">Gouvernance</span>
+      <h2>Direction & Management</h2>
+      <p>Une équipe dirigeante expérimentée et engagée pour la réussite de nos partenaires.</p>
     </div>
 
-    <div class="card reveal">
-      <h3>Logistique & Services</h3>
-      <p>Gestion efficace et coordination globale pour l'acheminement et la mise à disposition de vos biens.</p>
-    </div>
-  </main>
+    <div class="team-container">
+      <div class="team-card reveal">
+        <div class="team-avatar">
+          <i class="fa-solid fa-user-tie"></i>
+        </div>
+        <h3>M. Hubert C. TOKPANOU</h3>
+        <div class="team-role">Directeur Général (DG)</div>
+        <p>Orientations stratégiques, partenariats industriels et développement des filières de valorisation.</p>
+      </div>
 
-  <!-- Bouton WhatsApp (Remplacer le numéro si besoin) -->
-  <a href="https://wa.me/22944669587" class="whatsapp-float" target="_blank" rel="noopener">
-    💬 Contactez-nous
+      <div class="team-card reveal">
+        <div class="team-avatar">
+          <i class="fa-solid fa-user-gear"></i>
+        </div>
+        <h3>M. Pedro S. KPONON</h3>
+        <div class="team-role">Gérant</div>
+        <p>Supervision opérationnelle, gestion des unités de broyage, logistique et relations clients.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT & FORM SECTION -->
+  <section class="contact-bg" id="contact">
+    <div class="contact-container">
+      <div class="contact-info-side reveal">
+        <h2>Contactez 18 EITHING SARL</h2>
+        <p>Vous souhaitez commander de la matière broyée (PP/PEHD), demander un devis de logistique ou solliciter un conseil ? Écrivez-nous dès maintenant.</p>
+
+        <div class="contact-details-list">
+          <div class="contact-detail-item">
+            <div class="contact-icon-box">
+              <i class="fa-solid fa-location-dot"></i>
+            </div>
+            <div class="contact-detail-text">
+              <h4>Siège Social & Usine</h4>
+              <p>Kétou, République du Bénin</p>
+            </div>
+          </div>
+
+          <div class="contact-detail-item">
+            <div class="contact-icon-box">
+              <i class="fa-solid fa-envelope"></i>
+            </div>
+            <div class="contact-detail-text">
+              <h4>Adresse Email</h4>
+              <p><a href="mailto:contact@18eithing.bj">contact@18eithing.bj</a></p>
+            </div>
+          </div>
+
+          <div class="contact-detail-item">
+            <div class="contact-icon-box">
+              <i class="fa-solid fa-phone"></i>
+            </div>
+            <div class="contact-detail-text">
+              <h4>Téléphone / WhatsApp</h4>
+              <p><a href="tel:+22944669587">+229 44 66 95 87</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form-box reveal">
+        <h3><i class="fa-solid fa-paper-plane text-primary"></i> Envoyer un message</h3>
+        <form id="contact-form" onsubmit="handleFormSubmit(event)">
+          <div class="form-group">
+            <label for="name">Nom Complet</label>
+            <input type="text" id="name" class="form-control" placeholder="Votre nom" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Adresse Email ou Téléphone</label>
+            <input type="text" id="email" class="form-control" placeholder="votre.email@exemple.com / +229..." required>
+          </div>
+          <div class="form-group">
+            <label for="subject">Sujet de la demande</label>
+            <select id="subject" class="form-control">
+              <option value="Achat Matière PP/PEHD">Achat de matière broyée (PP / PEHD)</option>
+              <option value="Demande de Devis Broyage">Service de broyage / recyclage</option>
+              <option value="Conseil & Logistique">Conseil, Logistique ou Commerce</option>
+              <option value="Autre demande">Autre demande</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" class="form-control" placeholder="Précisez votre besoin..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-blue" style="width: 100%;">
+            <i class="fa-solid fa-paper-plane"></i> Envoyer le message
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-brand">
+        18 EITHING SARL
+      </div>
+      <div>
+        Recyclage, Broyage & Valorisation (PP & PEHD) | Conseil | Logistique | Commerce
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2025 18 EITHING SARL - Tous droits réservés. Kétou, Bénin.
+    </div>
+  </footer>
+
+  <!-- FLOATING WHATSAPP BUTTON -->
+  <a href="https://wa.me/22944669587" class="whatsapp-float" target="_blank" rel="noopener" title="Discuter sur WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i> WhatsApp
   </a>
 
-  <!-- SCRIPT ANIMATIONS (JAVASCRIPT) -->
+  <!-- SCRIPTS -->
   <script>
-    // Détection du défilement pour faire apparaître les blocs
-    function checkScroll() {
+    // Mobile navigation toggle
+    const mobileToggle = document.getElementById('mobile-toggle');
+    const navMenu = document.getElementById('nav-menu');
+
+    mobileToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+    });
+
+    // Close mobile menu when a link is clicked
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+      });
+    });
+
+    // Scroll reveal animation
+    function revealOnScroll() {
       const reveals = document.querySelectorAll('.reveal');
-      reveals.forEach((el) => {
+      reveals.forEach(el => {
         const windowHeight = window.innerHeight;
         const elementTop = el.getBoundingClientRect().top;
         if (elementTop < windowHeight - 80) {
@@ -142,9 +1231,21 @@
       });
     }
 
-    window.addEventListener('scroll', checkScroll);
-    window.addEventListener('load', checkScroll); // Lance une première vérification au chargement
-  </script>
+    window.addEventListener('scroll', revealOnScroll);
+    window.addEventListener('load', revealOnScroll);
 
+    // Form submit handler
+    function handleFormSubmit(event) {
+      event.preventDefault();
+      const name = document.getElementById('name').value;
+      const subject = document.getElementById('subject').value;
+      const message = document.getElementById('message').value;
+
+      const whatsappMsg = `Bonjour 18 EITHING SARL, je m'appelle ${name}. Sujet: ${subject}. Message: ${message}`;
+      const whatsappUrl = `https://wa.me/22944669587?text=${encodeURIComponent(whatsappMsg)}`;
+
+      window.open(whatsappUrl, '_blank');
+    }
+  </script>
 </body>
 </html>
