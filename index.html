@@ -1,15 +1,12 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>18 EITHING SARL | Conseil, Logistique & Commerce</title>
-  <meta name="description" content="18 EITHING SARL - Spécialiste en Conseil & Stratégie, Logistique, Commerce général et Vente de bric-à-brac au Bénin.">
+  <title>18 EITHING SARL — Conseil, Logistique & Commerce | Kétou, Bénin</title>
+  <meta name="description" content="18 EITHING SARL : Entreprise agréée à Kétou (Bénin) spécialisée dans la vente de bric-à-brac d'opportunité, le conseil en stratégie d'entreprise et les services logistiques d'approvisionnement.">
   
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-  <!-- Tailwind CSS CDN -->
+  <!-- Tailwind CSS via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -19,528 +16,1046 @@
             cerco: {
               navy: '#0A192F',
               blue: '#1D4ED8',
-              lightBlue: '#2563EB',
-              accent: '#D97706',
+              lightbg: '#F8FAFC',
               gold: '#F59E0B',
-              bgLight: '#F8FAFC',
+              goldhover: '#D97706',
+              border: '#E2E8F0',
+              text: '#1E293B',
+              muted: '#64748B'
             }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif']
           }
         }
       }
     }
   </script>
 
+  <!-- FontAwesome & Inter Font -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
-    body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-    }
-    .glass-effect {
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
-    }
-    .reveal {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .reveal.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .gradient-hero {
-      background: linear-gradient(135deg, #0A192F 0%, #1E3A8A 50%, #1D4ED8 100%);
-    }
-    .text-gradient {
-      background: linear-gradient(135deg, #F59E0B 0%, #FBBF24 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+    body { font-family: 'Inter', sans-serif; }
+    .bg-grid-pattern {
+      background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px);
+      background-size: 24px 24px;
     }
   </style>
 </head>
-<body class="bg-cerco-bgLight text-slate-800 antialiased selection:bg-cerco-gold selection:text-cerco-navy">
+<body class="bg-cerco-lightbg text-cerco-text antialiased selection:bg-cerco-blue selection:text-white">
 
-  <!-- TOPBAR INFO (Style CERCO) -->
-  <div class="bg-cerco-navy text-slate-300 text-xs sm:text-sm py-2 px-4 border-b border-slate-800">
+  <!-- ==================== TOP BAR ==================== -->
+  <div class="bg-cerco-navy text-slate-300 text-xs py-2 px-4 border-b border-slate-800">
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-2">
-      <div class="flex flex-wrap items-center justify-center md:justify-start gap-4">
-        <span class="flex items-center gap-1.5"><i class="fa-solid fa-envelope text-cerco-gold"></i> contact@18eithing.bj</span>
-        <span class="flex items-center gap-1.5"><i class="fa-solid fa-phone text-cerco-gold"></i> +229 44 66 95 87</span>
-        <span class="hidden lg:flex items-center gap-1.5"><i class="fa-solid fa-location-dot text-cerco-gold"></i> Kétou, République du Bénin</span>
+      <div class="flex items-center space-x-6">
+        <a href="mailto:contact@18eithing.bj" class="flex items-center gap-2 hover:text-white transition"><i class="fa-solid font-bold fa-envelope text-cerco-gold"></i> contact@18eithing.bj</a>
+        <a href="tel:+22944669587" class="flex items-center gap-2 hover:text-white transition"><i class="fa-solid fa-phone text-cerco-gold"></i> +229 44 66 95 87</a>
+        <span class="hidden sm:flex items-center gap-2"><i class="fa-solid fa-location-dot text-cerco-gold"></i> Kétou, République du Bénin</span>
       </div>
-      <div class="flex items-center gap-3">
-        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-cerco-gold/20 text-cerco-gold border border-cerco-gold/30">
-          <i class="fa-solid fa-shield-check mr-1"></i> Entreprise Agréée
-        </span>
+      <div class="flex items-center gap-4">
+        <span class="bg-blue-900/60 text-blue-300 text-[11px] px-2.5 py-0.5 rounded border border-blue-700/50 font-medium"><i class="fa-solid fa-certificate mr-1 text-cerco-gold"></i> Entreprise Agréée & Immatriculée</span>
+        <div class="flex items-center space-x-3 text-slate-400">
+          <a href="#" class="hover:text-white transition"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://wa.me/22944669587" target="_blank" class="hover:text-emerald-400 transition"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="#" class="hover:text-white transition"><i class="fa-brands fa-linkedin-in"></i></a>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- HEADER / NAVIGATION (Style CERCO Stick) -->
-  <header class="sticky top-0 z-50 glass-effect border-b border-slate-200 shadow-sm">
+  <!-- ==================== HEADER & NAVIGATION (MODELE CERCO) ==================== -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center h-20">
-        <!-- Logo / Marque -->
+      <div class="flex items-center justify-between h-20">
+        <!-- Logo -->
         <a href="#" class="flex items-center gap-3 group">
-          <div class="w-12 h-12 rounded-xl bg-cerco-navy flex items-center justify-center text-cerco-gold font-bold text-xl shadow-md group-hover:scale-105 transition-transform">
+          <div class="bg-cerco-navy text-white font-black text-xl w-11 h-11 rounded-lg flex items-center justify-center shadow-md group-hover:bg-cerco-blue transition">
             18
           </div>
-          <div>
-            <span class="block font-extrabold text-xl text-cerco-navy tracking-tight">18 EITHING <span class="text-cerco-accent">SARL</span></span>
-            <span class="block text-xs font-medium text-slate-500 uppercase tracking-wider">Conseil, Logistique & Commerce</span>
+          <div class="flex flex-col">
+            <span class="font-extrabold text-lg text-cerco-navy leading-none tracking-tight group-hover:text-cerco-blue transition">18 EITHING <span class="text-cerco-gold">SARL</span></span>
+            <span class="text-[10px] text-cerco-muted tracking-wider uppercase font-semibold mt-1">Conseil · Logistique · Commerce</span>
           </div>
         </a>
 
-        <!-- Navigation Desktop -->
-        <nav class="hidden md:flex items-center gap-8 font-medium text-sm text-slate-700">
-          <a href="#accueil" class="hover:text-cerco-blue transition-colors py-1">Accueil</a>
-          <a href="#apropos" class="hover:text-cerco-blue transition-colors py-1">À Propos</a>
-          <a href="#services" class="hover:text-cerco-blue transition-colors py-1">Nos Activités</a>
-          <a href="#gouvernance" class="hover:text-cerco-blue transition-colors py-1">Gouvernance</a>
-          <a href="#contact" class="hover:text-cerco-blue transition-colors py-1">Contact</a>
+        <!-- Desktop Menu Nav (Cloned CERCO Menu Structure) -->
+        <nav class="hidden xl:flex items-center space-x-6 text-sm font-medium text-slate-700">
+          <a href="#accueil" class="hover:text-cerco-blue transition py-2 border-b-2 border-transparent hover:border-cerco-blue">Accueil</a>
+          <a href="#qui-sommes-nous" class="hover:text-cerco-blue transition py-2">Qui sommes-nous ?</a>
+          <a href="#expertises" class="hover:text-cerco-blue transition py-2">Nos Domaines</a>
+          <a href="#avantages" class="hover:text-cerco-blue transition py-2">Atouts</a>
+          <a href="#methodologie" class="hover:text-cerco-blue transition py-2">Pédagogie & Méthode</a>
+          <a href="#leadership" class="hover:text-cerco-blue transition py-2">Direction</a>
+          <a href="#temoignages" class="hover:text-cerco-blue transition py-2">Partenaires</a>
+          <a href="#contact" class="hover:text-cerco-blue transition py-2">Contact</a>
         </nav>
 
-        <!-- CTA Header -->
-        <div class="hidden sm:flex items-center gap-4">
-          <a href="https://wa.me/22944669587" target="_blank" rel="noopener" class="bg-cerco-blue hover:bg-cerco-navy text-white text-sm font-semibold px-5 py-2.5 rounded-xl transition-all shadow-md hover:shadow-lg flex items-center gap-2">
-            <i class="fa-brands fa-whatsapp text-lg"></i>
-            <span>Nous Contacter</span>
+        <!-- Right Header CTA Buttons -->
+        <div class="hidden sm:flex items-center space-x-3">
+          <a href="#contact" class="text-xs font-semibold text-cerco-navy hover:text-cerco-blue border border-slate-300 px-3.5 py-2 rounded-lg transition">
+            <i class="fa-solid fa-file-pdf mr-1 text-cerco-gold"></i> Brochure
+          </a>
+          <a href="#contact" class="text-xs font-semibold bg-cerco-blue text-white hover:bg-blue-700 px-4 py-2 rounded-lg transition shadow-sm flex items-center gap-2">
+            <i class="fa-solid fa-paper-plane"></i> Devis Express
           </a>
         </div>
+
+        <!-- Mobile menu button -->
+        <button id="mobile-menu-btn" class="xl:hidden p-2 rounded-md text-slate-600 hover:text-slate-900 focus:outline-none">
+          <i class="fa-solid fa-bars text-xl"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Navigation -->
+    <div id="mobile-menu" class="hidden xl:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-6 space-y-3">
+      <a href="#accueil" class="block py-2 text-slate-700 font-medium hover:text-cerco-blue">Accueil</a>
+      <a href="#qui-sommes-nous" class="block py-2 text-slate-700 font-medium hover:text-cerco-blue">Qui sommes-nous ?</a>
+      <a href="#expertises" class="block py-2 text-slate-700 font-medium hover:text-cerco-blue">Nos Domaines d'Expertise</a>
+      <a href="#avantages" class="block py-2 text-slate-700 font-medium hover:text-cerco-blue">Nos Avantages</a>
+      <a href="#methodologie" class="block py-2 text-slate-700 font-medium hover:text-cerco-blue">Méthodologie</a>
+      <a href="#leadership" class="block py-2 text-slate-700 font-medium hover:text-cerco-blue">L'Équipe Dirigeante</a>
+      <a href="#temoignages" class="block py-2 text-slate-700 font-medium hover:text-cerco-blue">Partenaires & Avis</a>
+      <a href="#contact" class="block py-2 text-slate-700 font-medium hover:text-cerco-blue">Contact</a>
+      <div class="pt-2 flex flex-col gap-2">
+        <a href="#contact" class="w-full text-center bg-cerco-blue text-white py-2.5 rounded-lg font-semibold text-sm">Demander un Devis</a>
       </div>
     </div>
   </header>
 
-  <!-- SECTION HERO (Style CERCO) -->
-  <section id="accueil" class="gradient-hero text-white relative overflow-hidden py-20 lg:py-28">
-    <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]"></div>
+  <!-- ==================== HERO SECTION (STRUCTURE CERCO) ==================== -->
+  <section id="accueil" class="relative bg-cerco-navy text-white py-16 lg:py-24 overflow-hidden bg-grid-pattern">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div class="grid lg:grid-cols-12 gap-12 items-center">
-        <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
-          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-cerco-gold text-xs font-semibold uppercase tracking-wider">
-            <i class="fa-solid fa-award"></i> Excellence & Polyvalence Professionnelle
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+
+        <!-- Hero Text (Left 7 Cols) -->
+        <div class="lg:col-span-7 space-y-6">
+          <div class="inline-flex items-center gap-2 bg-blue-900/80 border border-blue-500/30 text-blue-300 px-3.5 py-1.5 rounded-full text-xs font-semibold">
+            <span class="w-2 h-2 rounded-full bg-cerco-gold animate-pulse"></span>
+            18 EITHING SARL · Kétou, Bénin
           </div>
-          <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight">
-            Solutions Clés en Main en <span class="text-gradient">Conseil, Logistique & Commerce</span>
+
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight tracking-tight">
+            Partenaire Clé en <span class="text-cerco-gold">Conseil, Logistique</span> & Commerce
           </h1>
-          <p class="text-slate-300 text-base sm:text-lg max-w-2xl leading-relaxed">
-            18 EITHING SARL vous accompagne avec expertise dans l'optimisation stratégique, la gestion logistique d'approvisionnement et la commercialisation de produits diversifiés et bric-à-brac.
+
+          <p class="text-slate-300 text-base sm:text-lg leading-relaxed font-normal max-w-2xl">
+            18 EITHING SARL vous accompagne avec rigueur dans la structuration stratégique de vos affaires, l'approvisionnement logistique et le négoce d'opportunités diversifiées (bric-à-brac certifié).
           </p>
-          <div class="pt-4 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-            <a href="#services" class="w-full sm:w-auto bg-cerco-gold hover:bg-yellow-500 text-cerco-navy font-bold px-8 py-3.5 rounded-xl transition-all shadow-lg text-center flex items-center justify-center gap-2">
-              <span>Découvrir Nos Services</span>
+
+          <div class="pt-2 flex flex-wrap gap-4 items-center">
+            <a href="#contact" class="bg-cerco-gold hover:bg-cerco-goldhover text-slate-900 font-bold px-6 py-3.5 rounded-xl shadow-lg hover:shadow-xl transition flex items-center gap-2">
+              <span>Demander une Cotation</span>
               <i class="fa-solid fa-arrow-right"></i>
             </a>
-            <a href="#contact" class="w-full sm:w-auto bg-white/10 hover:bg-white/20 border border-white/30 text-white font-semibold px-8 py-3.5 rounded-xl transition-all text-center">
-              Demander un Devis
+            <a href="#expertises" class="border border-slate-600 bg-white/5 hover:bg-white/10 text-white font-semibold px-6 py-3.5 rounded-xl transition backdrop-blur-sm">
+              Découvrir nos Activités
             </a>
+          </div>
+
+          <!-- Mini Badges Grid -->
+          <div class="pt-6 border-t border-slate-800/80 grid grid-cols-3 gap-4 text-xs text-slate-300">
+            <div>
+              <p class="font-bold text-white text-base text-cerco-gold">100%</p>
+              <p>Conformité & Fiabilité</p>
+            </div>
+            <div>
+              <p class="font-bold text-white text-base text-cerco-gold">Kétou</p>
+              <p>Ancrage Béninois</p>
+            </div>
+            <div>
+              <p class="font-bold text-white text-base text-cerco-gold">Sur-Mesure</p>
+              <p>Accompagnement Dédié</p>
+            </div>
           </div>
         </div>
 
+        <!-- Hero Card Block (Right 5 Cols - Modèle CERCO) -->
         <div class="lg:col-span-5">
-          <div class="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-6 sm:p-8 shadow-2xl text-left space-y-6">
-            <div class="flex items-center gap-4">
-              <div class="w-12 h-12 rounded-lg bg-cerco-gold text-cerco-navy flex items-center justify-center text-xl font-bold">
-                <i class="fa-solid fa-briefcase"></i>
+          <div class="bg-gradient-to-br from-slate-800/90 to-blue-950/90 border border-slate-700/80 rounded-2xl p-6 shadow-2xl backdrop-blur-sm space-y-6">
+            <div class="flex items-center justify-between border-b border-slate-700/80 pb-4">
+              <div class="flex items-center gap-3">
+                <div class="bg-cerco-gold text-slate-900 p-2.5 rounded-xl font-bold">
+                  <i class="fa-solid fa-briefcase text-lg"></i>
+                </div>
+                <div>
+                  <h3 class="font-bold text-white text-base">Offres & Prestations</h3>
+                  <p class="text-xs text-slate-400">Domaines d'intervention 18 EITHING</p>
+                </div>
               </div>
-              <div>
-                <h3 class="text-lg font-bold text-white">Domaines d'Intervention</h3>
-                <p class="text-xs text-slate-300">Partenaire stratégique aux normes</p>
-              </div>
+              <span class="bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-[11px] px-2.5 py-1 rounded-full font-medium">Actif</span>
             </div>
-            <ul class="space-y-3 text-sm text-slate-200">
-              <li class="flex items-center gap-3">
-                <i class="fa-solid fa-circle-check text-cerco-gold"></i>
-                <span>Négoce et Vente de bric-à-brac qualifié</span>
+
+            <ul class="space-y-3.5 text-xs text-slate-200">
+              <li class="flex items-start gap-3">
+                <i class="fa-solid fa-circle-check text-cerco-gold mt-0.5"></i>
+                <span><strong>Négoce & Bric-à-brac :</strong> Achats et revente de lots d'opportunité, équipements et matériel.</span>
               </li>
-              <li class="flex items-center gap-3">
-                <i class="fa-solid fa-circle-check text-cerco-gold"></i>
-                <span>Conseil en stratégie & Organisation d'entreprise</span>
+              <li class="flex items-start gap-3">
+                <i class="fa-solid fa-circle-check text-cerco-gold mt-0.5"></i>
+                <span><strong>Conseil & Stratégie :</strong> Études de marché, gestion d'entreprise, optimisation organisationnelle.</span>
               </li>
-              <li class="flex items-center gap-3">
-                <i class="fa-solid fa-circle-check text-cerco-gold"></i>
-                <span>Services logistiques & Chaîne d'approvisionnement</span>
-              </li>
-              <li class="flex items-center gap-3">
-                <i class="fa-solid fa-circle-check text-cerco-gold"></i>
-                <span>Commerce général et représentation commerciale</span>
+              <li class="flex items-start gap-3">
+                <i class="fa-solid fa-circle-check text-cerco-gold mt-0.5"></i>
+                <span><strong>Logistique & Services :</strong> Acheminement sécurisé, gestion des flux et transport d'approvisionnement.</span>
               </li>
             </ul>
+
+            <div class="pt-2">
+              <a href="https://wa.me/22944669587" target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 px-4 rounded-xl text-xs flex items-center justify-center gap-2 transition shadow">
+                <i class="fa-brands fa-whatsapp text-sm"></i>
+                <span>Echanger directement par WhatsApp</span>
+              </a>
+            </div>
           </div>
         </div>
+
       </div>
     </div>
   </section>
 
-  <!-- SECTION STATISTIQUES (Style CERCO Overlap) -->
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-10 relative z-20">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <div class="bg-white rounded-2xl p-6 shadow-xl border border-slate-100 flex items-center gap-5 reveal">
-        <div class="w-14 h-14 rounded-xl bg-blue-50 text-cerco-blue flex items-center justify-center text-2xl font-bold">
-          <i class="fa-solid fa-boxes-packing"></i>
-        </div>
-        <div>
-          <span class="block text-2xl font-extrabold text-cerco-navy">100%</span>
-          <span class="text-sm font-medium text-slate-500">Qualité & Fiabilité Produits</span>
-        </div>
-      </div>
-
-      <div class="bg-white rounded-2xl p-6 shadow-xl border border-slate-100 flex items-center gap-5 reveal">
-        <div class="w-14 h-14 rounded-xl bg-amber-50 text-cerco-accent flex items-center justify-center text-2xl font-bold">
+  <!-- ==================== HIGHLIGHT OVERLAP CARDS ==================== -->
+  <section class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div class="bg-white p-6 rounded-xl shadow-lg border border-slate-100 flex items-center gap-4">
+        <div class="bg-blue-50 text-cerco-blue p-4 rounded-xl text-2xl">
           <i class="fa-solid fa-truck-fast"></i>
         </div>
         <div>
-          <span class="block text-2xl font-extrabold text-cerco-navy">Réactivité</span>
-          <span class="text-sm font-medium text-slate-500">Gestion Logistique Optimisée</span>
+          <h4 class="font-bold text-slate-900 text-sm">Réactivité Logistique</h4>
+          <p class="text-xs text-cerco-muted mt-0.5">Traitement et acheminement optimisés de vos commandes.</p>
         </div>
       </div>
 
-      <div class="bg-white rounded-2xl p-6 shadow-xl border border-slate-100 flex items-center gap-5 reveal">
-        <div class="w-14 h-14 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-2xl font-bold">
+      <div class="bg-white p-6 rounded-xl shadow-lg border border-slate-100 flex items-center gap-4">
+        <div class="bg-amber-50 text-cerco-gold p-4 rounded-xl text-2xl">
+          <i class="fa-solid fa-award"></i>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-900 text-sm">Qualité Sélectionnée</h4>
+          <p class="text-xs text-cerco-muted mt-0.5">Articles de bric-à-brac vérifiés aux meilleurs standards.</p>
+        </div>
+      </div>
+
+      <div class="bg-white p-6 rounded-xl shadow-lg border border-slate-100 flex items-center gap-4">
+        <div class="bg-emerald-50 text-emerald-600 p-4 rounded-xl text-2xl">
           <i class="fa-solid fa-handshake"></i>
         </div>
         <div>
-          <span class="block text-2xl font-extrabold text-cerco-navy">Sur-Mesure</span>
-          <span class="text-sm font-medium text-slate-500">Conseil & Stratégie Personnalisés</span>
+          <h4 class="font-bold text-slate-900 text-sm">Partenariat Durable</h4>
+          <p class="text-xs text-cerco-muted mt-0.5">Conseils sur-mesure pour la réussite de vos projets.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SECTION À PROPOS -->
-  <section id="apropos" class="py-20">
+  <!-- ==================== QUI SOMMES-NOUS & CHIFFRES CLES (STRUCTURE CERCO) ==================== -->
+  <section id="qui-sommes-nous" class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid lg:grid-cols-2 gap-12 items-center">
-        <div class="space-y-6 reveal">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-blue-50 text-cerco-blue text-xs font-bold uppercase tracking-wider">
-            Présentation Institutionnelle
-          </div>
-          <h2 class="text-3xl font-extrabold text-cerco-navy tracking-tight sm:text-4xl">
-            Un acteur d'excellence au service de vos projets commerciaux et logistiques
-          </h2>
-          <p class="text-slate-600 leading-relaxed">
-            Basée à Kétou en République du Bénin, <strong>18 EITHING SARL</strong> est une société dynamique spécialisée dans les prestations de conseil en stratégie, la gestion logistique d'acheminement ainsi que le commerce général et la vente de bric-à-brac d'opportunité.
-          </p>
-          <p class="text-slate-600 leading-relaxed">
-            Notre engagement repose sur la réactivité, l'intégrité et une parfaite maîtrise des enjeux de marché, offrant ainsi à nos partenaires professionnels et particuliers des solutions robustes et sur-mesure.
-          </p>
 
-          <div class="pt-2 grid grid-cols-2 gap-4">
-            <div class="p-4 rounded-xl bg-slate-50 border border-slate-100">
-              <h4 class="font-bold text-cerco-navy mb-1"><i class="fa-solid fa-bullseye text-cerco-accent mr-2"></i>Mission</h4>
-              <p class="text-xs text-slate-500">Accompagner la réussite commerciale et logistique de nos clients avec pragmatisme.</p>
+      <!-- Header Badge Section -->
+      <div class="text-center max-w-3xl mx-auto space-y-3">
+        <span class="text-cerco-blue font-extrabold text-xs tracking-wider uppercase bg-blue-50 px-3 py-1 rounded-full border border-blue-100">Présentation Institutionnelle</span>
+        <h2 class="text-3xl font-extrabold text-cerco-navy sm:text-4xl">Un acteur engagé au service de votre croissance</h2>
+        <p class="text-cerco-muted text-sm sm:text-base">
+          18 EITHING SARL est une société de droit béninois installée à Kétou, combinant vision stratégique, rigueur commerciale et polyvalence opérationnelle.
+        </p>
+      </div>
+
+      <!-- Main Grid: Narrative vs Values Card -->
+      <div class="mt-14 grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
+
+        <!-- Narrative Left Column -->
+        <div class="lg:col-span-7 bg-cerco-lightbg p-8 rounded-2xl border border-slate-200 flex flex-col justify-between space-y-6">
+          <div class="space-y-4 text-sm text-slate-700 leading-relaxed">
+            <h3 class="text-xl font-bold text-cerco-navy">18 EITHING SARL, Centre de Services & d'Expertise</h3>
+            <p>
+              Créée pour répondre aux besoins grandissants des entreprises et particuliers du Bénin et de la sous-région, <strong>18 EITHING SARL</strong> déploie un modèle intégré articulé autour de 3 piliers essentiels : le négoce d'opportunités (bric-à-brac qualifié), le conseil stratégique en organisation d'entreprise, et la gestion logistique globale.
+            </p>
+            <p>
+              Notre engagement repose sur la réactivité, l'intégrité et une parfaite connaissance des réalités de terrain, offrant ainsi à nos partenaires professionnels des solutions concrètes et adaptées.
+            </p>
+          </div>
+
+          <!-- Mission & Vision Dual Box -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-slate-300">
+            <div class="bg-white p-4 rounded-xl border border-slate-200">
+              <div class="flex items-center gap-2 text-cerco-blue font-bold text-sm mb-1">
+                <i class="fa-solid fa-bullseye text-cerco-gold"></i> Mission
+              </div>
+              <p class="text-xs text-slate-600">Accompagner la réussite commerciale et logistique des clients avec efficacité et pragmatisme.</p>
             </div>
-            <div class="p-4 rounded-xl bg-slate-50 border border-slate-100">
-              <h4 class="font-bold text-cerco-navy mb-1"><i class="fa-solid fa-eye text-cerco-blue mr-2"></i>Vision</h4>
-              <p class="text-xs text-slate-500">Devenir une référence incontournable du commerce et du conseil au Bénin et dans la sous-région.</p>
+            <div class="bg-white p-4 rounded-xl border border-slate-200">
+              <div class="flex items-center gap-2 text-cerco-blue font-bold text-sm mb-1">
+                <i class="fa-solid fa-eye text-cerco-gold"></i> Vision
+              </div>
+              <p class="text-xs text-slate-600">Devenir la référence sous-régionale en matière de négoce certifié et de conseil de proximité.</p>
             </div>
           </div>
         </div>
 
-        <div class="reveal relative">
-          <div class="bg-cerco-navy rounded-3xl p-8 text-white relative overflow-hidden shadow-2xl">
-            <div class="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 rounded-full bg-cerco-blue/20 blur-3xl"></div>
-            <h3 class="text-2xl font-bold mb-6 text-cerco-gold">Nos Valeurs Fondamentales</h3>
-            <div class="space-y-6">
+        <!-- Values Right Box (Inspiré du bloc Valeurs CERCO) -->
+        <div class="lg:col-span-5 bg-cerco-navy text-white p-8 rounded-2xl flex flex-col justify-between shadow-xl">
+          <div>
+            <h3 class="text-xl font-bold text-cerco-gold mb-6 flex items-center gap-2">
+              <i class="fa-solid fa-shield-halved"></i> Nos Valeurs Fondamentales
+            </h3>
+
+            <div class="space-y-6 text-sm">
               <div class="flex items-start gap-4">
-                <div class="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center text-cerco-gold shrink-0">
-                  <i class="fa-solid fa-star"></i>
+                <div class="bg-blue-900/80 text-cerco-gold p-3 rounded-lg text-lg flex-shrink-0">
+                  <i class="fa-solid fa-check"></i>
                 </div>
                 <div>
                   <h4 class="font-bold text-white">Rigueur & Qualité</h4>
-                  <p class="text-xs text-slate-300">Des standards stricts appliqués à tous nos produits et prestations de conseil.</p>
+                  <p class="text-xs text-slate-300 mt-1">Contrôle strict des prestations et sélection minutieuse des produits distribués.</p>
                 </div>
               </div>
 
               <div class="flex items-start gap-4">
-                <div class="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center text-cerco-gold shrink-0">
-                  <i class="fa-solid fa-user-shield"></i>
+                <div class="bg-blue-900/80 text-cerco-gold p-3 rounded-lg text-lg flex-shrink-0">
+                  <i class="fa-solid fa-handshake-angle"></i>
                 </div>
                 <div>
                   <h4 class="font-bold text-white">Transparence & Confiance</h4>
-                  <p class="text-xs text-slate-300">Un partenariat durable fondé sur le respect mutuel et des accords clairs.</p>
+                  <p class="text-xs text-slate-300 mt-1">Des relations partenariales claires et équitables avec nos clients et fournisseurs.</p>
                 </div>
               </div>
 
               <div class="flex items-start gap-4">
-                <div class="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center text-cerco-gold shrink-0">
+                <div class="bg-blue-900/80 text-cerco-gold p-3 rounded-lg text-lg flex-shrink-0">
                   <i class="fa-solid fa-bolt"></i>
                 </div>
                 <div>
                   <h4 class="font-bold text-white">Efficacité Logistique</h4>
-                  <p class="text-xs text-slate-300">Des délais respectés pour l'acheminement et la mise à disposition de vos biens.</p>
+                  <p class="text-xs text-slate-300 mt-1">Respect impératif des délais d'acheminement et de livraison sur site.</p>
                 </div>
               </div>
             </div>
           </div>
+
+          <div class="pt-6 border-t border-slate-800 mt-6 text-xs text-slate-400">
+            <i class="fa-solid fa-location-dot mr-1 text-cerco-gold"></i> Siège Social : Kétou, République du Bénin
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Chiffres Clés (Inspiré des Chiffres Clés CERCO) -->
+      <div class="mt-16 bg-slate-50 border border-slate-200 rounded-2xl p-8">
+        <div class="text-center mb-8">
+          <span class="text-xs font-bold uppercase tracking-wider text-cerco-blue">Indicateurs de Performance</span>
+          <h3 class="text-2xl font-extrabold text-cerco-navy">La Preuve par les Chiffres</h3>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+          <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+            <p class="text-3xl font-black text-cerco-blue">100%</p>
+            <p class="text-xs font-semibold text-slate-600 mt-1">Engagement & Réactivité</p>
+          </div>
+          <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+            <p class="text-3xl font-black text-cerco-gold">3</p>
+            <p class="text-xs font-semibold text-slate-600 mt-1">Piliers d'Expertise</p>
+          </div>
+          <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+            <p class="text-3xl font-black text-cerco-blue">24/7</p>
+            <p class="text-xs font-semibold text-slate-600 mt-1">Disponibilité Client</p>
+          </div>
+          <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+            <p class="text-3xl font-black text-cerco-gold">Bénin</p>
+            <p class="text-xs font-semibold text-slate-600 mt-1">Zone Interventions</p>
+          </div>
         </div>
       </div>
+
     </div>
   </section>
 
-  <!-- SECTION NOS SERVICES / ACTIVITÉS -->
-  <section id="services" class="py-20 bg-slate-100">
+  <!-- ==================== NOS DOMAINES D'EXPERTISE (STRUCTURE FORMATIONS CERCO) ==================== -->
+  <section id="expertises" class="py-20 bg-cerco-lightbg border-y border-slate-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-3xl mx-auto mb-16 space-y-4 reveal">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-blue-50 text-cerco-blue text-xs font-bold uppercase tracking-wider">
-          Domaines d'Expertise
-        </div>
-        <h2 class="text-3xl font-extrabold text-cerco-navy tracking-tight sm:text-4xl">
-          Nos Activités & Prestations Principales
-        </h2>
-        <p class="text-slate-600 text-sm sm:text-base">
-          Découvrez l'ensemble des services proposés par 18 EITHING SARL pour répondre à tous vos besoins commerciaux et stratégiques.
+
+      <div class="text-center max-w-3xl mx-auto space-y-3">
+        <span class="text-cerco-blue font-extrabold text-xs tracking-wider uppercase bg-blue-100 px-3 py-1 rounded-full">Prestations & Négoce</span>
+        <h2 class="text-3xl font-extrabold text-cerco-navy sm:text-4xl">Nos Domaines d'Expertise</h2>
+        <p class="text-cerco-muted text-sm sm:text-base">
+          Des services structurés pour répondre avec précision à vos contraintes de gestion, d'équipement et d'approvisionnement.
         </p>
       </div>
 
-      <div class="grid md:grid-cols-3 gap-8">
-        <!-- Carte 1: Vente de Bric-à-brac -->
-        <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all border border-slate-200/80 flex flex-col justify-between reveal">
-          <div class="space-y-4">
-            <div class="w-14 h-14 rounded-xl bg-amber-500/10 text-cerco-accent flex items-center justify-center text-2xl font-bold">
-              <i class="fa-solid fa-boxes-stacked"></i>
+      <!-- Category Filter Tabs (Cloned CERCO Tabs Style) -->
+      <div class="mt-10 flex justify-center gap-3 flex-wrap">
+        <button class="bg-cerco-navy text-white text-xs font-bold px-5 py-2.5 rounded-full shadow-md">
+          Tous les domaines
+        </button>
+        <button class="bg-white text-slate-700 hover:bg-slate-100 text-xs font-semibold px-5 py-2.5 rounded-full border border-slate-300">
+          Vente de Bric-à-brac
+        </button>
+        <button class="bg-white text-slate-700 hover:bg-slate-100 text-xs font-semibold px-5 py-2.5 rounded-full border border-slate-300">
+          Conseil & Stratégie
+        </button>
+        <button class="bg-white text-slate-700 hover:bg-slate-100 text-xs font-semibold px-5 py-2.5 rounded-full border border-slate-300">
+          Logistique & Approvisionnement
+        </button>
+      </div>
+
+      <!-- Service Cards Grid (Cloned CERCO Program Cards Style) -->
+      <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+
+        <!-- Card 1: Bric-à-brac -->
+        <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl transition flex flex-col justify-between group">
+          <div class="p-6 space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="bg-amber-100 text-amber-800 text-[11px] font-bold px-2.5 py-1 rounded-md uppercase">Négoce & Vente</span>
+              <span class="text-xs font-semibold text-cerco-muted"><i class="fa-solid fa-box text-cerco-gold mr-1"></i> Qualité Contrôlée</span>
             </div>
-            <h3 class="text-xl font-bold text-cerco-navy">Vente de Bric-à-brac</h3>
-            <p class="text-slate-600 text-sm leading-relaxed">
-              Sélection rigoureuse d'articles divers, d'équipements, de lots d'opportunité et de matériel sélectionné garantissant le meilleur rapport qualité/prix.
+
+            <h3 class="text-xl font-bold text-cerco-navy group-hover:text-cerco-blue transition">Vente de Bric-à-brac & Lots D'Opportunité</h3>
+
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Sélection rigoureuse d'articles divers, d'équipements et de matériel certifié répondant aux besoins des professionnels et particuliers au meilleur rapport qualité/prix.
             </p>
-            <ul class="space-y-2 text-xs text-slate-500 pt-2">
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cerco-accent"></i> Equipements et lots divers</li>
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cerco-accent"></i> Articles d'opportunité vérifiés</li>
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cerco-accent"></i> Tarification concurrentielle</li>
-            </ul>
+
+            <div class="space-y-2 pt-2 text-xs text-slate-700 border-t border-slate-100">
+              <p class="font-bold text-cerco-navy">Produits & Services inclus :</p>
+              <ul class="space-y-1.5 text-slate-600">
+                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Matériel d'équipement d'opportunité</li>
+                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Lots divers d'articles marchands</li>
+                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Tarification dégressive & transparente</li>
+              </ul>
+            </div>
           </div>
-          <div class="pt-6 border-t border-slate-100 mt-6">
-            <a href="https://wa.me/22944669587?text=Bonjour,%20je%20souhaite%20des%20informations%20sur%20la%20vente%20de%20bric-à-brac" target="_blank" rel="noopener" class="text-xs font-bold text-cerco-blue hover:text-cerco-navy inline-flex items-center gap-1">
-              En savoir plus <i class="fa-solid fa-arrow-right"></i>
+
+          <div class="p-6 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
+            <a href="#contact" class="text-xs font-bold text-cerco-blue hover:underline flex items-center gap-1">
+              Consulter la liste <i class="fa-solid fa-arrow-right text-[10px]"></i>
+            </a>
+            <a href="#contact" class="bg-cerco-navy text-white text-xs px-3.5 py-2 rounded-lg font-semibold hover:bg-cerco-blue transition">
+              Commander
             </a>
           </div>
         </div>
 
-        <!-- Carte 2: Conseil & Stratégie -->
-        <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all border border-slate-200/80 flex flex-col justify-between reveal">
-          <div class="space-y-4">
-            <div class="w-14 h-14 rounded-xl bg-blue-500/10 text-cerco-blue flex items-center justify-center text-2xl font-bold">
-              <i class="fa-solid fa-chart-line"></i>
+        <!-- Card 2: Conseil & Stratégie -->
+        <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl transition flex flex-col justify-between group">
+          <div class="p-6 space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="bg-blue-100 text-blue-800 text-[11px] font-bold px-2.5 py-1 rounded-md uppercase">Management</span>
+              <span class="text-xs font-semibold text-cerco-muted"><i class="fa-solid fa-chart-line text-cerco-blue mr-1"></i> Stratégie</span>
             </div>
-            <h3 class="text-xl font-bold text-cerco-navy">Conseil & Stratégie</h3>
-            <p class="text-slate-600 text-sm leading-relaxed">
-              Accompagnement personnalisé pour l'optimisation organisationnelle, le conseil en gestion et le développement de stratégies commerciales performantes.
+
+            <h3 class="text-xl font-bold text-cerco-navy group-hover:text-cerco-blue transition">Conseil, Stratégie & Organisation</h3>
+
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Accompagnement personnalisé des entreprises dans leur développement, l'optimisation organisationnelle et la prise de décision stratégique commerciale.
             </p>
-            <ul class="space-y-2 text-xs text-slate-500 pt-2">
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cerco-blue"></i> Études d'opportunités de marché</li>
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cerco-blue"></i> Optimisation opérationnelle</li>
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cerco-blue"></i> Stratégie de développement</li>
-            </ul>
+
+            <div class="space-y-2 pt-2 text-xs text-slate-700 border-t border-slate-100">
+              <p class="font-bold text-cerco-navy">Prestations proposées :</p>
+              <ul class="space-y-1.5 text-slate-600">
+                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Audit organisationnel & opérationnel</li>
+                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Études d'opportunités commerciales</li>
+                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Structuration de projets d'entreprise</li>
+              </ul>
+            </div>
           </div>
-          <div class="pt-6 border-t border-slate-100 mt-6">
-            <a href="https://wa.me/22944669587?text=Bonjour,%20je%20souhaite%20un%20accompagnement%20en%20Conseil%20et%20Stratégie" target="_blank" rel="noopener" class="text-xs font-bold text-cerco-blue hover:text-cerco-navy inline-flex items-center gap-1">
-              Prendre rendez-vous <i class="fa-solid fa-arrow-right"></i>
+
+          <div class="p-6 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
+            <a href="#contact" class="text-xs font-bold text-cerco-blue hover:underline flex items-center gap-1">
+              Planifier un rendez-vous <i class="fa-solid fa-arrow-right text-[10px]"></i>
+            </a>
+            <a href="#contact" class="bg-cerco-navy text-white text-xs px-3.5 py-2 rounded-lg font-semibold hover:bg-cerco-blue transition">
+              Prendre RDV
             </a>
           </div>
         </div>
 
-        <!-- Carte 3: Logistique & Services -->
-        <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all border border-slate-200/80 flex flex-col justify-between reveal">
-          <div class="space-y-4">
-            <div class="w-14 h-14 rounded-xl bg-indigo-500/10 text-indigo-600 flex items-center justify-center text-2xl font-bold">
-              <i class="fa-solid fa-truck-ramp-box"></i>
+        <!-- Card 3: Logistique & Services -->
+        <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl transition flex flex-col justify-between group">
+          <div class="p-6 space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="bg-emerald-100 text-emerald-800 text-[11px] font-bold px-2.5 py-1 rounded-md uppercase">Supply Chain</span>
+              <span class="text-xs font-semibold text-cerco-muted"><i class="fa-solid fa-truck-moving text-emerald-600 mr-1"></i> Transport</span>
             </div>
-            <h3 class="text-xl font-bold text-cerco-navy">Logistique & Services</h3>
-            <p class="text-slate-600 text-sm leading-relaxed">
-              Coordination globale de l'acheminement, de la gestion de stock et de la distribution de marchandises avec un suivi rigoureux.
+
+            <h3 class="text-xl font-bold text-cerco-navy group-hover:text-cerco-blue transition">Logistique & Services d'Approvisionnement</h3>
+
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Coordination rigoureuse de la chaîne d'approvisionnement, gestion de stocks, stockage temporaire et acheminement sur mesure de vos marchandises.
             </p>
-            <ul class="space-y-2 text-xs text-slate-500 pt-2">
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-indigo-600"></i> Organisation des flux logistiques</li>
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-indigo-600"></i> Acheminement sécurisé</li>
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-indigo-600"></i> Service client dédié</li>
-            </ul>
+
+            <div class="space-y-2 pt-2 text-xs text-slate-700 border-t border-slate-100">
+              <p class="font-bold text-cerco-navy">Champs d'intervention :</p>
+              <ul class="space-y-1.5 text-slate-600">
+                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Transit & Suivi des acheminements</li>
+                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Gestion logistique sur site</li>
+                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Service client & assistance dédiée</li>
+              </ul>
+            </div>
           </div>
-          <div class="pt-6 border-t border-slate-100 mt-6">
-            <a href="https://wa.me/22944669587?text=Bonjour,%20je%20souhaite%20des%20informations%20sur%20vos%20services%20logistiques" target="_blank" rel="noopener" class="text-xs font-bold text-cerco-blue hover:text-cerco-navy inline-flex items-center gap-1">
-              Contacter le service <i class="fa-solid fa-arrow-right"></i>
+
+          <div class="p-6 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
+            <a href="#contact" class="text-xs font-bold text-cerco-blue hover:underline flex items-center gap-1">
+              Contacter la logistique <i class="fa-solid fa-arrow-right text-[10px]"></i>
+            </a>
+            <a href="#contact" class="bg-cerco-navy text-white text-xs px-3.5 py-2 rounded-lg font-semibold hover:bg-cerco-blue transition">
+              Cotation
             </a>
           </div>
         </div>
+
       </div>
     </div>
   </section>
 
-  <!-- SECTION GOUVERNANCE / DIRECTION -->
-  <section id="gouvernance" class="py-20 bg-white">
+  <!-- ==================== NOS ATOUTS / WHY CHOOSE US (STRUCTURE CERCO) ==================== -->
+  <section id="avantages" class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-3xl mx-auto mb-16 space-y-4 reveal">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-blue-50 text-cerco-blue text-xs font-bold uppercase tracking-wider">
-          Gouvernance
-        </div>
-        <h2 class="text-3xl font-extrabold text-cerco-navy tracking-tight sm:text-4xl">
-          L'Équipe Dirigeante
-        </h2>
-        <p class="text-slate-600 text-sm sm:text-base">
-          Une direction expérimentée engagée dans le développement et l'excellence opérationnelle.
+
+      <div class="text-center max-w-3xl mx-auto space-y-3">
+        <span class="text-cerco-blue font-extrabold text-xs tracking-wider uppercase bg-blue-50 px-3 py-1 rounded-full">Valeur Ajoutée</span>
+        <h2 class="text-3xl font-extrabold text-cerco-navy sm:text-4xl">Pourquoi Faire Confiance à 18 EITHING ?</h2>
+        <p class="text-cerco-muted text-sm sm:text-base">
+          Des engagements concrets pour sécuriser vos opérations et maximiser vos résultats.
         </p>
       </div>
 
-      <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-        <!-- Dirigeant 1 -->
-        <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200/80 flex items-center gap-6 reveal shadow-sm hover:shadow-md transition-all">
-          <div class="w-20 h-20 rounded-2xl bg-cerco-navy text-cerco-gold flex items-center justify-center text-3xl font-bold shrink-0 shadow-md">
-            <i class="fa-solid fa-user-tie"></i>
+      <div class="mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        <div class="bg-cerco-lightbg p-6 rounded-2xl border border-slate-200 hover:border-cerco-blue transition">
+          <div class="bg-blue-100 text-cerco-blue w-12 h-12 rounded-xl flex items-center justify-center text-xl font-bold mb-4">
+            <i class="fa-solid fa-sliders"></i>
           </div>
-          <div>
-            <h3 class="text-xl font-bold text-cerco-navy">M. Hubert C. TOKPANOU</h3>
-            <p class="text-xs font-bold text-cerco-accent uppercase tracking-wider mb-2">Directeur Général (DG)</p>
-            <p class="text-xs text-slate-500">Supervision stratégique, pilotage du développement commercial et des partenariats institutionnels.</p>
-          </div>
+          <h3 class="font-bold text-lg text-cerco-navy">Solutions Sur-Mesure</h3>
+          <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+            Chaque demande fait l'objet d'une analyse approfondie pour proposer l'offre la plus adaptée à vos besoins réels.
+          </p>
         </div>
 
-        <!-- Dirigeant 2 -->
-        <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200/80 flex items-center gap-6 reveal shadow-sm hover:shadow-md transition-all">
-          <div class="w-20 h-20 rounded-2xl bg-cerco-blue text-white flex items-center justify-center text-3xl font-bold shrink-0 shadow-md">
-            <i class="fa-solid fa-user-gear"></i>
+        <div class="bg-cerco-lightbg p-6 rounded-2xl border border-slate-200 hover:border-cerco-blue transition">
+          <div class="bg-amber-100 text-cerco-gold w-12 h-12 rounded-xl flex items-center justify-center text-xl font-bold mb-4">
+            <i class="fa-solid fa-shield-check"></i>
           </div>
-          <div>
-            <h3 class="text-xl font-bold text-cerco-navy">M. Pedro S. KPONON</h3>
-            <p class="text-xs font-bold text-cerco-lightBlue uppercase tracking-wider mb-2">Gérant</p>
-            <p class="text-xs text-slate-500">Gestion opérationnelle, administration générale et coordination des activités de terrain.</p>
-          </div>
+          <h3 class="font-bold text-lg text-cerco-navy">Traçabilité & Rigueur</h3>
+          <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+            Contrôle qualité systématique de tous les lots de bric-à-brac marchandisés et suivi d'acheminement en temps réel.
+          </p>
         </div>
+
+        <div class="bg-cerco-lightbg p-6 rounded-2xl border border-slate-200 hover:border-cerco-blue transition">
+          <div class="bg-emerald-100 text-emerald-600 w-12 h-12 rounded-xl flex items-center justify-center text-xl font-bold mb-4">
+            <i class="fa-solid fa-clock-rotate-left"></i>
+          </div>
+          <h3 class="font-bold text-lg text-cerco-navy">Réactivité Maximale</h3>
+          <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+            Traitement rapide des devis et gestion accélérée des flux d'expédition sur le réseau national et régional.
+          </p>
+        </div>
+
+        <div class="bg-cerco-lightbg p-6 rounded-2xl border border-slate-200 hover:border-cerco-blue transition">
+          <div class="bg-purple-100 text-purple-600 w-12 h-12 rounded-xl flex items-center justify-center text-xl font-bold mb-4">
+            <i class="fa-solid fa-user-shield"></i>
+          </div>
+          <h3 class="font-bold text-lg text-cerco-navy">Direction Expérimentée</h3>
+          <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+            Une gouvernance proactive assurée par le DG M. Hubert C. TOKPANOU et le Gérant M. Pedro S. KPONON.
+          </p>
+        </div>
+
+        <div class="bg-cerco-lightbg p-6 rounded-2xl border border-slate-200 hover:border-cerco-blue transition">
+          <div class="bg-rose-100 text-rose-600 w-12 h-12 rounded-xl flex items-center justify-center text-xl font-bold mb-4">
+            <i class="fa-solid fa-map-location-dot"></i>
+          </div>
+          <h3 class="font-bold text-lg text-cerco-navy">Ancrage Territorial</h3>
+          <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+            Implantation au cœur de Kétou, facilitant les échanges commerciaux entre le Bénin et les zones limitrophes.
+          </p>
+        </div>
+
+        <div class="bg-cerco-lightbg p-6 rounded-2xl border border-slate-200 hover:border-cerco-blue transition">
+          <div class="bg-indigo-100 text-indigo-600 w-12 h-12 rounded-xl flex items-center justify-center text-xl font-bold mb-4">
+            <i class="fa-solid fa-comments-dollar"></i>
+          </div>
+          <h3 class="font-bold text-lg text-cerco-navy">Transparence Tarifaire</h3>
+          <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+            Grilles tarifaires claires sans coûts cachés pour l'ensemble des prestations et ventes d'opportunité.
+          </p>
+        </div>
+
       </div>
+
     </div>
   </section>
 
-  <!-- SECTION CONTACT & FORMULAIRE -->
-  <section id="contact" class="py-20 bg-slate-900 text-white relative overflow-hidden">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div class="grid lg:grid-cols-12 gap-12">
-        <div class="lg:col-span-5 space-y-8 reveal">
-          <div>
-            <span class="text-cerco-gold text-xs font-bold uppercase tracking-wider">Contactez-nous</span>
-            <h2 class="text-3xl font-extrabold text-white mt-2">Parlons de vos projets</h2>
-            <p class="text-slate-400 text-sm mt-3 leading-relaxed">
-              Que ce soit pour du conseil, une prestation logistique ou un achat d'opportunité, notre équipe est à votre entière disposition.
+  <!-- ==================== METHODOLOGIE EN 3 ETAPES (STRUCTURE PEDAGOGIE CERCO) ==================== -->
+  <section id="methodologie" class="py-20 bg-cerco-navy text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="text-center max-w-3xl mx-auto space-y-3">
+        <span class="text-cerco-gold font-extrabold text-xs tracking-wider uppercase bg-blue-900/60 px-3 py-1 rounded-full border border-blue-700/50">Notre Processus Operationnel</span>
+        <h2 class="text-3xl font-extrabold text-white sm:text-4xl">Une Méthodologie Éprouvée en 3 Étapes</h2>
+        <p class="text-slate-300 text-sm sm:text-base">
+          Inspirée par la rigueur de gestion des plus grands groupes, notre démarche garantit des résultats mesurables.
+        </p>
+      </div>
+
+      <div class="mt-14 grid grid-cols-1 md:grid-cols-3 gap-8">
+
+        <!-- Step 1 -->
+        <div class="bg-slate-800/80 p-8 rounded-2xl border border-slate-700 relative flex flex-col justify-between space-y-6">
+          <span class="text-5xl font-black text-cerco-gold/30 absolute top-4 right-6">01</span>
+          <div class="space-y-3 relative z-10">
+            <div class="bg-cerco-blue text-white w-10 h-10 rounded-lg flex items-center justify-center font-bold text-lg">
+              <i class="fa-solid fa-magnifying-glass font-bold"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white">Analyse & Qualification</h3>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Identification précise de votre besoin, étude des lots d'opportunité ou cadrage du projet de conseil d'entreprise.
             </p>
           </div>
+          <div class="text-xs text-cerco-gold font-semibold pt-4 border-t border-slate-700">Étape 1 · Diagnostic Gratuit</div>
+        </div>
 
-          <div class="space-y-6">
-            <div class="flex items-start gap-4">
-              <div class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center text-cerco-gold shrink-0">
-                <i class="fa-solid fa-location-dot text-xl"></i>
-              </div>
-              <div>
-                <h4 class="font-bold text-white text-sm">Adresse Siège</h4>
-                <p class="text-xs text-slate-300">Kétou, République du Bénin</p>
-              </div>
+        <!-- Step 2 -->
+        <div class="bg-slate-800/80 p-8 rounded-2xl border border-slate-700 relative flex flex-col justify-between space-y-6">
+          <span class="text-5xl font-black text-cerco-gold/30 absolute top-4 right-6">02</span>
+          <div class="space-y-3 relative z-10">
+            <div class="bg-cerco-gold text-slate-900 w-10 h-10 rounded-lg flex items-center justify-center font-bold text-lg">
+              <i class="fa-solid fa-gears"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white">Exécution & Logistique</h3>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Préparation des marchandises, négociation partenariale et mise en œuvre du plan d'action stratégique ou d'acheminement.
+            </p>
+          </div>
+          <div class="text-xs text-cerco-gold font-semibold pt-4 border-t border-slate-700">Étape 2 · Mise en Œuvre</div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="bg-slate-800/80 p-8 rounded-2xl border border-slate-700 relative flex flex-col justify-between space-y-6">
+          <span class="text-5xl font-black text-cerco-gold/30 absolute top-4 right-6">03</span>
+          <div class="space-y-3 relative z-10">
+            <div class="bg-emerald-500 text-white w-10 h-10 rounded-lg flex items-center justify-center font-bold text-lg">
+              <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white">Livraison & Suivi</h3>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Réception conforme sur votre site, évaluation de la satisfaction client et accompagnement post-prestation.
+            </p>
+          </div>
+          <div class="text-xs text-cerco-gold font-semibold pt-4 border-t border-slate-700">Étape 3 · Validation Finale</div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== LEADERSHIP / DIRECTION (STRUCTURE MOT DU PRESIDENT CERCO) ==================== -->
+  <section id="leadership" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="text-center max-w-3xl mx-auto space-y-3">
+        <span class="text-cerco-blue font-extrabold text-xs tracking-wider uppercase bg-blue-50 px-3 py-1 rounded-full">Gouvernance Institutionnelle</span>
+        <h2 class="text-3xl font-extrabold text-cerco-navy sm:text-4xl">L'Équipe Dirigeante de 18 EITHING SARL</h2>
+        <p class="text-cerco-muted text-sm sm:text-base">
+          Une direction expérimentée engagée dans la rigueur commerciale, l'éthique professionnelle et la satisfaction partenaire.
+        </p>
+      </div>
+
+      <div class="mt-14 grid grid-cols-1 lg:grid-cols-2 gap-10">
+
+        <!-- Dirigeant 1: M. Hubert C. TOKPANOU (DG) -->
+        <div class="bg-cerco-lightbg rounded-2xl border border-slate-200 p-8 shadow-sm hover:shadow-md transition flex flex-col sm:flex-row gap-6">
+          <div class="flex-shrink-0 flex flex-col items-center">
+            <div class="w-28 h-28 rounded-2xl bg-cerco-navy text-white flex items-center justify-center text-4xl font-bold shadow-md border-2 border-cerco-gold">
+              <i class="fa-solid fa-user-tie"></i>
+            </div>
+            <span class="mt-3 bg-blue-100 text-cerco-blue text-[10px] font-bold px-2.5 py-0.5 rounded-full">Direction Générale</span>
+          </div>
+
+          <div class="space-y-3">
+            <div>
+              <h3 class="text-xl font-bold text-cerco-navy">M. Hubert C. TOKPANOU</h3>
+              <p class="text-xs font-semibold text-cerco-gold">Directeur Général (DG)</p>
             </div>
 
-            <div class="flex items-start gap-4">
-              <div class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center text-cerco-gold shrink-0">
-                <i class="fa-solid fa-phone text-xl"></i>
-              </div>
-              <div>
-                <h4 class="font-bold text-white text-sm">Téléphone & WhatsApp</h4>
-                <p class="text-xs text-slate-300">+229 44 66 95 87</p>
-              </div>
-            </div>
+            <p class="text-xs text-slate-600 leading-relaxed italic">
+              « Notre ambition à travers 18 EITHING SARL est de créer une véritable dynamique économique à Kétou et au Bénin, en apportant de la valeur concrète par le conseil, la logistique et la commercialisation de produits de qualité. »
+            </p>
 
-            <div class="flex items-start gap-4">
-              <div class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center text-cerco-gold shrink-0">
-                <i class="fa-solid fa-envelope text-xl"></i>
-              </div>
-              <div>
-                <h4 class="font-bold text-white text-sm">Courrier Électronique</h4>
-                <p class="text-xs text-slate-300">contact@18eithing.bj</p>
-              </div>
+            <div class="pt-2 text-xs text-slate-500 space-y-1 border-t border-slate-200">
+              <p><i class="fa-solid fa-check text-emerald-500 mr-1.5"></i> Supervise la stratégie globale de développement</p>
+              <p><i class="fa-solid fa-check text-emerald-500 mr-1.5"></i> Représentation institutionnelle et grands comptes</p>
             </div>
           </div>
         </div>
 
-        <div class="lg:col-span-7 bg-white text-slate-800 rounded-3xl p-8 shadow-2xl reveal">
-          <h3 class="text-xl font-bold text-cerco-navy mb-6">Envoyer un message direct</h3>
-          <form id="contactForm" onsubmit="sendWhatsApp(event)" class="space-y-4">
+        <!-- Dirigeant 2: M. Pedro S. KPONON (Gérant) -->
+        <div class="bg-cerco-lightbg rounded-2xl border border-slate-200 p-8 shadow-sm hover:shadow-md transition flex flex-col sm:flex-row gap-6">
+          <div class="flex-shrink-0 flex flex-col items-center">
+            <div class="w-28 h-28 rounded-2xl bg-cerco-navy text-white flex items-center justify-center text-4xl font-bold shadow-md border-2 border-cerco-gold">
+              <i class="fa-solid fa-user-gear"></i>
+            </div>
+            <span class="mt-3 bg-amber-100 text-amber-800 text-[10px] font-bold px-2.5 py-0.5 rounded-full">Gérance Opérationnelle</span>
+          </div>
+
+          <div class="space-y-3">
+            <div>
+              <h3 class="text-xl font-bold text-cerco-navy">M. Pedro S. KPONON</h3>
+              <p class="text-xs font-semibold text-cerco-gold">Gérant</p>
+            </div>
+
+            <p class="text-xs text-slate-600 leading-relaxed italic">
+              « L'efficacité sur le terrain et la réactivité au quotidien sont nos priorités. Nous veillons à ce que chaque client bénéficie d'une prestation personnalisée et irréprochable. »
+            </p>
+
+            <div class="pt-2 text-xs text-slate-500 space-y-1 border-t border-slate-200">
+              <p><i class="fa-solid fa-check text-emerald-500 mr-1.5"></i> Pilotage opérationnel et gestion des stocks</p>
+              <p><i class="fa-solid fa-check text-emerald-500 mr-1.5"></i> Suivi direct de la relation client et fournisseurs</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== TEMOIGNAGES / AVIS CLIENTS (STRUCTURE CERCO) ==================== -->
+  <section id="temoignages" class="py-20 bg-cerco-lightbg border-y border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="text-center max-w-3xl mx-auto space-y-3">
+        <span class="text-cerco-blue font-extrabold text-xs tracking-wider uppercase bg-blue-100 px-3 py-1 rounded-full">Avis & Partenaires</span>
+        <h2 class="text-3xl font-extrabold text-cerco-navy sm:text-4xl">Ce que Disent Nos Partenaires</h2>
+        <p class="text-cerco-muted text-sm sm:text-base">
+          Des retours d'expérience authentiques d'acteurs économiques travaillant avec 18 EITHING SARL.
+        </p>
+      </div>
+
+      <div class="mt-14 grid grid-cols-1 md:grid-cols-3 gap-8">
+
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between space-y-4">
+          <div class="space-y-3">
+            <div class="text-cerco-gold text-sm">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="text-xs text-slate-600 leading-relaxed italic">
+              « 18 EITHING SARL nous fournit régulièrement du matériel d'équipement en bric-à-brac d'opportunité. La qualité est toujours vérifiée et les prix défiant toute concurrence. »
+            </p>
+          </div>
+          <div class="pt-4 border-t border-slate-100 flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full bg-cerco-blue text-white flex items-center justify-center font-bold text-xs">
+              AK
+            </div>
+            <div>
+              <p class="font-bold text-xs text-cerco-navy">A. Kouassi</p>
+              <p class="text-[10px] text-cerco-muted">Commerçant Grossiste · Cotonou</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between space-y-4">
+          <div class="space-y-3">
+            <div class="text-cerco-gold text-sm">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="text-xs text-slate-600 leading-relaxed italic">
+              « Leur accompagnement en conseil stratégique et réorganisation interne nous a permis de restructurer efficacement notre gestion de stocks. Équipe très professionnelle ! »
+            </p>
+          </div>
+          <div class="pt-4 border-t border-slate-100 flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full bg-cerco-gold text-slate-900 flex items-center justify-center font-bold text-xs">
+              S.O
+            </div>
+            <div>
+              <p class="font-bold text-xs text-cerco-navy">S. Ogou</p>
+              <p class="text-[10px] text-cerco-muted">Directeur d'Entreprise · Porto-Novo</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between space-y-4">
+          <div class="space-y-3">
+            <div class="text-cerco-gold text-sm">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="text-xs text-slate-600 leading-relaxed italic">
+              « Service logistique irréprochable pour l'acheminement de nos lots de marchandises vers Kétou. Délais respectés et communication parfaite. »
+            </p>
+          </div>
+          <div class="pt-4 border-t border-slate-100 flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold text-xs">
+              M.D
+            </div>
+            <div>
+              <p class="font-bold text-xs text-cerco-navy">M. Dossou</p>
+              <p class="text-[10px] text-cerco-muted">Opérateur Économique · Kétou</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== CONTACT & DEMANDE DE DEVIS (STRUCTURE FORMULAIRE CERCO) ==================== -->
+  <section id="contact" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+
+        <!-- Info Column Left (5 Cols) -->
+        <div class="lg:col-span-5 space-y-8">
+          <div>
+            <span class="text-cerco-blue font-extrabold text-xs tracking-wider uppercase bg-blue-50 px-3 py-1 rounded-full border border-blue-100">Contact & Devis</span>
+            <h2 class="text-3xl font-extrabold text-cerco-navy mt-3">Discutons de Votre Projet</h2>
+            <p class="text-cerco-muted text-sm mt-2 leading-relaxed">
+              Vous désirez acheter des lots de bric-à-brac, bénéficier d'un conseil en stratégie ou planifier une prestation logistique ? Contactez notre équipe commerciale.
+            </p>
+          </div>
+
+          <div class="space-y-5 text-sm">
+            <div class="flex items-start gap-4">
+              <div class="bg-blue-50 text-cerco-blue p-3.5 rounded-xl text-lg flex-shrink-0">
+                <i class="fa-solid fa-location-dot"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-cerco-navy">Adresse Siège</h4>
+                <p class="text-xs text-slate-600 mt-0.5">Kétou, République du Bénin</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="bg-amber-50 text-cerco-gold p-3.5 rounded-xl text-lg flex-shrink-0">
+                <i class="fa-solid fa-phone"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-cerco-navy">Téléphone / WhatsApp direct</h4>
+                <p class="text-xs text-slate-600 mt-0.5">+229 44 66 95 87</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="bg-emerald-50 text-emerald-600 p-3.5 rounded-xl text-lg flex-shrink-0">
+                <i class="fa-solid fa-envelope"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-cerco-navy">Courrier Électronique</h4>
+                <p class="text-xs text-slate-600 mt-0.5">contact@18eithing.bj</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Direct WhatsApp Action Box -->
+          <div class="bg-emerald-50 border border-emerald-200 p-6 rounded-2xl space-y-3">
+            <div class="flex items-center gap-2 text-emerald-800 font-bold text-sm">
+              <i class="fa-brands fa-whatsapp text-lg text-emerald-600"></i> Assistance WhatsApp Instantanée
+            </div>
+            <p class="text-xs text-emerald-700 leading-relaxed">
+              Obtenez une réponse immédiate concernant les disponibilités de stock ou nos conditions d'intervention.
+            </p>
+            <a href="https://wa.me/22944669587?text=Bonjour,%20je%20souhaite%20obtenir%20des%20informations%20sur%20vos%20services%2018%20EITHING." target="_blank" class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-4 py-2.5 rounded-xl text-xs transition shadow">
+              <span>Lancer la discussion WhatsApp</span>
+              <i class="fa-solid fa-paper-plane"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Form Column Right (7 Cols - Modèle Formulaire Inscription CERCO) -->
+        <div class="lg:col-span-7 bg-cerco-lightbg p-8 rounded-2xl border border-slate-200 shadow-md">
+          <div class="mb-6">
+            <h3 class="text-xl font-bold text-cerco-navy">Formulaire de Contact / Cotation</h3>
+            <p class="text-xs text-cerco-muted mt-1">Remplissez les champs ci-dessous pour recevoir notre proposition chiffrée.</p>
+          </div>
+
+          <form id="contact-form" class="space-y-4">
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label class="block text-xs font-semibold text-slate-700 mb-1">Nom complet</label>
-                <input type="text" id="nom" required placeholder="Votre nom" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-cerco-blue text-sm">
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Prénom *</label>
+                <input type="text" id="form-prenom" required class="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-xl text-xs focus:ring-2 focus:ring-cerco-blue focus:outline-none" placeholder="Votre prénom">
               </div>
               <div>
-                <label class="block text-xs font-semibold text-slate-700 mb-1">Téléphone / WhatsApp</label>
-                <input type="tel" id="telephone" required placeholder="+229 ..." class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-cerco-blue text-sm">
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Nom *</label>
+                <input type="text" id="form-nom" required class="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-xl text-xs focus:ring-2 focus:ring-cerco-blue focus:outline-none" placeholder="Votre nom">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Email *</label>
+                <input type="email" id="form-email" required class="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-xl text-xs focus:ring-2 focus:ring-cerco-blue focus:outline-none" placeholder="votre@email.com">
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Téléphone / WhatsApp *</label>
+                <input type="tel" id="form-tel" required class="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-xl text-xs focus:ring-2 focus:ring-cerco-blue focus:outline-none" placeholder="+229 00 00 00 00">
               </div>
             </div>
 
             <div>
-              <label class="block text-xs font-semibold text-slate-700 mb-1">Service recherché</label>
-              <select id="service" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-cerco-blue text-sm">
-                <option value="Vente de bric-à-brac">Vente de bric-à-brac</option>
-                <option value="Conseil & Stratégie">Conseil & Stratégie</option>
-                <option value="Logistique & Services">Logistique & Services</option>
-                <option value="Autre demande">Autre demande</option>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">Domaine d'Intérêt *</label>
+              <select id="form-domaine" class="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-xl text-xs focus:ring-2 focus:ring-cerco-blue focus:outline-none">
+                <option value="Vente Bric-à-brac">Vente de Bric-à-brac & Lots d'opportunité</option>
+                <option value="Conseil Strategique">Conseil & Stratégie d'Entreprise</option>
+                <option value="Logistique Services">Logistique & Approvisionnement</option>
+                <option value="Renseignements Generaux">Renseignements Généraux</option>
               </select>
             </div>
 
             <div>
-              <label class="block text-xs font-semibold text-slate-700 mb-1">Votre message</label>
-              <textarea id="message" rows="4" required placeholder="Précisez votre demande..." class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-cerco-blue text-sm"></textarea>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">Votre Message / Détails du Devis *</label>
+              <textarea id="form-message" rows="4" required class="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-xl text-xs focus:ring-2 focus:ring-cerco-blue focus:outline-none" placeholder="Précisez votre demande, les volumes souhaités ou la nature de votre projet..."></textarea>
             </div>
 
-            <button type="submit" class="w-full bg-cerco-blue hover:bg-cerco-navy text-white font-bold py-3.5 rounded-xl transition-all shadow-lg text-sm flex items-center justify-center gap-2">
-              <i class="fa-brands fa-whatsapp text-lg"></i>
-              <span>Envoyer via WhatsApp</span>
+            <div class="flex items-start gap-2 pt-1">
+              <input type="checkbox" id="consent" required class="mt-0.5 rounded border-slate-300 text-cerco-blue focus:ring-cerco-blue">
+              <label for="consent" class="text-[11px] text-slate-600">J'accepte que mes informations soient traitées dans le cadre de ma demande commerciale conformément aux règles de confidentialité.</label>
+            </div>
+
+            <button type="submit" class="w-full bg-cerco-navy hover:bg-cerco-blue text-white font-bold py-3.5 px-6 rounded-xl text-xs transition shadow-lg flex items-center justify-center gap-2">
+              <i class="fa-solid fa-paper-plane"></i>
+              <span>Envoyer ma Demande de Devis</span>
             </button>
           </form>
         </div>
+
       </div>
+
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer class="bg-cerco-navy text-slate-400 text-xs py-8 border-t border-slate-800">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
-      <div class="flex items-center gap-3">
-        <div class="w-8 h-8 rounded-lg bg-cerco-gold text-cerco-navy font-bold flex items-center justify-center">18</div>
-        <span class="font-bold text-white text-sm">18 EITHING SARL</span>
+  <!-- ==================== FOOTER (CLONED CERCO FOOTER STRUCTURE) ==================== -->
+  <footer class="bg-cerco-navy text-white pt-16 pb-12 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-slate-800">
+
+        <!-- Col 1: Brand & Presentation -->
+        <div class="space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="bg-cerco-blue text-white font-black text-lg w-10 h-10 rounded-lg flex items-center justify-center">
+              18
+            </div>
+            <span class="font-extrabold text-lg text-white">18 EITHING <span class="text-cerco-gold">SARL</span></span>
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Société immatriculée à Kétou (Bénin) spécialisée dans le négoce d'opportunités (bric-à-brac), le conseil aux entreprises et les prestations logistiques.
+          </p>
+          <div class="pt-2 text-xs text-slate-400">
+            <p><i class="fa-solid fa-certificate text-cerco-gold mr-1"></i> Agréé & Conforme aux normes commerciales</p>
+          </div>
+        </div>
+
+        <!-- Col 2: Navigation Rapide -->
+        <div class="space-y-3">
+          <h4 class="text-sm font-bold text-white uppercase tracking-wider">Navigation</h4>
+          <ul class="space-y-2 text-xs text-slate-400">
+            <li><a href="#accueil" class="hover:text-white transition">Accueil</a></li>
+            <li><a href="#qui-sommes-nous" class="hover:text-white transition">Qui sommes-nous ?</a></li>
+            <li><a href="#expertises" class="hover:text-white transition">Nos Domaines d'Expertise</a></li>
+            <li><a href="#avantages" class="hover:text-white transition">Pourquoi choisir 18 EITHING</a></li>
+            <li><a href="#methodologie" class="hover:text-white transition">Notre Méthodologie</a></li>
+            <li><a href="#leadership" class="hover:text-white transition">Direction Générale</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Domaines & Activites -->
+        <div class="space-y-3">
+          <h4 class="text-sm font-bold text-white uppercase tracking-wider">Domaines d'Activité</h4>
+          <ul class="space-y-2 text-xs text-slate-400">
+            <li><a href="#expertises" class="hover:text-white transition">Vente de Bric-à-brac Qualifié</a></li>
+            <li><a href="#expertises" class="hover:text-white transition">Lots & Équipements d'Opportunité</a></li>
+            <li><a href="#expertises" class="hover:text-white transition">Conseil en Stratégie d'Entreprise</a></li>
+            <li><a href="#expertises" class="hover:text-white transition">Audit & Organisation de Gestion</a></li>
+            <li><a href="#expertises" class="hover:text-white transition">Logistique d'Approvisionnement</a></li>
+            <li><a href="#expertises" class="hover:text-white transition">Transport & Suivi de Flux</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Contacts & Direct Link -->
+        <div class="space-y-3">
+          <h4 class="text-sm font-bold text-white uppercase tracking-wider">Contact & Siège</h4>
+          <ul class="space-y-2.5 text-xs text-slate-400">
+            <li class="flex items-start gap-2">
+              <i class="fa-solid fa-location-dot text-cerco-gold mt-0.5"></i>
+              <span>Kétou, République du Bénin</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <i class="fa-solid fa-phone text-cerco-gold"></i>
+              <span>+229 44 66 95 87</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <i class="fa-solid fa-envelope text-cerco-gold"></i>
+              <span>contact@18eithing.bj</span>
+            </li>
+            <li class="pt-2">
+              <a href="https://wa.me/22944669587" target="_blank" class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-3.5 py-2 rounded-lg text-xs transition">
+                <i class="fa-brands fa-whatsapp"></i> WhatsApp Direct
+              </a>
+            </li>
+          </ul>
+        </div>
+
       </div>
-      <p>© 2026 18 EITHING SARL. Tous droits réservés. Kétou, République du Bénin.</p>
-      <div class="flex gap-4">
-        <a href="#accueil" class="hover:text-white transition-colors">Haut de page</a>
+
+      <!-- Bottom Bar -->
+      <div class="pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+        <p>© 2026 18 EITHING SARL. Tous droits réservés. Kétou, République du Bénin.</p>
+        <div class="flex items-center space-x-6">
+          <a href="#" class="hover:text-slate-300 transition">Mentions Légales</a>
+          <a href="#" class="hover:text-slate-300 transition">Politique de Confidentialité</a>
+          <a href="#accueil" class="text-cerco-gold hover:underline">Haut de page <i class="fa-solid fa-arrow-up ml-1"></i></a>
+        </div>
       </div>
+
     </div>
   </footer>
 
-  <!-- BOUTON WHATSAPP FLOTTANT -->
-  <a href="https://wa.me/22944669587" target="_blank" rel="noopener" class="fixed bottom-6 right-6 bg-emerald-500 hover:bg-emerald-600 text-white p-4 rounded-full shadow-2xl z-50 transition-all hover:scale-110 flex items-center justify-center group" title="Contactez-nous sur WhatsApp">
-    <i class="fa-brands fa-whatsapp text-2xl"></i>
-    <span class="max-w-0 overflow-hidden whitespace-nowrap group-hover:max-w-xs group-hover:ml-2 transition-all duration-300 text-xs font-bold">Contact WhatsApp</span>
-  </a>
+  <!-- Floating Assistant Widget (Cloned CERCO Widget) -->
+  <div class="fixed bottom-6 right-6 z-50">
+    <a href="https://wa.me/22944669587?text=Bonjour,%20je%20souhaite%20des%20informations%20sur%2018%20EITHING." target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 px-5 rounded-full shadow-2xl flex items-center gap-3 transition transform hover:scale-105 border-2 border-white">
+      <i class="fa-brands fa-whatsapp text-xl"></i>
+      <span class="text-xs hidden sm:inline">Besoin d'aide ? 18 EITHING Assist</span>
+    </a>
+  </div>
 
-  <!-- SCRIPT ANIMATION & WHATSAPP REDIRECT -->
+  <!-- JavaScript for Interactions & Mobile Menu -->
   <script>
-    function checkScroll() {
-      const reveals = document.querySelectorAll('.reveal');
-      reveals.forEach((el) => {
-        const windowHeight = window.innerHeight;
-        const elementTop = el.getBoundingClientRect().top;
-        if (elementTop < windowHeight - 60) {
-          el.classList.add('active');
-        }
+    // Mobile Menu Toggle
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if (mobileBtn && mobileMenu) {
+      mobileBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
       });
     }
 
-    window.addEventListener('scroll', checkScroll);
-    window.addEventListener('load', checkScroll);
+    // Contact Form Redirection via WhatsApp
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+      contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const prenom = document.getElementById('form-prenom').value;
+        const nom = document.getElementById('form-nom').value;
+        const email = document.getElementById('form-email').value;
+        const tel = document.getElementById('form-tel').value;
+        const domaine = document.getElementById('form-domaine').value;
+        const message = document.getElementById('form-message').value;
 
-    function sendWhatsApp(e) {
-      e.preventDefault();
-      const nom = document.getElementById('nom').value;
-      const tel = document.getElementById('telephone').value;
-      const service = document.getElementById('service').value;
-      const msg = document.getElementById('message').value;
+        const text = `Bonjour 18 EITHING SARL,\n\nJe soumets une demande de cotation depuis votre site web:\n- Nom: ${prenom} ${nom}\n- Email: ${email}\n- Téléphone: ${tel}\n- Domaine d'intérêt: ${domaine}\n- Message: ${message}`;
 
-      const text = `Bonjour 18 EITHING SARL,\nNom: ${nom}\nTél: ${tel}\nService: ${service}\nMessage: ${msg}`;
-      const url = `https://wa.me/22944669587?text=${encodeURIComponent(text)}`;
-      window.open(url, '_blank');
+        const encodedText = encodeURIComponent(text);
+        window.open(`https://wa.me/22944669587?text=${encodedText}`, '_blank');
+      });
     }
   </script>
+
 </body>
 </html>
