@@ -180,6 +180,11 @@
               <div>Point de vente : <span id="tracker-depot-name">Dépôt Central Akpakpa</span></div>
               <div>Distance estimée : <span id="tracker-distance">600 m</span> | Arrivée prévue : ~10-15 min</div>
             </div>
+            <div style="margin-top: 10px; background: #dcfce7; border: 1px dashed #16a34a; padding: 10px; border-radius: 8px; text-align: center;">
+              <span style="font-size: 0.75rem; color: #166534; font-weight: bold; text-transform: uppercase;">🔒 Code Secret de Livraison Client (Anti-Fraude) :</span>
+              <div id="tracker-otp-code" style="font-size: 1.6rem; font-weight: 900; letter-spacing: 6px; color: #15803d; margin-top: 2px;">----</div>
+              <small style="color: #15803d; font-size: 0.72rem;">Communiquez ce code au livreur UNIQUEMENT après réception physique de votre bouteille.</small>
+            </div>
           </div>
         </div>
       </div>
@@ -395,6 +400,28 @@
         </div>
       </div>
 
+      <!-- Bouclier de Sécurité & Prévention Anti-Fraude -->
+      <div class="card-box" style="margin-bottom: 24px; border-left: 5px solid #16a34a;">
+        <div class="card-box-header">
+          <h2><span>🛡️</span> Sécurité Anti-Fraude, Chiffrement & Protection Anti-Hacking</h2>
+          <span class="tag-status completed">Système Actif & Audité</span>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; font-size: 0.82rem;">
+          <div style="background: #f0fdf4; border: 1px solid #bbf7d0; padding: 12px; border-radius: 8px;">
+            <strong style="color: #166534;">🔐 Code OTP de Livraison Client</strong>
+            <p style="color: #374151; margin-top: 4px;">Empêche les fausses confirmations de livraisons. Le livreur ne peut clôturer la course et percevoir ses 500 F qu'avec le code secret remis en main propre.</p>
+          </div>
+          <div style="background: #f0fdf4; border: 1px solid #bbf7d0; padding: 12px; border-radius: 8px;">
+            <strong style="color: #166534;">⚡ Webhooks MoMo Signés (HMAC-SHA256)</strong>
+            <p style="color: #374151; margin-top: 4px;">Contre les faux paiements navigateur. Aucune course n'est déclenchée sans notification chiffrée authentifiée directement par MTN, Moov ou Celtiis.</p>
+          </div>
+          <div style="background: #f0fdf4; border: 1px solid #bbf7d0; padding: 12px; border-radius: 8px;">
+            <strong style="color: #166534;">🛡️ Bouclier Anti-Brute Force & SSL</strong>
+            <p style="color: #374151; margin-top: 4px;">Chiffrement HTTPS/TLS de bout en bout et limitation du débit de requêtes pour bloquer les tentatives d'intrusion automatisées.</p>
+          </div>
+        </div>
+      </div>
+
       <!-- Interconnexions MoMo & Banques -->
       <div class="card-box" style="margin-bottom: 24px;">
         <div class="card-box-header">
@@ -411,13 +438,18 @@
             </ul>
           </div>
           <div style="background: #f8fafc; padding: 14px; border-radius: 8px; border: 1px solid #e2e8f0;">
-            <h4 style="font-size: 0.9rem; margin-bottom: 6px;">Compte Bancaire Principal pour Virement</h4>
+            <h4 style="font-size: 0.9rem; margin-bottom: 6px;">Banque Réceptrice au Choix de l'Entreprise</h4>
             <div style="font-size: 0.82rem; line-height: 1.8;">
-              <div>Banque : <strong>Bank of Africa Bénin (BOA)</strong></div>
+              <div class="input-group" style="margin-bottom: 8px;">
+                <label for="select-company-bank" style="font-size: 0.78rem;">Sélectionnez la Banque Béninoise Réceptrice :</label>
+                <select id="select-company-bank" class="input-control" style="font-size: 0.85rem; padding: 6px 10px;">
+                  <!-- Rempli par JavaScript avec toutes les banques du Bénin -->
+                </select>
+              </div>
               <div>Titulaire : <strong>18 EITHING SARL</strong></div>
-              <div>IBAN / RIB : <code>BJ061 01001 002345678901 45</code></div>
-              <button id="btn-export-bank" style="margin-top: 6px; padding: 6px 12px; font-size: 0.78rem; background: #0f172a; color: #fff; border: none; border-radius: 6px; cursor: pointer;">
-                📄 Télécharger l'Ordre de Virement Bancaire Journalier
+              <div>IBAN / RIB Actuel : <code id="display-company-iban">BJ061 01001 002345678901 45</code></div>
+              <button id="btn-export-bank" style="margin-top: 8px; padding: 8px 14px; font-size: 0.82rem; background: #0f172a; color: #fff; border: none; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 6px;">
+                <span>📄</span> Générer l'Ordre de Virement vers la Banque Sélectionnée
               </button>
             </div>
           </div>

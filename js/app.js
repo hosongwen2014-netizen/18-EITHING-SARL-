@@ -2,8 +2,9 @@
  * GazExpress - Application Principale & Moteur Interactif
  */
 
-import { INITIAL_PRODUCTS, INITIAL_DEPOTS, INITIAL_DRIVERS, MOMO_PROVIDERS } from './data.js';
+import { INITIAL_PRODUCTS, INITIAL_DEPOTS, INITIAL_DRIVERS, MOMO_PROVIDERS, CONNECTED_BANKS } from './data.js';
 import { calculateDistanceMeters, computeDeliveryFee, computeOrderBreakdown, findNearestDepot, findNearestAvailableDriver, formatDistance } from './calculator.js';
+import { SecurityManager } from './security.js';
 
 class GazExpressApp {
   constructor() {
@@ -18,6 +19,10 @@ class GazExpressApp {
     this.selectedProduct = this.products.find(p => p.id === 'B6_RECHARGE');
     this.selectedMomo = 'mtn_momo';
     this.nearestDepotInfo = null;
+
+    // Gestion multi-banques au choix de l'entreprise
+    this.connectedBanks = [...CONNECTED_BANKS];
+    this.selectedBank = this.connectedBanks[0];
 
     // Cartes Leaflet
     this.clientMap = null;
@@ -37,6 +42,7 @@ class GazExpressApp {
     this.renderProducts();
     this.updateNearestDepotAndQuote();
     this.setupEventListeners();
+    this.initBankSelector();
     this.renderDepotsTable();
     this.renderDriverDashboard();
     this.renderAdminDashboard();
@@ -59,6 +65,8 @@ class GazExpressApp {
     const now = new Date();
     const formattedTime = timeStr || `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
     const id = `CMD-${Math.floor(1000 + Math.random() * 9000)}`;
+    const secretOtp = SecurityManager.generateDeliveryOTP();
+    const signature = SecurityManager.computeDataSignature("SECRET_KEY_18EITHING", `${id}-${clientName}-${breakdown.totalCustomerToPay}`);
 
     return {
       id,
@@ -73,6 +81,8 @@ class GazExpressApp {
       depot,
       driver,
       status,
+      secretOtp,
+      signature,
       ...breakdown
     };
   }
@@ -536,6 +546,8 @@ class GazExpressApp {
       document.getElementById('tracker-status-text').textContent = `Livreur assigné : ${this.pendingOrder.driver.name} (${this.pendingOrder.driver.vehicle})`;
       document.getElementById('tracker-depot-name').textContent = this.pendingOrder.depot.name;
       document.getElementById('tracker-distance').textContent = this.pendingOrder.formattedDistance;
+      const otpEl = document.getElementById('tracker-otp-code');
+      if (otpEl) otpEl.textContent = this.pendingOrder.secretOtp;
     }
 
     // Mettre à jour tous les tableaux de bord
@@ -606,10 +618,13 @@ class GazExpressApp {
               💰 Votre gain fixe : <strong style="color:#16a34a;">+500 FCFA</strong> (Règlement MoMo garanti)
             </div>
             ${order.status !== 'LIVRÉ' ? `
-              <button style="background:#16a34a; color:#fff; border:none; padding:6px 12px; border-radius:6px; font-size:0.8rem; font-weight:700; cursor:pointer;" onclick="window.markOrderDelivered('${order.id}')">
-                ✔ Confirmer la livraison au client
-              </button>
-            ` : '<span style="font-size:0.75rem; color:#16a34a;">✔ Course terminée & rétribution créditée</span>'}
+              <div style="display:flex; gap:8px; align-items:center; margin-top:8px;">
+                <input type="text" id="otp-input-${order.id}" maxlength="4" placeholder="Code OTP Client" style="width:130px; padding:6px 8px; border:1px solid #cbd5e1; border-radius:6px; font-size:0.85rem; font-weight:bold; letter-spacing:2px; text-align:center;">
+                <button style="background:#16a34a; color:#fff; border:none; padding:7px 14px; border-radius:6px; font-size:0.8rem; font-weight:700; cursor:pointer;" onclick="window.verifyAndDeliver('${order.id}')">
+                  ✔ Valider OTP & Encaisser 500 F
+                </button>
+              </div>
+            ` : '<span style="font-size:0.75rem; color:#16a34a; font-weight:700;">✔ Code OTP certifié • Course livrée & 500 F crédités</span>'}
           </div>
         `).join('');
       }
@@ -669,6 +684,26 @@ class GazExpressApp {
     }
   }
 
+  initBankSelector() {
+    const selectBank = document.getElementById('select-company-bank');
+    const displayIban = document.getElementById('display-company-iban');
+    if (!selectBank) return;
+
+    selectBank.innerHTML = this.connectedBanks.map(b => `
+      <option value="${b.id}" ${b.id === this.selectedBank.id ? 'selected' : ''}>
+        ${b.name} (${b.code})
+      </option>
+    `).join('');
+
+    selectBank.addEventListener('change', (e) => {
+      const bankId = e.target.value;
+      this.selectedBank = this.connectedBanks.find(b => b.id === bankId) || this.connectedBanks[0];
+      if (displayIban) {
+        displayIban.textContent = this.selectedBank.defaultIban;
+      }
+    });
+  }
+
   downloadBankTransferOrder() {
     let totalCA = 0;
     let totalDepots = 0;
@@ -683,6 +718,7 @@ class GazExpressApp {
     });
 
     const dateStr = new Date().toLocaleDateString('fr-FR');
+    const bank = this.selectedBank || this.connectedBanks[0];
     const orderDoc = `========================================================================
 ORDRE DE VIREMENT BANCAIRE AUTOMATIQUE & REVERSEMENT JOURNALIER
 RÉPUBLIQUE DU BÉNIN - INTERCONNEXION MOMO & SYSTÈME BANCAIRE
@@ -690,8 +726,9 @@ RÉPUBLIQUE DU BÉNIN - INTERCONNEXION MOMO & SYSTÈME BANCAIRE
 Date d'émission : ${dateStr}
 Émetteur       : Passerelle Nationale MoMo GazExpress (MTN, Moov, Celtiis)
 Bénéficiaire   : 18 EITHING SARL
-Compte Bancaire : Bank of Africa Bénin (BOA)
-RIB / IBAN      : BJ061 01001 002345678901 45
+Compte Bancaire : ${bank.name}
+Code Banque / BIC : ${bank.code}
+RIB / IBAN      : ${bank.defaultIban}
 Domaine Officiel: contact@18eithing.bj | Kétou, Bénin
 
 ------------------------------------------------------------------------
@@ -710,7 +747,7 @@ VIREMENT BANCAIRE CONFIRMÉ VERS LE COMPTE 18 EITHING SARL : ${totalCompany.toLo
     const blob = new Blob([orderDoc], { type: 'text/plain;charset=utf-8' });
     const link = document.createElement("a");
     link.href = URL.createObjectURL(blob);
-    link.download = `ordre_virement_boa_18eithing_${new Date().toISOString().slice(0, 10)}.txt`;
+    link.download = `ordre_virement_${bank.id.toLowerCase()}_18eithing_${new Date().toISOString().slice(0, 10)}.txt`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -749,13 +786,31 @@ window.addEventListener('DOMContentLoaded', () => {
   window.app.init();
 
   // Méthodes globales pour les interactions boutons
+  window.verifyAndDeliver = (orderId) => {
+    const order = window.app.orders.find(o => o.id === orderId);
+    if (!order) return;
+
+    const input = document.getElementById(`otp-input-${orderId}`);
+    const enteredOtp = input ? input.value : "";
+
+    const check = SecurityManager.verifyDeliveryOTP(order.secretOtp, enteredOtp);
+    if (!check.verified) {
+      alert(`❌ Erreur Sécurité Anti-Fraude : ${check.error}\n(Pour le test, le code secret du client est : ${order.secretOtp})`);
+      return;
+    }
+
+    order.status = "LIVRÉ";
+    window.app.renderDriverDashboard();
+    window.app.renderAdminDashboard();
+    alert(`✔ Code OTP validé avec succès ! Course #${orderId} clôturée et 500 FCFA débloqués pour le livreur.`);
+  };
+
   window.markOrderDelivered = (orderId) => {
     const order = window.app.orders.find(o => o.id === orderId);
     if (order) {
       order.status = "LIVRÉ";
       window.app.renderDriverDashboard();
       window.app.renderAdminDashboard();
-      alert(`Course #${orderId} marquée comme livrée avec succès !`);
     }
   };
 

@@ -251,9 +251,14 @@ export const MOMO_PROVIDERS = [
 ];
 
 export const CONNECTED_BANKS = [
-  { id: "BOA", name: "Bank of Africa (BOA Bénin)", code: "BOABJ" },
-  { id: "ECOBANK", name: "Ecobank Bénin", code: "ECOBJ" },
-  { id: "UBA", name: "United Bank for Africa (UBA Bénin)", code: "UBABJ" },
-  { id: "SGB", name: "Société Générale Bénin", code: "SGBBJ" },
-  { id: "NSIA", name: "NSIA Banque Bénin", code: "NSIABJ" }
+  { id: "BOA", name: "Bank of Africa (BOA Bénin)", code: "BOABJ", defaultIban: "BJ061 01001 002345678901 45" },
+  { id: "ECOBANK", name: "Ecobank Bénin", code: "ECOBJ", defaultIban: "BJ062 01002 003456789012 32" },
+  { id: "UBA", name: "United Bank for Africa (UBA Bénin)", code: "UBABJ", defaultIban: "BJ063 01003 004567890123 18" },
+  { id: "SGB", name: "Société Générale Bénin (SGB)", code: "SGBBJ", defaultIban: "BJ064 01004 005678901234 67" },
+  { id: "NSIA", name: "NSIA Banque Bénin", code: "NSIABJ", defaultIban: "BJ065 01005 006789012345 91" },
+  { id: "CORIS", name: "Coris Bank International Bénin", code: "CRIBJ", defaultIban: "BJ066 01006 007890123456 54" },
+  { id: "BIIC", name: "Banque Internationale pour l'Industrie et le Commerce (BIIC)", code: "BIICBJ", defaultIban: "BJ067 01007 008901234567 22" },
+  { id: "BSIC", name: "Banque Sahélo-Saharienne (BSIC Bénin)", code: "BSICBJ", defaultIban: "BJ068 01008 009012345678 88" },
+  { id: "BGFI", name: "BGFIBank Bénin", code: "BGFIBJ", defaultIban: "BJ069 01009 001122334455 10" },
+  { id: "ORABANK", name: "Orabank Bénin", code: "ORABJ", defaultIban: "BJ070 01010 002233445566 73" }
 ];
