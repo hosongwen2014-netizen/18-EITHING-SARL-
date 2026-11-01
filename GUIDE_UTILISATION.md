@@ -95,3 +95,36 @@ L'application comporte 4 espaces accessibles via les onglets en haut de l'écran
    - Cliquez sur **Générer l'Ordre de Virement vers la Banque Sélectionnée** pour télécharger instantanément l'ordre de virement officiel prêt à être transmis à votre banquier.
 4. **Point Journalier des Ventes :**
    - Cliquez sur **Exporter le Bilan (CSV/Excel)** pour obtenir le fichier comptable complet de la journée.
+
+---
+
+## 8. Utilisation sous Windows (Office 64-bit & Python)
+
+Si vous utilisez un ordinateur avec **Windows 64 bits et Microsoft Office (Word / Excel 64-bit)**, le projet propose une intégration directe sans aucune configuration complexe.
+
+### 8.1 Démarrage rapide en 1 clic
+Double-cliquez simplement sur le fichier :
+* `demarrer_gazexpress.bat`
+
+Ce script va automatiquement :
+1. Vérifier la présence de Python sur votre machine.
+2. Lancer le serveur local sur le port `8080`.
+3. Ouvrir votre navigateur internet sur `http://localhost:8080/index.html`.
+
+### 8.2 Génération automatique des Factures Word et Rapports Excel
+Double-cliquez sur :
+* `generer_documents_office.bat`
+
+Ou exécutez directement en invite de commandes :
+```cmd
+pip install -r requirements.txt
+python outils/generer_facture_word.py
+python outils/generer_rapport_excel.py
+```
+
+Vous obtiendrez instantanément :
+1. **`Facture_GazExpress_Modele.docx` :** Bon de livraison et facture Word aux couleurs de 18 EITHING SARL avec détails de la commande, calcul des frais kilométriques, coordonnées du client, du livreur et code secret OTP anti-fraude.
+2. **`Rapport_Comptable_GazExpress.xlsx` :** Classeur Excel 3 feuilles comprenant :
+   - Le journal des ventes et marges brutes de 18 EITHING SARL.
+   - La réconciliation financière des flux Mobile Money (MTN, Moov, Celtiis) et des 10 banques agréées.
+   - Le suivi des commissions nettes des livreurs (500 FCFA net / bouteille).
