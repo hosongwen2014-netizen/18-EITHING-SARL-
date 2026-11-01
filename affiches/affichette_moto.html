@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Affichette Moto Livreur - GazExpress Bénin</title>
+  <style>
+    @page {
+      size: A5 landscape;
+      margin: 0;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #0f172a;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    .sticker-container {
+      width: 800px;
+      height: 480px;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      border: 6px solid #f97316;
+      border-radius: 24px;
+      padding: 24px 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    }
+    .top-banner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid rgba(255,255,255,0.15);
+      padding-bottom: 12px;
+    }
+    .brand-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .logo-badge {
+      background: linear-gradient(135deg, #f97316, #ea580c);
+      font-size: 2rem;
+      padding: 6px 14px;
+      border-radius: 14px;
+    }
+    .brand-title h1 {
+      font-size: 2.2rem;
+      font-weight: 900;
+      letter-spacing: -1px;
+    }
+    .brand-title h1 span {
+      color: #f97316;
+    }
+    .service-tag {
+      background: #16a34a;
+      color: #fff;
+      font-weight: bold;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1.6fr 1.1fr;
+      gap: 20px;
+      align-items: center;
+      margin: 10px 0;
+    }
+    .main-message h2 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      line-height: 1.2;
+      color: #f8fafc;
+      margin-bottom: 8px;
+    }
+    .highlight-yellow {
+      color: #facc15;
+    }
+    .features-list {
+      list-style: none;
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: #cbd5e1;
+    }
+    .features-list li::before {
+      content: "✔ ";
+      color: #22c55e;
+      font-weight: bold;
+    }
+    .order-box {
+      background: rgba(255,255,255,0.06);
+      border: 2px dashed #f97316;
+      border-radius: 16px;
+      padding: 16px;
+      text-align: center;
+    }
+    .order-box h3 {
+      font-size: 1.1rem;
+      color: #fb923c;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+    .qr-placeholder {
+      background: #fff;
+      color: #000;
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 10px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 0.85rem;
+      text-align: center;
+      padding: 6px;
+      border: 3px solid #0f172a;
+    }
+    .phone-badge {
+      display: inline-block;
+      background: #25d366;
+      color: #fff;
+      font-weight: 900;
+      font-size: 1.2rem;
+      padding: 6px 16px;
+      border-radius: 30px;
+      text-decoration: none;
+      box-shadow: 0 4px 10px rgba(37,211,102,0.4);
+    }
+    .bottom-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(255,255,255,0.15);
+      padding-top: 10px;
+      font-size: 0.85rem;
+      color: #94a3b8;
+    }
+    .momo-tags {
+      display: flex;
+      gap: 10px;
+      font-weight: bold;
+    }
+    .momo-mtn { color: #facc15; }
+    .momo-moov { color: #38bdf8; }
+    .momo-celtiis { color: #f87171; }
+  </style>
+</head>
+<body>
+
+  <!-- AFFICHE MOTO / TRICYCLE (Format résistant impression vinyle / bâche) -->
+  <div class="sticker-container">
+
+    <div class="top-banner">
+      <div class="brand-title">
+        <div class="logo-badge">🔥</div>
+        <div>
+          <h1>Gaz<span>Express</span> BÉNIN</h1>
+          <p style="font-size: 0.75rem; color: #94a3b8;">Un service officiel propulsé par 18 EITHING SARL</p>
+        </div>
+      </div>
+      <div class="service-tag">LIVRAISON EXPRESS DOMICILE</div>
+    </div>
+
+    <div class="content-grid">
+      <div class="main-message">
+        <h2>À COURT DE GAZ ?<br><span class="highlight-yellow">NE VOUS DÉPLACEZ PLUS !</span></h2>
+        <ul class="features-list">
+          <li><strong>Toutes marques acceptées</strong> (Échange standard)</li>
+          <li>Recharge 6 kg & 12,5 kg aux <strong>prix officiels</strong></li>
+          <li>Livraison éclair : <strong>500 F les 500 m / 1 000 F le km</strong></li>
+          <li>Paiement 100% sécurisé par <strong>Mobile Money</strong></li>
+          <li><strong>Code secret de livraison (Anti-Fraude)</strong></li>
+        </ul>
+      </div>
+
+      <div class="order-box">
+        <h3>COMMANDEZ EN 1 CLIC</h3>
+        <div class="qr-placeholder">
+          SCANNEZ POUR COMMANDER
+        </div>
+        <div style="font-size: 0.78rem; color: #cbd5e1; margin-bottom: 6px;">Ou WhatsApp / Appel direct :</div>
+        <div class="phone-badge">📞 +229 44 66 95 87</div>
+      </div>
+    </div>
+
+    <div class="bottom-footer">
+      <div>📍 Points de vente agréés & Livreurs partout à Cotonou, Calavi, Porto-Novo, Kétou</div>
+      <div class="momo-tags">
+        <span class="momo-mtn">● MTN MoMo</span>
+        <span class="momo-moov">● Moov Money</span>
+        <span class="momo-celtiis">● Celtiis Cash</span>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
