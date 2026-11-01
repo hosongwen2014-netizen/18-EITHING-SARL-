@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GazExpress Bénin - Pitch Deck Interactif (Présentation Officielle)</title>
+  <style>
+    :root {
+      --primary: #f97316;
+      --primary-dark: #c2410c;
+      --secondary: #10b981;
+      --bg-dark: #0f172a;
+      --card-bg: #1e293b;
+      --text-light: #f8fafc;
+      --text-muted: #94a3b8;
+      --border-color: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-light);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    header {
+      background: rgba(15, 23, 42, 0.95);
+      border-bottom: 1px solid var(--border-color);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .logo-icon {
+      font-size: 1.8rem;
+    }
+    .brand-name {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #fff;
+    }
+    .brand-name span { color: var(--primary); }
+    .slide-counter {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--primary);
+      background: rgba(249, 115, 22, 0.15);
+      padding: 0.35rem 0.85rem;
+      border-radius: 9999px;
+      border: 1px solid rgba(249, 115, 22, 0.3);
+    }
+    .deck-container {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .slide {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 1.25rem;
+      padding: 3rem;
+      width: 100%;
+      min-height: 520px;
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+      animation: fadeIn 0.3s ease-out;
+    }
+    .slide.active {
+      display: flex;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .slide-header {
+      margin-bottom: 1.5rem;
+    }
+    .slide-tag {
+      display: inline-block;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+    .slide-title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      line-height: 1.2;
+      color: #fff;
+    }
+    .slide-content {
+      flex: 1;
+      font-size: 1.15rem;
+      line-height: 1.6;
+      color: #cbd5e1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+      margin-top: 1rem;
+    }
+    .feature-card {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--border-color);
+      border-radius: 0.75rem;
+      padding: 1.25rem;
+    }
+    .feature-card h4 {
+      color: var(--primary);
+      font-size: 1.15rem;
+      margin-bottom: 0.4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .feature-card p {
+      font-size: 0.95rem;
+      color: #94a3b8;
+    }
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .stat-box {
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid var(--border-color);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      text-align: center;
+    }
+    .stat-number {
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: var(--secondary);
+      margin-bottom: 0.25rem;
+    }
+    .stat-label {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .slide-footer {
+      border-top: 1px solid var(--border-color);
+      padding-top: 1.25rem;
+      margin-top: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+    .controls {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+      background: rgba(15, 23, 42, 0.9);
+      border-top: 1px solid var(--border-color);
+    }
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .btn-prev {
+      background: var(--card-bg);
+      color: #fff;
+      border: 1px solid var(--border-color);
+    }
+    .btn-prev:hover { background: #334155; }
+    .btn-next {
+      background: var(--primary);
+      color: #fff;
+    }
+    .btn-next:hover { background: var(--primary-dark); }
+    .table-container {
+      margin-top: 1rem;
+      overflow-x: auto;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+    th, td {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+    th {
+      color: var(--primary);
+      font-size: 0.95rem;
+      text-transform: uppercase;
+    }
+    td {
+      font-size: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo-container">
+      <div class="logo-icon">🔥</div>
+      <div class="brand-name">GazExpress <span>BÉNIN</span></div>
+    </div>
+    <div id="slideCounter" class="slide-counter">Diapositive 1 / 12</div>
+  </header>
+
+  <main class="deck-container">
+    <!-- SLIDE 1 -->
+    <article class="slide active" id="slide-1">
+      <div class="slide-header">
+        <span class="slide-tag">Pitch Stratégique 2025</span>
+        <h1 class="slide-title">GazExpress Bénin : L'Énergie Domestique à Portée de Clic</h1>
+      </div>
+      <div class="slide-content">
+        <p style="font-size: 1.35rem; color: #f1f5f9; margin-bottom: 1.5rem;">
+          La première plateforme béninoise de livraison express et sécurisée de bouteilles de gaz domestique au pas de porte en moins de 30 minutes.
+        </p>
+        <div class="feature-grid">
+          <div class="feature-card">
+            <h4>🏢 Porteur du Projet</h4>
+            <p><strong>18 EITHING SARL</strong> (Kétou, République du Bénin), société spécialisée en négoce, conseil stratégique et logistique de proximité.</p>
+          </div>
+          <div class="feature-card">
+            <h4>👥 Direction & Gouvernance</h4>
+            <p><strong>M. Hubert C. TOKPANOU</strong> (Directeur Général)<br><strong>M. Pedro S. KPONON</strong> (Gérant des Opérations)</p>
+          </div>
+          <div class="feature-card">
+            <h4>🌐 Présence Officielle</h4>
+            <p>Plateforme : <strong>18eithing.bj</strong><br>Contact : <strong>contact@18eithing.bj</strong> | +229 44 66 95 87</p>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>18 EITHING SARL • Kétou & Réseau Bénin</span>
+        <span>Confidentiel & Stratégique</span>
+      </div>
+    </article>
+
+    <!-- SLIDE 2 -->
+    <article class="slide" id="slide-2">
+      <div class="slide-header">
+        <span class="slide-tag">Le Constat de Marché</span>
+        <h2 class="slide-title">La Rupture de Gaz : Une Épreuve Quotidienne Pour les Foyers</h2>
+      </div>
+      <div class="slide-content">
+        <div class="feature-grid">
+          <div class="feature-card">
+            <h4>⚠️ Pénibilité & Dangerosité</h4>
+            <p>Une bouteille B12 pleine pèse plus de 26 kg. Son transport sur moto deux-roues ("Zémidjan") génère d'importants risques d'accidents corporels et de circulation.</p>
+          </div>
+          <div class="feature-card">
+            <h4>⏳ Perte de Temps Imprévue</h4>
+            <p>La panne survient quasi-systématiquement en pleine préparation de repas. L'usager perd en moyenne 45 à 90 minutes pour trouver un dépôt approvisionné.</p>
+          </div>
+          <div class="feature-card">
+            <h4>💵 Tracas de Monnaie & Confusion</h4>
+            <p>Rareté de la monnaie en espèces lors des transactions et doutes récurrents sur l'acceptation de la marque de consigne possédée par le client.</p>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>GazExpress Bénin • Analyse des Pain Points</span>
+        <span>Slide 2 / 12</span>
+      </div>
+    </article>
+
+    <!-- SLIDE 3 -->
+    <article class="slide" id="slide-3">
+      <div class="slide-header">
+        <span class="slide-tag">La Proposition de Valeur</span>
+        <h2 class="slide-title">La Solution GazExpress : Commander sans Sortir du Salon</h2>
+      </div>
+      <div class="slide-content">
+        <div class="feature-grid">
+          <div class="feature-card">
+            <h4>📱 Application Web PWA Immédiate</h4>
+            <p>Accessible en 1 clic sans téléchargement obligatoire depuis Android, iPhone et ordinateur. Légère, rapide, optimisée pour le réseau béninois.</p>
+          </div>
+          <div class="feature-card">
+            <h4>⚡ Livraison en Moins de 30 Minutes</h4>
+            <p>Réseau de conducteurs formés et dispatching intelligent vers le dépôt partenaire le plus proche du lieu de livraison.</p>
+          </div>
+          <div class="feature-card">
+            <h4>🛠️ Branchement & Vérification Gratuits</h4>
+            <p>Le livreur assure l'installation sécurisée de la bouteille, le contrôle du joint et le test d'étanchéité à la demande du foyer.</p>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>GazExpress Bénin • Proposition de Valeur</span>
+        <span>Slide 3 / 12</span>
+      </div>
+    </article>
+
+    <!-- SLIDE 4 -->
+    <article class="slide" id="slide-4">
+      <div class="slide-header">
+        <span class="slide-tag">Conformité Légale</span>
+        <h2 class="slide-title">Interchangeabilité Totale des Marques au Bénin</h2>
+      </div>
+      <div class="slide-content">
+        <p style="margin-bottom: 1.25rem;">
+          Conformément aux décrets officiels du Ministère de l'Industrie et du Commerce, GazExpress applique l'interchangeabilité intégrale de toutes les bouteilles de gaz agréées au Bénin :
+        </p>
+        <div class="feature-grid">
+          <div class="feature-card">
+            <h4>🔵 Oryx Energies Bénin</h4>
+            <p>Formats B6 (6 kg) et B12 (12.5 kg). Échange standard immédiat sans pénalité de consigne.</p>
+          </div>
+          <div class="feature-card">
+            <h4>🟢 Bénin Gaz</h4>
+            <p>Compatibilité totale des détendeurs et robinets officiels sur l'ensemble de notre réseau.</p>
+          </div>
+          <div class="feature-card">
+            <h4>🔴 Puma Energy Bénin</h4>
+            <p>Acceptation mutuelle des bouteilles homologuées de la marque en livraison continue.</p>
+          </div>
+          <div class="feature-card">
+            <h4>🟡 ProGaz Bénin</h4>
+            <p>Recharges certifiées scellées et contrôlées livrées directement à votre domicile.</p>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>GazExpress Bénin • Conformité Réglementaire</span>
+        <span>Slide 4 / 12</span>
+      </div>
+    </article>
+
+    <!-- SLIDE 5 -->
+    <article class="slide" id="slide-5">
+      <div class="slide-header">
+        <span class="slide-tag">Modèle Économique</span>
+        <h2 class="slide-title">Tarification Transparente au Palier de 500 Mètres</h2>
+      </div>
+      <div class="slide-content">
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Format Bouteille</th>
+                <th>Prix Recharge Officielle</th>
+                <th>Palier de Distance</th>
+                <th>Tarif Livraison</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Bouteille 6 kg (B6)</strong></td>
+                <td>4 770 FCFA</td>
+                <td>Par tranche de 500 mètres</td>
+                <td>500 F (≤500m) / 1 000 F (≤1km) / 1 500 F (≤1.5km)</td>
+              </tr>
+              <tr>
+                <td><strong>Bouteille 12.5 kg (B12)</strong></td>
+                <td>9 935 FCFA</td>
+                <td>Par tranche de 500 mètres</td>
+                <td>700 F (≤500m) / 1 400 F (≤1km) / 2 100 F (≤1.5km)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div style="margin-top: 1.25rem; font-size: 0.95rem; color: #94a3b8;">
+          * Marges récurrentes dégagées sur les paliers de distance, les accords grossistes volumiques et les abonnements maquis/restauration.
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>GazExpress Bénin • Modèle Économique</span>
+        <span>Slide 5 / 12</span>
+      </div>
+    </article>
+
+    <!-- SLIDE 6 -->
+    <article class="slide" id="slide-6">
+      <div class="slide-header">
+        <span class="slide-tag">Impact Social</span>
+        <h2 class="slide-title">Un Modèle Rémunérateur : 500 FCFA Net Garanti par Course</h2>
+      </div>
+      <div class="slide-content">
+        <div class="stats-row">
+          <div class="stat-box">
+            <div class="stat-number">500 F</div>
+            <div class="stat-label">Rémunération Nette / Course</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-number">6 000 F</div>
+            <div class="stat-label">Gain Quotidien Moyen (12 courses)</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-number">150 000 F+</div>
+            <div class="stat-label">Revenu Mensuel Supérieur au SMIG</div>
+          </div>
+        </div>
+        <p style="margin-top: 1.5rem;">
+          GazExpress crée des emplois décents et sécurisés pour les jeunes conducteurs béninois, avec équipement moto certifié et assurance responsabilité.
+        </p>
+      </div>
+      <div class="slide-footer">
+        <span>GazExpress Bénin • Modèle Social & Rémunération</span>
+        <span>Slide 6 / 12</span>
+      </div>
+    </article>
+
+    <!-- SLIDE 7 -->
+    <article class="slide" id="slide-7">
+      <div class="slide-header">
+        <span class="slide-tag">Technologies & Sécurité</span>
+        <h2 class="slide-title">Validation Sécurisée par Code OTP & Audit HMAC</h2>
+      </div>
+      <div class="slide-content">
+        <div class="feature-grid">
+          <div class="feature-card">
+            <h4>🔐 Code Secret OTP (4 Chiffres)</h4>
+            <p>Généré sur le smartphone du client. La course n'est clôturée et payée au livreur que lorsque celui-ci entre le code fourni par le client devant sa porte.</p>
+          </div>
+          <div class="feature-card">
+            <h4>🛡️ Empreinte Cryptographique HMAC</h4>
+            <p>Toutes les commandes sont scellées cryptographiquement pour interdire toute modification frauduleuse de montant ou d'adresse.</p>
+          </div>
+          <div class="feature-card">
+            <h4>📜 Journal d'Audit Infalsifiable</h4>
+            <p>Historique horodaté au millième de seconde de chaque action, assurant une transparence absolue en cas de contestation.</p>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>GazExpress Bénin • Sécurité Digitale</span>
+        <span>Slide 7 / 12</span>
+      </div>
+    </article>
+
+    <!-- SLIDE 8 -->
+    <article class="slide" id="slide-8">
+      <div class="slide-header">
+        <span class="slide-tag">Fintech Béninoise</span>
+        <h2 class="slide-title">Paiement Mobile Money & Rapprochement Bancaire</h2>
+      </div>
+      <div class="slide-content">
+        <div class="feature-grid">
+          <div class="feature-card">
+            <h4>📲 Push USSD Mobile Money</h4>
+            <p>Paiement instantané sur MTN (*880#), Moov (*155#) et Celtiis Cash (*889#). Déclenchement direct de l'invite de validation sur le mobile du client.</p>
+          </div>
+          <div class="feature-card">
+            <h4>🏦 10 Banques Partenaires Béninoises</h4>
+            <p>BOA Bénin, Ecobank, UBA, Société Générale Bénin, NSIA, Coris Bank, BIIC, BSIC, BGFI Bank, Orabank pour la réconciliation quotidienne des flux marchands.</p>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>GazExpress Bénin • Fintech & Opérations Bancaires</span>
+        <span>Slide 8 / 12</span>
+      </div>
+    </article>
+
+    <!-- SLIDE 9 -->
+    <article class="slide" id="slide-9">
+      <div class="slide-header">
+        <span class="slide-tag">Marché & Opportunité</span>
+        <h2 class="slide-title">Un Marché en Pleine Explosion au Bénin</h2>
+      </div>
+      <div class="slide-content">
+        <div class="stats-row">
+          <div class="stat-box">
+            <div class="stat-number">3,5 M+</div>
+            <div class="stat-label">Habitants Cibles en Milieu Urbain</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-number">25 Jours</div>
+            <div class="stat-label">Fréquence Moyenne de Réachat</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-number">+18 %</div>
+            <div class="stat-label">Croissance Annuelle Consommation GPL</div>
+          </div>
+        </div>
+        <p style="margin-top: 1.5rem;">
+          L'urbanisation accélérée du Grand Nokoué et les incitations écologiques gouvernementales créent un appel d'air massif pour la livraison de GPL à domicile.
+        </p>
+      </div>
+      <div class="slide-footer">
+        <span>GazExpress Bénin • Étude de Marché</span>
+        <span>Slide 9 / 12</span>
+      </div>
+    </article>
+
+    <!-- SLIDE 10 -->
+    <article class="slide" id="slide-10">
+      <div class="slide-header">
+        <span class="slide-tag">Plan Opérationnel</span>
+        <h2 class="slide-title">Stratégie Go-to-Market & Déploiement Territorial</h2>
+      </div>
+      <div class="slide-content">
+        <div class="feature-grid">
+          <div class="feature-card">
+            <h4>📍 Phase 1 : Kétou & Calavi / Cotonou</h4>
+            <p>Lancement immédiat sur le fief de 18 EITHING SARL à Kétou, couplé aux zones résidentielles prioritaires de Calavi et Cotonou (20 dépôts pilotes).</p>
+          </div>
+          <div class="feature-card">
+            <h4>🚀 Phase 2 : Grand Nokoué</h4>
+            <p>Extension à Porto-Novo, Sèmè-Kpodji et Ouidah. Marketing terrain avec stickers moto et campagnes géolocalisées sur les réseaux sociaux.</p>
+          </div>
+          <div class="feature-card">
+            <h4>🌟 Phase 3 : Réseau National</h4>
+            <p>Implantation à Parakou, Bohicon et Natitingou avec offre B2B dédiée aux restaurants, cantines et maquis.</p>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>GazExpress Bénin • Feuille de Route</span>
+        <span>Slide 10 / 12</span>
+      </div>
+    </article>
+
+    <!-- SLIDE 11 -->
+    <article class="slide" id="slide-11">
+      <div class="slide-header">
+        <span class="slide-tag">Performances Financières</span>
+        <h2 class="slide-title">Projections Financières sur 3 Ans (2025 - 2027)</h2>
+      </div>
+      <div class="slide-content">
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Indicateur Stratégique</th>
+                <th>Année 1 (2025)</th>
+                <th>Année 2 (2026)</th>
+                <th>Année 3 (2027)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Bouteilles livrées / jour</td>
+                <td>150 bouteilles</td>
+                <td>650 bouteilles</td>
+                <td>2 000 bouteilles</td>
+              </tr>
+              <tr>
+                <td>Volume d'affaires brut (GMV)</td>
+                <td>~450 Millions FCFA</td>
+                <td>~1,95 Milliard FCFA</td>
+                <td>~6,00 Milliards FCFA</td>
+              </tr>
+              <tr>
+                <td>Chiffre d'Affaires Net Plateforme</td>
+                <td><strong>41,2 Millions FCFA</strong></td>
+                <td><strong>185,5 Millions FCFA</strong></td>
+                <td><strong>598,0 Millions FCFA</strong></td>
+              </tr>
+              <tr>
+                <td>EBITDA (Marge nette opérationnelle)</td>
+                <td><strong>12,4 Millions FCFA (30%)</strong></td>
+                <td><strong>68,6 Millions FCFA (37%)</strong></td>
+                <td><strong>251,1 Millions FCFA (42%)</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>GazExpress Bénin • Modèle Financier</span>
+        <span>Slide 11 / 12</span>
+      </div>
+    </article>
+
+    <!-- SLIDE 12 -->
+    <article class="slide" id="slide-12">
+      <div class="slide-header">
+        <span class="slide-tag">Opportunité d'Investissement & Partenariats</span>
+        <h2 class="slide-title">Ensemble, Modernisons l'Énergie Domestique au Bénin</h2>
+      </div>
+      <div class="slide-content">
+        <div class="feature-grid">
+          <div class="feature-card">
+            <h4>🤝 Partenariats Marketeurs & Grossistes</h4>
+            <p>Accords de volumes préférentiels avec Oryx, Bénin Gaz, Puma et ProGaz pour fluidifier la distribution au dernier kilomètre.</p>
+          </div>
+          <div class="feature-card">
+            <h4>💳 Partenariats Bancaires & Micro-Crédit</h4>
+            <p>Financement d'équipements de sécurité et de caissons moto certifiés pour notre flotte de conducteurs partenaires.</p>
+          </div>
+          <div class="feature-card">
+            <h4>📞 Contact Direction</h4>
+            <p><strong>18 EITHING SARL</strong> — Kétou, Bénin<br>Email : <strong>contact@18eithing.bj</strong><br>Téléphone / WhatsApp : <strong>+229 44 66 95 87</strong><br>Web : <strong>18eithing.bj</strong></p>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>GazExpress Bénin • 18 EITHING SARL</span>
+        <span>Slide 12 / 12</span>
+      </div>
+    </article>
+  </main>
+
+  <footer class="controls">
+    <button class="btn btn-prev" id="prevBtn" onclick="prevSlide()">◀ Précédent</button>
+    <button class="btn btn-next" id="nextBtn" onclick="nextSlide()">Suivant ▶</button>
+  </footer>
+
+  <script>
+    let currentSlide = 1;
+    const totalSlides = 12;
+
+    function updateSlide() {
+      for (let i = 1; i <= totalSlides; i++) {
+        const slide = document.getElementById(`slide-${i}`);
+        if (slide) {
+          slide.classList.remove('active');
+        }
+      }
+      const activeSlide = document.getElementById(`slide-${currentSlide}`);
+      if (activeSlide) {
+        activeSlide.classList.add('active');
+      }
+      document.getElementById('slideCounter').innerText = `Diapositive ${currentSlide} / ${totalSlides}`;
+      document.getElementById('prevBtn').disabled = (currentSlide === 1);
+      document.getElementById('nextBtn').innerText = (currentSlide === totalSlides) ? 'Terminer 🏁' : 'Suivant ▶';
+    }
+
+    function nextSlide() {
+      if (currentSlide < totalSlides) {
+        currentSlide++;
+        updateSlide();
+      }
+    }
+
+    function prevSlide() {
+      if (currentSlide > 1) {
+        currentSlide--;
+        updateSlide();
+      }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ') {
+        nextSlide();
+      } else if (e.key === 'ArrowLeft') {
+        prevSlide();
+      }
+    });
+
+    updateSlide();
+  </script>
+</body>
+</html>

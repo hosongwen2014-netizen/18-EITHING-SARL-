@@ -1,0 +1,21 @@
+{
+  "name": "GazExpress Bénin",
+  "short_name": "GazExpress",
+  "description": "Plateforme nationale de commande de gaz domestique, géolocalisation de points de vente et livraison express au Bénin",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#0284c7",
+  "icons": [
+    {
+      "src": "assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

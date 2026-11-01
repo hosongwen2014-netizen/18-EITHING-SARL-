@@ -3,148 +3,514 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>18 EITHING SARL</title>
+  <title>GazExpress Bénin - Commande, Géolocalisation & Livraison de Gaz Domestique</title>
   
-  <!-- TOUS LES STYLES (CSS) -->
-  <style>
-    /* Reset & Styles généraux */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f8f9fa;
-      color: #333;
-      line-height: 1.6;
-      padding: 20px;
-    }
+  <meta name="description" content="Plateforme de géolocalisation des points de vente de gaz domestique, commande immédiate et livraison express à domicile par Mobile Money au Bénin.">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0284c7">
 
-    header {
-      text-align: center;
-      padding: 40px 20px;
-      background: linear-gradient(135deg, #1e293b, #0f172a);
-      color: #ffffff;
-      border-radius: 16px;
-      margin-bottom: 30px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    }
-
-    header h1 {
-      font-size: 2.2rem;
-      margin-bottom: 10px;
-    }
-
-    /* Grille et Cartes Interactives */
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-    }
-
-    .card {
-      background: #ffffff;
-      border-radius: 12px;
-      padding: 24px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      border: 1px solid #eef2f5;
-    }
-
-    .card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
-    }
-
-    .card h3 {
-      margin-bottom: 12px;
-      color: #0f172a;
-    }
-
-    /* Animation au défilement (Scroll) */
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-    }
-
-    .reveal.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Bouton WhatsApp Flottant */
-    .whatsapp-float {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: #25d366;
-      color: #ffffff;
-      padding: 12px 24px;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: bold;
-      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-      z-index: 1000;
-      transition: transform 0.2s ease;
-    }
-
-    .whatsapp-float:hover {
-      transform: scale(1.05);
-    }
-  </style>
+  <!-- Leaflet CSS pour la cartographie OpenStreetMap -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <!-- Styles de l'application -->
+  <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
 
-  <!-- En-tête du site -->
-  <header class="reveal">
-    <h1>18 EITHING SARL</h1>
-    <p>Conseil, Logistique & Commerce</p>
+  <!-- Entête Principale & Sélecteur d'espaces -->
+  <header class="app-header">
+    <div class="header-container">
+      <div class="brand">
+        <div class="brand-logo-icon">🔥</div>
+        <div class="brand-text">
+          <h1>Gaz<span>Express</span> <span style="font-size: 0.75rem; background: #ea580c; color: #fff; padding: 2px 6px; border-radius: 4px; font-weight: 700; margin-left: 6px;">BÉNIN</span></h1>
+          <div class="brand-subtitle">18 EITHING SARL • Tous gaz domestiques • Prix officiels</div>
+        </div>
+      </div>
+
+      <nav class="role-tabs" aria-label="Espaces utilisateurs">
+        <button class="role-tab-btn active" data-tab="client" id="tab-btn-client">
+          <span>🛒</span> Espace Client
+        </button>
+        <button class="role-tab-btn" data-tab="livreur" id="tab-btn-livreur">
+          <span>🛵</span> Espace Livreur <span class="badge" id="driver-status-badge" style="background:#22c55e;color:#fff;font-size:0.65rem;padding:2px 6px;border-radius:10px;">En ligne</span>
+        </button>
+        <button class="role-tab-btn" data-tab="depot" id="tab-btn-depot">
+          <span>🏬</span> Points de Vente & Dépôts
+        </button>
+        <button class="role-tab-btn" data-tab="admin" id="tab-btn-admin">
+          <span>📊</span> Direction & Marges
+        </button>
+      </nav>
+    </div>
   </header>
 
-  <!-- Contenu Principal / Services -->
-  <main class="container">
-    <div class="card reveal">
-      <h3>Vente de bric-à-brac</h3>
-      <p>Découvrez notre sélection variée d'articles, équipements et opportunités commerciales.</p>
-    </div>
+  <!-- Zone Principale Dynamique -->
+  <main class="main-wrapper">
 
-    <div class="card reveal">
-      <h3>Conseil & Stratégie</h3>
-      <p>Accompagnement professionnel et solutions adaptées à vos besoins organisationnels.</p>
-    </div>
+    <!-- ==================== 1. ESPACE CLIENT ==================== -->
+    <section id="view-client" class="view-panel active">
+      <div class="benin-pill">
+        <span>🇧🇯</span> Conforme à la réforme gouvernementale : interchangeabilité totale des bouteilles de même format (6kg & 12,5kg).
+      </div>
 
-    <div class="card reveal">
-      <h3>Logistique & Services</h3>
-      <p>Gestion efficace et coordination globale pour l'acheminement et la mise à disposition de vos biens.</p>
-    </div>
+      <div class="client-layout">
+        <!-- Colonne Gauche : Sélection du Produit & Commande -->
+        <div class="card-box">
+          <div class="card-box-header">
+            <h2><span>📦</span> 1. Choix du Gaz & Format</h2>
+            <span style="font-size: 0.8rem; color: #64748b;">Étape 1/3</span>
+          </div>
+
+          <!-- Type d'opération : Recharge vs Achat Complet -->
+          <div class="segmented-control" role="group" aria-label="Type d'opération">
+            <button class="segment-btn active" id="btn-op-recharge" data-op="recharge">🔄 Échange / Recharge</button>
+            <button class="segment-btn" id="btn-op-complet" data-op="complet">✨ Premier Achat Complet</button>
+          </div>
+
+          <!-- Grille des produits -->
+          <div class="products-grid" id="products-selection-container">
+            <!-- Injecté par JavaScript -->
+          </div>
+
+          <!-- Point de vente le plus proche & Devis distance -->
+          <div class="nearest-box" id="nearest-depot-card">
+            <div class="nearest-box-title">
+              <span id="nearest-depot-name">Recherche du point de vente le plus proche...</span>
+              <span class="dist-tag" id="nearest-depot-dist">Calcul GPS...</span>
+            </div>
+            <p id="nearest-depot-address" style="color: #64748b; font-size: 0.8rem; margin-top: 4px;">Localisation de votre domicile en cours</p>
+          </div>
+
+          <!-- Devis transparent -->
+          <div class="quote-summary">
+            <div class="quote-row">
+              <span>Bouteille sélectionnée</span>
+              <span id="quote-gas-name" style="font-weight: 600;">6 kg - Recharge</span>
+            </div>
+            <div class="quote-row">
+              <span>Prix officiel de la bouteille</span>
+              <span id="quote-gas-price" style="font-weight: 600;">4 950 FCFA</span>
+            </div>
+            <div class="quote-row">
+              <span>Frais de livraison (<span id="quote-dist-label">--</span>)</span>
+              <span id="quote-delivery-fee" style="font-weight: 600; color: #ea580c;">-- FCFA</span>
+            </div>
+            <div class="quote-row" style="font-size: 0.76rem; color: #94a3b8;">
+              <span id="quote-rate-explanation">Tarif officiel : 500 F les 500 m / 1 000 F le km</span>
+            </div>
+            <div class="quote-row total">
+              <span>TOTAL À PAYER</span>
+              <span class="price-highlight" id="quote-total-price">-- FCFA</span>
+            </div>
+          </div>
+
+          <!-- Formulaire coordonnées & Paiement MoMo -->
+          <div class="card-box-header" style="margin-top: 20px;">
+            <h2><span>📱</span> 2. Règlement Mobile Money Bénin</h2>
+            <span style="font-size: 0.8rem; color: #16a34a; font-weight: 600;">Sécurisé</span>
+          </div>
+
+          <div class="input-group">
+            <label for="client-name">Votre Nom & Prénoms</label>
+            <input type="text" id="client-name" class="input-control" placeholder="Ex: Pedro HOUNDEGNON" value=" Pedro HOUNDEGNON">
+          </div>
+
+          <div class="input-group">
+            <label for="client-address">Précision de votre adresse / Repère</label>
+            <input type="text" id="client-address" class="input-control" placeholder="Ex: Maison à côté de la pharmacie Akpakpa" value="Face Église Sacré-Cœur, Maison Blanche">
+          </div>
+
+          <div class="input-group">
+            <label>Sélectionnez votre réseau de paiement MoMo</label>
+            <div class="momo-selector">
+              <div class="momo-opt active" data-provider="mtn_momo">
+                <span class="momo-badge" style="color:#d97706;">MTN MoMo</span>
+                <span style="font-size: 0.68rem; color: #64748b;">*880#</span>
+              </div>
+              <div class="momo-opt" data-provider="moov_money">
+                <span class="momo-badge" style="color:#0284c7;">Moov Money</span>
+                <span style="font-size: 0.68rem; color: #64748b;">*155#</span>
+              </div>
+              <div class="momo-opt" data-provider="celtiis_cash">
+                <span class="momo-badge" style="color:#dc2626;">Celtiis Cash</span>
+                <span style="font-size: 0.68rem; color: #64748b;">*888#</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label for="client-phone">Numéro de téléphone de débit MoMo</label>
+            <input type="tel" id="client-phone" class="input-control" placeholder="Ex: 97 00 00 00" value="97112233">
+          </div>
+
+          <button id="btn-submit-order" class="btn-order-pay">
+            <span>⚡</span> Valider et Payer avec MoMo (<span id="btn-pay-amount">-- FCFA</span>)
+          </button>
+        </div>
+
+        <!-- Colonne Droite : Carte Interactive & Géolocalisation -->
+        <div class="card-box">
+          <div class="card-box-header">
+            <h2><span>🗺️</span> Géolocalisation en Temps Réel</h2>
+            <button class="btn-locate" id="btn-refresh-location">
+              <span>🎯</span> Me localiser
+            </button>
+          </div>
+
+          <div class="map-toolbar">
+            <span style="font-size: 0.78rem; color: #64748b; display: flex; align-items: center; gap: 4px;">
+              🔵 Votre position (Déplaçable) &nbsp;|&nbsp; 🔴 Points de vente agréés &nbsp;|&nbsp; 🛵 Livreurs
+            </span>
+          </div>
+
+          <div id="map-client" class="map-container"></div>
+
+          <div style="margin-top: 14px; font-size: 0.8rem; color: #475569; background: #f8fafc; padding: 10px; border-radius: 8px;">
+            💡 <strong>Astuce :</strong> Vous pouvez déplacer le repère bleu sur la carte pour simuler une autre position ou ajuster précisément l'entrée de votre concession.
+          </div>
+
+          <!-- Suivi de commande en direct -->
+          <div id="live-order-tracker" style="display: none; margin-top: 16px; border: 2px solid #22c55e; background: #f0fdf4; border-radius: 12px; padding: 16px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <strong style="color: #166534; font-size: 1rem;">📦 Commande en cours de livraison</strong>
+              <span id="tracker-order-id" class="tag-status completed">#CMD-1082</span>
+            </div>
+            <p id="tracker-status-text" style="font-size: 0.85rem; color: #15803d; font-weight: 600;">Livreur assigné : Bio Chabi en route vers le dépôt.</p>
+            <div style="font-size: 0.8rem; color: #374151; margin-top: 6px;">
+              <div>Point de vente : <span id="tracker-depot-name">Dépôt Central Akpakpa</span></div>
+              <div>Distance estimée : <span id="tracker-distance">600 m</span> | Arrivée prévue : ~10-15 min</div>
+            </div>
+            <div style="margin-top: 10px; background: #dcfce7; border: 1px dashed #16a34a; padding: 10px; border-radius: 8px; text-align: center;">
+              <span style="font-size: 0.75rem; color: #166534; font-weight: bold; text-transform: uppercase;">🔒 Code Secret de Livraison Client (Anti-Fraude) :</span>
+              <div id="tracker-otp-code" style="font-size: 1.6rem; font-weight: 900; letter-spacing: 6px; color: #15803d; margin-top: 2px;">----</div>
+              <small style="color: #15803d; font-size: 0.72rem;">Communiquez ce code au livreur UNIQUEMENT après réception physique de votre bouteille.</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 2. ESPACE LIVREUR ==================== -->
+    <section id="view-livreur" class="view-panel">
+      <div class="benin-pill">
+        <span>🛵</span> Espace Professionnel Livreur GazExpress • Rémunération garantie : 500 FCFA fixe net par course
+      </div>
+
+      <div class="driver-stats-grid">
+        <div class="stat-card">
+          <div class="stat-label">Solde Portefeuille Livreur</div>
+          <div class="stat-val" style="color: #16a34a;" id="driver-wallet-val">21 000 FCFA</div>
+          <button id="btn-driver-payout" style="margin-top: 6px; padding: 6px 10px; font-size: 0.75rem; background: #0284c7; color: #fff; border: none; border-radius: 6px; cursor: pointer;">Demander virement MoMo</button>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Courses Effectuées</div>
+          <div class="stat-val" id="driver-trips-count">42</div>
+          <span style="font-size: 0.72rem; color: #64748b;">42 × 500 F = 21 000 F</span>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Statut Actuel</div>
+          <div class="stat-val" style="font-size: 1.2rem; margin-top: 6px;">
+            <select id="select-driver-status" class="input-control" style="width: auto; padding: 4px 8px; font-weight: 700;">
+              <option value="online">🟢 En service (Disponible)</option>
+              <option value="busy">🟡 En cours de livraison</option>
+              <option value="offline">⚪ Hors service</option>
+            </select>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Livreur Connecté</div>
+          <div class="stat-val" style="font-size: 1.1rem; color: #0f172a;" id="driver-active-name">Bio Chabi</div>
+          <div style="font-size: 0.72rem; color: #64748b;">Tricycle Cargo • AB-4021-RB</div>
+        </div>
+      </div>
+
+      <div class="client-layout">
+        <div class="card-box">
+          <div class="card-box-header">
+            <h2><span>📋</span> Courses Disponibles & Assignées</h2>
+            <span class="tag-status completed">Système d'attribution au plus proche</span>
+          </div>
+
+          <div id="driver-orders-list">
+            <!-- Liste dynamique des courses -->
+          </div>
+        </div>
+
+        <div class="card-box">
+          <div class="card-box-header">
+            <h2><span>🧭</span> Navigation & Position Livreur</h2>
+            <button class="btn-locate" id="btn-driver-update-gps">Mettre à jour mon GPS</button>
+          </div>
+          <div id="map-driver" class="map-container"></div>
+          <div style="margin-top: 12px; font-size: 0.8rem; color: #64748b;">
+            Votre position est diffusée en temps réel au client et à la direction pour le calcul du livreur le plus proche.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 3. ESPACE POINTS DE VENTE / DÉPÔTS ==================== -->
+    <section id="view-depot" class="view-panel">
+      <div class="benin-pill">
+        <span>🏬</span> Gestion du Réseau National de Dépôts et Stations Gaz Agréées
+      </div>
+
+      <!-- Formulaire de recrutement de livreur -->
+      <div class="card-box" style="margin-bottom: 20px;">
+        <div class="card-box-header">
+          <h2><span>➕</span> Inscription & Recrutement d'un Nouveau Livreur Partenaire</h2>
+        </div>
+        <form id="form-add-driver" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; align-items: flex-end;">
+          <div class="input-group" style="margin: 0;">
+            <label for="new-driver-name">Nom complet du livreur</label>
+            <input type="text" id="new-driver-name" class="input-control" placeholder="Ex: Toundé ADANHO" required>
+          </div>
+          <div class="input-group" style="margin: 0;">
+            <label for="new-driver-phone">Numéro Téléphone / MoMo</label>
+            <input type="text" id="new-driver-phone" class="input-control" placeholder="+229 97 00 00 00" required>
+          </div>
+          <div class="input-group" style="margin: 0;">
+            <label for="new-driver-vehicle">Type d'engin / Véhicule</label>
+            <select id="new-driver-vehicle" class="input-control">
+              <option value="Moto Boxer avec porte-bouteilles">Moto Boxer avec porte-bouteilles</option>
+              <option value="Tricycle Cargo (Plateau)">Tricycle Cargo (Plateau)</option>
+              <option value="Moto Haojue renforcée">Moto Haojue renforcée</option>
+            </select>
+          </div>
+          <div class="input-group" style="margin: 0;">
+            <label for="new-driver-matricule">Immatriculation</label>
+            <input type="text" id="new-driver-matricule" class="input-control" placeholder="Ex: AX-1290-RB" required>
+          </div>
+          <div class="input-group" style="margin: 0;">
+            <label for="new-driver-lat">Position Initiale (Lat)</label>
+            <input type="number" step="0.0001" id="new-driver-lat" class="input-control" value="6.3720" required>
+          </div>
+          <div class="input-group" style="margin: 0;">
+            <label for="new-driver-lng">Position Initiale (Lng)</label>
+            <input type="number" step="0.0001" id="new-driver-lng" class="input-control" value="2.4310" required>
+          </div>
+          <div>
+            <button type="submit" class="btn-locate" style="width: 100%; height: 42px; justify-content: center; background: #16a34a;">
+              Inscrire le Livreur
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <div class="card-box" style="margin-bottom: 20px;">
+        <div class="card-box-header">
+          <h2><span>➕</span> Recenser un Nouveau Point de Vente de Gaz</h2>
+        </div>
+        <form id="form-add-depot" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; align-items: flex-end;">
+          <div class="input-group" style="margin: 0;">
+            <label for="depot-name">Nom du Dépôt / Station</label>
+            <input type="text" id="depot-name" class="input-control" placeholder="Ex: Gaz Espace Godomey" required>
+          </div>
+          <div class="input-group" style="margin: 0;">
+            <label for="depot-city">Ville / Commune</label>
+            <select id="depot-city" class="input-control">
+              <option value="Cotonou">Cotonou</option>
+              <option value="Abomey-Calavi">Abomey-Calavi</option>
+              <option value="Porto-Novo">Porto-Novo</option>
+              <option value="Kétou">Kétou</option>
+              <option value="Parakou">Parakou</option>
+              <option value="Bohicon">Bohicon</option>
+            </select>
+          </div>
+          <div class="input-group" style="margin: 0;">
+            <label for="depot-zone">Quartier / Repère</label>
+            <input type="text" id="depot-zone" class="input-control" placeholder="Ex: PK10 Carrefour IITA" required>
+          </div>
+          <div class="input-group" style="margin: 0;">
+            <label for="depot-phone">Téléphone Dépôt</label>
+            <input type="text" id="depot-phone" class="input-control" placeholder="+229 97 00 00 00" required>
+          </div>
+          <div class="input-group" style="margin: 0;">
+            <label for="depot-lat">Latitude GPS</label>
+            <input type="number" step="0.0001" id="depot-lat" class="input-control" value="6.3700" required>
+          </div>
+          <div class="input-group" style="margin: 0;">
+            <label for="depot-lng">Longitude GPS</label>
+            <input type="number" step="0.0001" id="depot-lng" class="input-control" value="2.4200" required>
+          </div>
+          <div>
+            <button type="submit" class="btn-locate" style="width: 100%; height: 42px; justify-content: center;">
+              Enregistrer le Point de Vente
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <div class="card-box">
+        <div class="card-box-header">
+          <h2><span>📍</span> Réseau des Dépôts Recensés & Niveaux de Stock</h2>
+          <span style="font-size: 0.8rem; color: #64748b;" id="depots-count-badge">6 dépôts actifs</span>
+        </div>
+        <div class="table-responsive">
+          <table class="data-table" id="table-depots">
+            <thead>
+              <tr>
+                <th>Identifiant & Nom</th>
+                <th>Ville & Quartier</th>
+                <th>Coordonnées GPS</th>
+                <th>Stock B6 (Rech / Comp)</th>
+                <th>Stock B12,5 (Rech / Comp)</th>
+                <th>Contact</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="table-depots-body">
+              <!-- Rempli par JavaScript -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 4. ESPACE DIRECTION & POINT JOURNALIER ==================== -->
+    <section id="view-admin" class="view-panel">
+      <div class="benin-pill">
+        <span>📊</span> 18 EITHING SARL • Direction Générale & Superviseur des Marges Bénéficiaires
+      </div>
+
+      <!-- KPI de supervision -->
+      <div class="dashboard-grid">
+        <div class="kpi-card highlight-blue">
+          <div style="font-size: 0.8rem; color: #64748b; font-weight: 600;">Chiffre d'Affaires Journalier (MoMo)</div>
+          <div class="stat-val" id="kpi-total-ca" style="color: #0284c7;">0 FCFA</div>
+          <div style="font-size: 0.72rem; color: #64748b; margin-top: 4px;">Encaissé sur comptes MoMo & Banques</div>
+        </div>
+
+        <div class="kpi-card highlight-orange">
+          <div style="font-size: 0.8rem; color: #64748b; font-weight: 600;">Part Dépôts / Réapprovisionnement</div>
+          <div class="stat-val" id="kpi-total-depots" style="color: #ea580c;">0 FCFA</div>
+          <div style="font-size: 0.72rem; color: #64748b; margin-top: 4px;">À reverser aux points de vente partenaires</div>
+        </div>
+
+        <div class="kpi-card highlight-purple">
+          <div style="font-size: 0.8rem; color: #64748b; font-weight: 600;">Rémunération Livreurs (500 F / course)</div>
+          <div class="stat-val" id="kpi-total-drivers" style="color: #8b5cf6;">0 FCFA</div>
+          <div style="font-size: 0.72rem; color: #64748b; margin-top: 4px;">Total des forfaits fixes reversés</div>
+        </div>
+
+        <div class="kpi-card highlight-green">
+          <div style="font-size: 0.8rem; color: #64748b; font-weight: 600;">Marge Nette Entreprise (18 EITHING)</div>
+          <div class="stat-val" id="kpi-total-company" style="color: #16a34a;">0 FCFA</div>
+          <div style="font-size: 0.72rem; color: #16a34a; font-weight: 700; margin-top: 4px;">Marge Gaz + Marge Livraison</div>
+        </div>
+      </div>
+
+      <!-- Bouclier de Sécurité & Prévention Anti-Fraude -->
+      <div class="card-box" style="margin-bottom: 24px; border-left: 5px solid #16a34a;">
+        <div class="card-box-header">
+          <h2><span>🛡️</span> Sécurité Anti-Fraude, Chiffrement & Protection Anti-Hacking</h2>
+          <span class="tag-status completed">Système Actif & Audité</span>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; font-size: 0.82rem;">
+          <div style="background: #f0fdf4; border: 1px solid #bbf7d0; padding: 12px; border-radius: 8px;">
+            <strong style="color: #166534;">🔐 Code OTP de Livraison Client</strong>
+            <p style="color: #374151; margin-top: 4px;">Empêche les fausses confirmations de livraisons. Le livreur ne peut clôturer la course et percevoir ses 500 F qu'avec le code secret remis en main propre.</p>
+          </div>
+          <div style="background: #f0fdf4; border: 1px solid #bbf7d0; padding: 12px; border-radius: 8px;">
+            <strong style="color: #166534;">⚡ Webhooks MoMo Signés (HMAC-SHA256)</strong>
+            <p style="color: #374151; margin-top: 4px;">Contre les faux paiements navigateur. Aucune course n'est déclenchée sans notification chiffrée authentifiée directement par MTN, Moov ou Celtiis.</p>
+          </div>
+          <div style="background: #f0fdf4; border: 1px solid #bbf7d0; padding: 12px; border-radius: 8px;">
+            <strong style="color: #166534;">🛡️ Bouclier Anti-Brute Force & SSL</strong>
+            <p style="color: #374151; margin-top: 4px;">Chiffrement HTTPS/TLS de bout en bout et limitation du débit de requêtes pour bloquer les tentatives d'intrusion automatisées.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Interconnexions MoMo & Banques -->
+      <div class="card-box" style="margin-bottom: 24px;">
+        <div class="card-box-header">
+          <h2><span>🏦</span> Interconnexions MoMo & Virements Bancaires Entreprise</h2>
+          <span class="tag-status completed">Passerelle Nationale Active</span>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;">
+          <div style="background: #f8fafc; padding: 14px; border-radius: 8px; border: 1px solid #e2e8f0;">
+            <h4 style="font-size: 0.9rem; margin-bottom: 6px;">Comptes Opérateurs MoMo Interconnectés</h4>
+            <ul style="font-size: 0.82rem; list-style: none; line-height: 1.8;">
+              <li>🟡 <strong>MTN MoMo Bénin :</strong> Marchand ID <code>18EITH-MTN-BJ</code> (Actif)</li>
+              <li>🔵 <strong>Moov Money Bénin :</strong> Marchand ID <code>18EITH-MOOV-BJ</code> (Actif)</li>
+              <li>🔴 <strong>Celtiis Cash Bénin :</strong> Marchand ID <code>18EITH-CELT-BJ</code> (Actif)</li>
+            </ul>
+          </div>
+          <div style="background: #f8fafc; padding: 14px; border-radius: 8px; border: 1px solid #e2e8f0;">
+            <h4 style="font-size: 0.9rem; margin-bottom: 6px;">Banque Réceptrice au Choix de l'Entreprise</h4>
+            <div style="font-size: 0.82rem; line-height: 1.8;">
+              <div class="input-group" style="margin-bottom: 8px;">
+                <label for="select-company-bank" style="font-size: 0.78rem;">Sélectionnez la Banque Béninoise Réceptrice :</label>
+                <select id="select-company-bank" class="input-control" style="font-size: 0.85rem; padding: 6px 10px;">
+                  <!-- Rempli par JavaScript avec toutes les banques du Bénin -->
+                </select>
+              </div>
+              <div>Titulaire : <strong>18 EITHING SARL</strong></div>
+              <div>IBAN / RIB Actuel : <code id="display-company-iban">BJ061 01001 002345678901 45</code></div>
+              <button id="btn-export-bank" style="margin-top: 8px; padding: 8px 14px; font-size: 0.82rem; background: #0f172a; color: #fff; border: none; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 6px;">
+                <span>📄</span> Générer l'Ordre de Virement vers la Banque Sélectionnée
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Point Journalier des Ventes Détaillé -->
+      <div class="card-box">
+        <div class="card-box-header">
+          <h2><span>📑</span> Point Journalier des Ventes & Dispatching des Marges</h2>
+          <button id="btn-export-journal" style="background: #0284c7; color: #fff; border: none; padding: 6px 12px; border-radius: 6px; font-size: 0.8rem; cursor: pointer;">
+            📥 Exporter le Bilan (CSV/Excel)
+          </button>
+        </div>
+        <div class="table-responsive">
+          <table class="data-table" id="table-sales-journal">
+            <thead>
+              <tr>
+                <th>Heure & Réf</th>
+                <th>Client & Quartier</th>
+                <th>Produit & Format</th>
+                <th>Distance</th>
+                <th>Total Encaissé (MoMo)</th>
+                <th>Dépôt Part</th>
+                <th>Livreur (Fixe)</th>
+                <th>Marge Entreprise</th>
+                <th>Statut</th>
+              </tr>
+            </thead>
+            <tbody id="table-sales-body">
+              <!-- Lignes de commandes générées et injectées dynamiquement -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
   </main>
 
-  <!-- Bouton WhatsApp (Remplacer le numéro si besoin) -->
-  <a href="https://wa.me/22944669587" class="whatsapp-float" target="_blank" rel="noopener">
-    💬 Contactez-nous
-  </a>
+  <!-- MODAL DE SIMULATION PAIEMENT USSD MOMO -->
+  <div class="modal-overlay" id="momo-modal">
+    <div class="ussd-phone">
+      <div style="font-size: 0.8rem; color: #94a3b8; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;">
+        Simulation Push USSD Bénin
+      </div>
+      <div class="ussd-screen" id="ussd-screen-content">
+        <h3>Paiement GazExpress</h3>
+        <p id="ussd-prompt-text">Autoriser le débit de 6 450 FCFA vers 18 EITHING SARL ?</p>
+        <p style="margin-top: 8px; font-weight: bold; color: #166534;">Entrez votre code secret à 4 chiffres :</p>
+        <input type="password" id="ussd-pin-input" maxlength="4" style="letter-spacing: 6px; font-size: 1.2rem; text-align: center; width: 100%; padding: 6px; border: 1px solid #86efac; border-radius: 6px; margin-top: 6px;" placeholder="••••">
+      </div>
+      <div style="display: flex; gap: 8px; justify-content: center;">
+        <button id="btn-ussd-cancel" class="ussd-keypad-btn" style="background: #ef4444; flex: 1;">Annuler</button>
+        <button id="btn-ussd-confirm" class="ussd-keypad-btn" style="background: #22c55e; flex: 1;">Valider (Envoyer)</button>
+      </div>
+    </div>
+  </div>
 
-  <!-- SCRIPT ANIMATIONS (JAVASCRIPT) -->
-  <script>
-    // Détection du défilement pour faire apparaître les blocs
-    function checkScroll() {
-      const reveals = document.querySelectorAll('.reveal');
-      reveals.forEach((el) => {
-        const windowHeight = window.innerHeight;
-        const elementTop = el.getBoundingClientRect().top;
-        if (elementTop < windowHeight - 80) {
-          el.classList.add('active');
-        }
-      });
-    }
-
-    window.addEventListener('scroll', checkScroll);
-    window.addEventListener('load', checkScroll); // Lance une première vérification au chargement
-  </script>
-
+  <!-- Leaflet JS pour OpenStreetMap -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <!-- Script principal modulaire -->
+  <script type="module" src="js/app.js"></script>
 </body>
 </html>
